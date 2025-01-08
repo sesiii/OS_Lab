@@ -1,7 +1,5 @@
-Certainly! Below is a detailed `README.md` file explaining the assignment, the problem you're solving, the logic of your program, and how to use it.
 
 ---
-
 # OS Lab Assignment 1 - Foodule Rebuild System
 
 ## Name: Dadi Sasank Kumar  
