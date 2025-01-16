@@ -1,6 +1,10 @@
-name: Greetings
+name: Greetings Workflow
 
-on: [pull_request_target, issues]
+on: 
+  pull_request_target: 
+    types: [opened] # Triggers only when a pull request is opened
+  issues:
+    types: [opened] # Triggers only when a new issue is opened
 
 jobs:
   greeting:
@@ -8,9 +12,28 @@ jobs:
     permissions:
       issues: write
       pull-requests: write
+
     steps:
-    - uses: actions/first-interaction@v1
-      with:
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
-        issue-message: "Message that will be displayed on users' first issue"
-        pr-message: "Message that will be displayed on users' first pull request"
+      # Checkout repository (optional, useful if future enhancements require repo access)
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      # Send greeting messages
+      - name: Greet First-Time Contributors
+        uses: actions/first-interaction@v1
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          issue-message: >
+            👋 Hello, thank you for opening this issue in the **OS_Lab** repository!  
+            We value your contribution and will review it shortly. In the meantime, make sure to:
+            - Follow our contributing guidelines.
+            - Provide as much detail as possible to help us address this issue effectively.
+
+          pr-message: >
+            🎉 Welcome to the **OS_Lab** repository, and thank you for your first pull request!  
+            Please ensure you:
+            - Have followed the contributing guidelines.
+            - Linked this PR to any relevant issue (if applicable).
+            - Described your changes clearly in the PR description.
+
+            🚀 We're excited to collaborate with you!
