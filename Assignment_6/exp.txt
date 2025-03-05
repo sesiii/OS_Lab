@@ -1,0 +1,47 @@
+cook, waiters, customers
+2,5,<=256
+
+customer - [11 am - 3 pm]
+
+customer-[1,4] nos
+
+customer->waiter
+waiter->take order(1 min)
+customer waits
+waiter->sends the order(queue)
+cook->waiter
+
+waiter-> wait for 2 things, customer(oder placing), cook(cooking)
+customer-> calling the waiter for order, wait for waiter to serve food
+
+semaphore customer[256]; -- not identical instances
+waiter[5]; -- not identical instances
+cooks can run in parallel --identical instances, only one semaphore 
+
+cooks wakes up the waiter
+waiter wakes up the customer,
+customer eats, and leaves
+
+waiting is on semaphores
+
+
+customers.txt- customer_id,time and arrival time
+cook-> 5 min/person
+eating-> 30 min/customer party
+
+dont use system time
+1 min=>100 ms scale down
+
+--wait-- time 
+new customer:
+time=time_arrival time
+
+time=earlier_time+1;
+take_ordee:
+usleep(100000);
+
+
+cook_cooking:
+usleep(1500000);
+
+
