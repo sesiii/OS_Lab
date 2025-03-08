@@ -1,0 +1,28 @@
+void barber(void){
+    while(TRUE){
+        down(&customer);
+        down(mutex);
+        waiting-=1;
+        up(&barber);
+        up(mutex);
+        cut_hair;
+    }
+}
+
+void customer(void){
+    down(mutex);
+    if(waiting<CHAIRS){
+        waiting+=1;
+        up(customer);
+        up(&mutex);
+        down(&barber);
+        get_haircut;
+    }
+    else{
+        down(&mutex);
+    }
+}
+
+barber=0
+customer=0
+mutex=1
