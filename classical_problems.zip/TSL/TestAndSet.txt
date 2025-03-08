@@ -1,0 +1,11 @@
+bool TestAndSet(bool &target){
+    bool v=target;
+    target=TRUE;
+    return v;
+}
+
+do{
+    while(TestAndSet(lock));
+    //CS
+    lock=false;
+}
