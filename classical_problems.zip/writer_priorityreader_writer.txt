@@ -1,0 +1,43 @@
+//reader
+do {
+    wait(reader);  // Ensure no new readers enter if a writer is waiting
+
+    wait(mutex);
+    readcount++;
+    if (readcount == 1) {
+        wait(wrt);  // First reader blocks writers
+    }
+    signal(mutex);
+
+    signal(reader);  // Allow new readers if no writer is waiting
+
+    // Reading done
+
+    wait(mutex);
+    readcount--;
+    if (readcount == 0) {
+        signal(wrt);  // Last reader allows writers
+    }
+    signal(mutex);
+} while (TRUE);
+
+
+//writer
+do {
+    wait(mutex);
+    waiting_writers++;  // Indicate a writer is waiting
+    signal(mutex);
+
+    wait(reader);  // Block new readers
+    wait(wrt);      // Acquire write lock
+
+    // Writing done
+
+    wait(mutex);
+    waiting_writers--;  // Writer finished, decrease count
+    if (waiting_writers == 0) 
+        signal(reader);  // Allow readers if no writers waiting
+    signal(mutex);
+
+    signal(wrt);
+} while (TRUE);
