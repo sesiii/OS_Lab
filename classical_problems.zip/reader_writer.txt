@@ -1,0 +1,25 @@
+//writer
+
+do{
+    wait(wrt);
+    //writing done
+    signal(wrt);
+}while(TRUE)
+
+
+//reader
+
+do{
+    wait(mutex);
+    readcount++;
+    if(readcount==1){
+        wait(wrt);
+    }
+    signal(mutex);
+
+    wait(mutex);
+    readcount--;
+    if(readcount==0){
+        signal(wrt);
+    }
+}while(1 )
