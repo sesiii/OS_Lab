@@ -1,0 +1,104 @@
+[11:00] Waiter X is ready
+[11:00] Waiter X: Placing order for Customer 4 (count = 2)
+[11:06] Waiter X: Placing order for Customer 9 (count = 1)
+[11:16] Waiter X: Serving food to Customer 4
+[11:46] Waiter X: Serving food to Customer 9
+[11:57] Waiter X: Placing order for Customer 20 (count = 1)
+[12:06] Waiter X: Serving food to Customer 20
+[12:24] Waiter X: Placing order for Customer 27 (count = 1)
+[12:36] Waiter X: Serving food to Customer 27
+[12:48] Waiter X: Placing order for Customer 32 (count = 1)
+[01:02] Waiter X: Serving food to Customer 32
+[01:20] Waiter X: Placing order for Customer 37 (count = 2)
+[01:31] Waiter X: Serving food to Customer 37
+[01:37] Waiter X: Placing order for Customer 42 (count = 1)
+[01:56] Waiter X: Serving food to Customer 42
+[02:11] Waiter X: Placing order for Customer 47 (count = 1)
+[02:17] Waiter X: Serving food to Customer 47
+[02:47] Waiter X: Placing order for Customer 52 (count = 3)
+[03:03] Waiter X: Serving food to Customer 52
+[03:53] Waiter X leaving (no more customers to serve)
+[11:00] Waiter V is ready
+[11:00] Waiter V: Placing order for Customer 2 (count = 4)
+[11:01] Waiter V: Placing order for Customer 7 (count = 2)
+[11:26] Waiter V: Serving food to Customer 2
+[11:36] Waiter V: Serving food to Customer 7
+[11:45] Waiter V: Placing order for Customer 17 (count = 1)
+[11:56] Waiter V: Serving food to Customer 17
+[12:18] Waiter V: Placing order for Customer 25 (count = 4)
+[12:39] Waiter V: Serving food to Customer 25
+[12:41] Waiter V: Placing order for Customer 30 (count = 1)
+[12:47] Waiter V: Serving food to Customer 30
+[01:10] Waiter V: Placing order for Customer 35 (count = 1)
+[01:16] Waiter V: Serving food to Customer 35
+[01:37] Waiter V: Placing order for Customer 40 (count = 1)
+[01:44] Waiter V: Serving food to Customer 40
+[01:57] Waiter V: Placing order for Customer 45 (count = 1)
+[02:04] Waiter V: Serving food to Customer 45
+[02:33] Waiter V: Placing order for Customer 50 (count = 4)
+[02:54] Waiter V: Serving food to Customer 50
+[02:57] Waiter V: Placing order for Customer 55 (count = 4)
+[03:23] Waiter V: Serving food to Customer 55
+[03:53] Waiter V leaving (no more customers to serve)
+[11:00] Waiter W is ready
+[11:00] Waiter W: Placing order for Customer 3 (count = 1)
+[11:04] Waiter W: Placing order for Customer 8 (count = 2)
+[11:06] Waiter W: Serving food to Customer 3
+[11:46] Waiter W: Serving food to Customer 8
+[11:50] Waiter W: Placing order for Customer 18 (count = 1)
+[12:01] Waiter W: Serving food to Customer 18
+[12:20] Waiter W: Placing order for Customer 26 (count = 2)
+[12:31] Waiter W: Serving food to Customer 26
+[12:46] Waiter W: Placing order for Customer 31 (count = 2)
+[12:57] Waiter W: Serving food to Customer 31
+[01:16] Waiter W: Placing order for Customer 36 (count = 2)
+[01:27] Waiter W: Serving food to Customer 36
+[01:37] Waiter W: Placing order for Customer 41 (count = 2)
+[01:54] Waiter W: Serving food to Customer 41
+[02:03] Waiter W: Placing order for Customer 46 (count = 1)
+[02:09] Waiter W: Serving food to Customer 46
+[02:41] Waiter W: Placing order for Customer 51 (count = 1)
+[02:48] Waiter W: Serving food to Customer 51
+[03:53] Waiter W leaving (no more customers to serve)
+[11:00] Waiter Y is ready
+[11:00] Waiter Y: Placing order for Customer 5 (count = 2)
+[11:13] Waiter Y: Placing order for Customer 10 (count = 1)
+[11:26] Waiter Y: Serving food to Customer 5
+[11:51] Waiter Y: Serving food to Customer 10
+[12:04] Waiter Y: Placing order for Customer 21 (count = 2)
+[12:15] Waiter Y: Serving food to Customer 21
+[12:33] Waiter Y: Placing order for Customer 28 (count = 2)
+[12:46] Waiter Y: Serving food to Customer 28
+[12:54] Waiter Y: Placing order for Customer 33 (count = 1)
+[01:07] Waiter Y: Serving food to Customer 33
+[01:28] Waiter Y: Placing order for Customer 38 (count = 2)
+[01:39] Waiter Y: Serving food to Customer 38
+[01:45] Waiter Y: Placing order for Customer 43 (count = 1)
+[01:59] Waiter Y: Serving food to Customer 43
+[02:19] Waiter Y: Placing order for Customer 48 (count = 2)
+[02:30] Waiter Y: Serving food to Customer 48
+[02:47] Waiter Y: Placing order for Customer 53 (count = 1)
+[02:59] Waiter Y: Serving food to Customer 53
+[03:53] Waiter Y leaving (no more customers to serve)
+[11:00] Waiter U is ready
+[11:00] Waiter U: Placing order for Customer 1 (count = 1)
+[11:01] Waiter U: Placing order for Customer 6 (count = 3)
+[11:06] Waiter U: Serving food to Customer 1
+[11:39] Waiter U: Placing order for Customer 16 (count = 3)
+[11:41] Waiter U: Serving food to Customer 6
+[12:01] Waiter U: Serving food to Customer 16
+[12:06] Waiter U: Placing order for Customer 22 (count = 2)
+[12:17] Waiter U: Serving food to Customer 22
+[12:41] Waiter U: Placing order for Customer 29 (count = 4)
+[01:03] Waiter U: Placing order for Customer 34 (count = 1)
+[01:06] Waiter U: Serving food to Customer 29
+[01:11] Waiter U: Serving food to Customer 34
+[01:30] Waiter U: Placing order for Customer 39 (count = 4)
+[01:51] Waiter U: Serving food to Customer 39
+[01:51] Waiter U: Placing order for Customer 44 (count = 1)
+[02:01] Waiter U: Serving food to Customer 44
+[02:27] Waiter U: Placing order for Customer 49 (count = 3)
+[02:43] Waiter U: Serving food to Customer 49
+[02:56] Waiter U: Placing order for Customer 54 (count = 1)
+[03:04] Waiter U: Serving food to Customer 54
+[03:53] Waiter U leaving (no more customers to serve)
