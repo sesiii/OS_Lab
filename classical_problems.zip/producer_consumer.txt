@@ -1,0 +1,31 @@
+#define N 100
+int count=0;
+
+void producer(void){
+    while(1){
+        item=produce_item();
+        if(count==N){
+            sleep(producer);
+        }
+        insert_item(item);
+        count+=1;
+        if(count==1){
+            wake_up(consumer);
+        }
+    }
+}
+
+void consumer(void){
+    int item;
+    while(1){
+        if(count==0){
+            sleep(consumer);
+        }
+        item=remove_item;
+        count-=1;
+        if(count=N-1){
+            wake_up(producer);
+        }
+    }
+}
+
