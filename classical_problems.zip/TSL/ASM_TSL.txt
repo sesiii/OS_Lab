@@ -1,0 +1,15 @@
+TSL REG,LOCK{
+    REG=LOCK;
+    LOCK=TRUE;
+}
+
+enter_region:
+    TSL REGISTER,LOCK
+    CMP REGISTER,#0
+    JNE enter_region
+    RET
+
+exit_region:
+    MOVE LOCK, #0
+    RET
+
