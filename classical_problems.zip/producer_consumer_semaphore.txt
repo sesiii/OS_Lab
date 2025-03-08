@@ -1,0 +1,29 @@
+semaphore mutex=1;
+semaphore empty=N;
+semaphore full=0;
+
+
+void producer(void){
+    int item;
+    while(1){
+        item=produce_item();
+        down(&empty);
+        down(&mutex);
+        insert_item();
+        up(&mutex);
+        up(&full);
+    }
+}
+
+
+void consumer(void){
+    int item;
+    while(1){
+        down(full);
+        down(mutex);
+        item=remove_item();
+        up(&mutex);
+        up(&empty);
+        consume_item();
+    }
+}
