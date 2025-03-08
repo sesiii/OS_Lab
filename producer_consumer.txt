@@ -1,0 +1,20 @@
+void producer(void){
+	int item;
+	while(1){
+		item=produce_item();
+		if(count==N) sleep();
+		insert_item(item);
+		count=count+1;
+		if(count==1)wakeup(consumer);
+		}
+}
+
+void consumer(void){
+	int item;
+	while(item){
+	if(count==0)sleep();
+	item=remove_item(item);
+	count=count-1;
+	if(count==N-1) wakeup(producer);
+	}
+}
