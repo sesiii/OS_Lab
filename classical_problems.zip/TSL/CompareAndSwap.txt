@@ -1,0 +1,12 @@
+bool CompareAndSwap(int *value,int expected, int value){
+    int temp=*value;
+    if(*value==expected){
+        *value=new_value;
+    }
+    return temp;
+}
+
+while(CompareAndSwap(&lock,0,1)!=0);
+//CS
+lock=0;
+
