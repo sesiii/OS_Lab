@@ -1,0 +1,25 @@
+#define N 2
+#define TRUE 1
+#define FALSE 0
+
+int turn;
+int interested[N];
+
+void enter_section(int process){
+    int other=1-process;
+    interested[process]=TRUE;
+    turn=process;
+
+    while(turn==process && interested[other]==TRUE);
+}
+
+void exit_region(int process){
+    interested[process]=FALSE;
+}
+
+
+do{
+    interested[i]=TRUE;
+    turn=j;
+    while(turn==j && interested[j]);
+}while(1)
