@@ -8,5 +8,5 @@ db:
 	./gencustomers > customers.txt
 
 clean:
-	rm cook customer waiter gencustomers
+	rm cook customer waiter gencustomers customers.txt
 	
