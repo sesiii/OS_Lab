@@ -1,0 +1,39 @@
+main thread: runs main funct
+
+creates m boat threads, n visitors threads
+all together
+visitor(1,,,n)
+boat(1,,,m)
+
+
+each visitor-j, decides visit time(30-120 mins)--vtime
+usleep(vtime)
+V(boat)
+P(visitor)
+
+
+boat ride time(15-60 mins)
+
+2 semaphore(counting)- one for every boat, one for every visitor
+
+V(boat)
+P(visitor)
+usleep(rtimej)
+---------------
+
+
+implement counting semaphores
+section 6.2.2
+pthread algorithms 
+
+semaphore{
+    int value;
+    pthread_cond_t;
+    pthread_mutex_t;
+}
+
+
+barrier EOS-
+            |->2
+
+
