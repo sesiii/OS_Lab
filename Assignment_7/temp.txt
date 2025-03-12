@@ -1,0 +1,7 @@
+
+boat
+V(riider)
+P(boat)
+
+usleep(rtimej)
+-----------------
