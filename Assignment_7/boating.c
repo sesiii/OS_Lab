@@ -35,6 +35,27 @@ pthread_mutex_t bmtx; // Mutex for shared arrays
 int *BA, *BC, *BT; // Arrays for boat availability, capacity, and type
 pthread_barrier_t EOS; // End-of-simulation barrier
 
+void *boat_thread(void *arg) {
+    int id = *((int *)arg); // Boat ID
+    free(arg); // Clean up allocated memory
+
+    printf("Boat %d waiting for visitor\n", id);
+    P(&boat); // Wait for a visitor to signal readiness
+    
+    printf("Boat %d signaling visitor to ride\n", id);
+    V(&visitor); // Signal visitor that the ride can start
+    
+    // Use a hardcoded rtime for the ride (e.g., 2 seconds)
+    int rtime = 2;
+    printf("Boat %d taking visitor for a %d-second ride\n", id, rtime);
+    sleep(rtime); // Simulate the ride
+    
+    printf("Boat %d ride completed\n", id);
+    pthread_barrier_wait(&EOS); // Sync with main and visitor for termination
+    
+    return NULL;
+}
+
 void *visitor_thread(void *arg) {
     int id = *((int *)arg); // Visitor ID
     free(arg); // Clean up allocated memory
@@ -42,9 +63,8 @@ void *visitor_thread(void *arg) {
     // Seed random number generator uniquely for this thread
     srand(time(NULL) ^ (id << 2));
     
-    // Generate random vtime (arrival time) and rtime (ride time) in seconds
+    // Generate random vtime (arrival time)
     int vtime = rand() % 5 + 1; // 1 to 5 seconds
-    int rtime = rand() % 3 + 1; // 1 to 3 seconds
     
     printf("Visitor %d arriving, waiting %d seconds\n", id, vtime);
     sleep(vtime); // Simulate arrival delay
@@ -53,13 +73,13 @@ void *visitor_thread(void *arg) {
     V(&boat); // Signal that visitor is ready for a boat
     
     printf("Visitor %d waiting for ride\n", id);
-    P(&visitor); // Wait for the boat to signal ride completion
+    P(&visitor); // Wait for the boat to signal ride start
     
-    printf("Visitor %d riding for %d seconds\n", id, rtime);
-    sleep(rtime); // Simulate the ride
+    printf("Visitor %d riding\n", id);
+    // Ride time is handled by boat, so just wait for completion implicitly
     
     printf("Visitor %d finished\n", id);
-    pthread_barrier_wait(&EOS); // Sync with main for termination
+    pthread_barrier_wait(&EOS); // Sync with main and boat for termination
     
     return NULL;
 }
@@ -74,8 +94,8 @@ int main(int argc, char *argv[]) {
     n = atoi(argv[2]); // Number of visitors
     printf("m = %d, n = %d\n", m, n);
 
-    // Test with 1 visitor for now
-    pthread_t vid;
+    // Test with 1 boat and 1 visitor
+    pthread_t bid, vid;
 
     // Initialize semaphores
     boat.value = 0;
@@ -95,23 +115,23 @@ int main(int argc, char *argv[]) {
         BC[i] = 1; // Capacity of 1 visitor per boat
     }
 
-    // Initialize barrier for 2 threads (main + 1 visitor)
-    pthread_barrier_init(&EOS, NULL, 2);
+    // Initialize barrier for 3 threads (main + 1 boat + 1 visitor)
+    pthread_barrier_init(&EOS, NULL, 3);
 
     printf("Main thread initialized\n");
 
+    // Create one boat thread
+    int *boat_id = malloc(sizeof(int));
+    *boat_id = 0; // Boat ID 0
+    pthread_create(&bid, NULL, boat_thread, boat_id);
+
     // Create one visitor thread
-    int *id = malloc(sizeof(int));
-    *id = 0; // Visitor ID 0
-    pthread_create(&vid, NULL, visitor_thread, id);
+    int *visitor_id = malloc(sizeof(int));
+    *visitor_id = 0; // Visitor ID 0
+    pthread_create(&vid, NULL, visitor_thread, visitor_id);
 
-    // Simulate boat interaction manually for testing
-    P(&boat); // Main waits for visitor to signal boat
-    printf("Main simulating boat: Visitor boarded\n");
-    sleep(1); // Simulate some boat processing time
-    V(&visitor); // Signal visitor that ride is done
-
-    pthread_barrier_wait(&EOS); // Wait for visitor to finish
+    pthread_barrier_wait(&EOS); // Wait for boat and visitor to finish
+    pthread_join(bid, NULL);
     pthread_join(vid, NULL);
 
     printf("Main thread terminating\n");
