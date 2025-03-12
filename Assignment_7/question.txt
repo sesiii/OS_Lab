@@ -1,0 +1,32 @@
+Milestones for Implementation
+
+    Milestone 1: Setup and Semaphore Implementation
+        Define the semaphore structure and implement P() and V() functions.
+        Test them with a simple program (e.g., two threads incrementing/decrementing a counter).
+        Output: Working semaphore functions.
+    Milestone 2: Main Thread Skeleton
+        Write the main thread to parse m and n from command-line arguments.
+        Initialize global variables: semaphores (boat, rider), mutex (bmtx), arrays (BA[], BC[], BT[]), and barriers (EOS, BB[]).
+        Output: Program compiles and prints m and n.
+    Milestone 3: Visitor Thread Logic
+        Implement the visitor thread: generate random vtime and rtime, sleep for vtime, signal boat, wait on rider, and exit.
+        Test with a single visitor (no boats yet) and print actions.
+        Output: Visitor thread runs and prints its steps.
+    Milestone 4: Boat Thread Logic
+        Implement the boat thread: signal rider, wait on boat, sleep for a hardcoded rtime, and loop.
+        Test with one boat and one visitor (no pairing yet).
+        Output: Boat thread runs and interacts with visitor via semaphores.
+    Milestone 5: Boat-Visitor Pairing
+        Add shared array logic (BA[], BC[], BT[]) with bmtx protection.
+        Implement per-boat barriers (BB[i]) for handshaking.
+        Update boat and visitor threads to pair correctly and ride for rtime.
+        Output: One boat and one visitor pair and complete a ride.
+    Milestone 6: Full Simulation
+        Extend to multiple boats (m) and visitors (n).
+        Add busy-wait logic with small sleeps in visitors to handle edge cases.
+        Implement EOS barrier logic for termination.
+        Output: Simulation runs for m=5, n=20 with all visitors completing rides.
+    Milestone 7: Final Touches
+        Refine output to match the sample style (chronological event logs).
+        Test with edge cases (e.g., m=5, n=100, m=10, n=20).
+        Output: Clean, complete boating.c file ready for submission.
