@@ -3,4 +3,4 @@ all:
 
 
 clean:
-	rm -f boating *.o
+	rm boating 
