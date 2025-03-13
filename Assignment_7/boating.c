@@ -1,3 +1,5 @@
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -6,72 +8,101 @@
 #include <pthread.h>
 #include <errno.h>
 
-// Global variables for the simulation
+
 int m, n; // m boats, n visitors remaining
-pthread_mutex_t bmtx; // Mutex for shared arrays
-pthread_cond_t *boat_cond; // Condition variables for boat-visitor pairing
-pthread_mutex_t *boat_mutex; // Mutexes for boat conditions
-pthread_cond_t *boat_exit_cond; // Condition variables to signal boats to exit
-pthread_mutex_t *boat_exit_mutex; // Mutexes for boat exit conditions
+pthread_mutex_t bmtx; 
+pthread_cond_t *boat_cond; 
+pthread_mutex_t *boat_mutex; 
+pthread_mutex_t status_mutex; 
 int *BA, *BC, *BT; // Boat availability, capacity, visitor ID assigned
-pthread_barrier_t EOS; // End-of-simulation barrier for visitors + main
-int total_visitors; // Initial number of visitors
-int visitors_served = 0; // Track completed rides
-int simulation_done = 0; // Flag to signal boats to exit
+pthread_barrier_t EOS; 
+int total_visitors;  
+int simulation_done = 0; 
+int visitors_served = 0; 
+
+
 
 void *boat_thread(void *arg) {
     int boat_id = *((int *)arg);
     free(arg);
 
-    while (visitors_served < total_visitors && !simulation_done) {
-        // Mark boat as available
+    while (1) {
+        
+        pthread_mutex_lock(&status_mutex);
+        if (simulation_done) {
+            pthread_mutex_unlock(&status_mutex);
+            break;
+        }
+        pthread_mutex_unlock(&status_mutex);
+        
+
         pthread_mutex_lock(&bmtx);
         BA[boat_id] = 1;
         BT[boat_id] = -1;
-        printf(" Boat    %d ready\n",  boat_id);
+        printf("Boat    %d ready\n", boat_id);
         pthread_mutex_unlock(&bmtx);
 
-        // Wait for a visitor to pair
+        
         pthread_mutex_lock(&boat_mutex[boat_id]);
-        while (BT[boat_id] == -1 && !simulation_done) {
-            pthread_cond_wait(&boat_cond[boat_id], &boat_mutex[boat_id]);
+        while (BT[boat_id] == -1) {
+            
+            pthread_mutex_lock(&status_mutex);
+            if (simulation_done) {
+                pthread_mutex_unlock(&status_mutex);
+                pthread_mutex_unlock(&boat_mutex[boat_id]);
+                goto exit_boat;
+            }
+            pthread_mutex_unlock(&status_mutex);
+            
+            // Used a timed wait to avoid permanent deadlock
+            struct timespec ts;
+            clock_gettime(CLOCK_REALTIME, &ts);
+            ts.tv_sec += 1;
+            int ret = pthread_cond_timedwait(&boat_cond[boat_id], &boat_mutex[boat_id], &ts);
+            
+            if (ret == ETIMEDOUT) {
+                pthread_mutex_lock(&status_mutex);
+                if (simulation_done) {
+                    pthread_mutex_unlock(&status_mutex);
+                    pthread_mutex_unlock(&boat_mutex[boat_id]);
+                    goto exit_boat;
+                }
+                pthread_mutex_unlock(&status_mutex);
+                continue;
+            }
         }
-        if (simulation_done) {
-            pthread_mutex_unlock(&boat_mutex[boat_id]);
-            break;
-        }
+        
         int visitor_id = BT[boat_id];
-        printf(" Visitor %d assigned to Boat %d\n",  visitor_id, boat_id);
+        printf("Boat    %d start of ride for visitor %d\n", boat_id, visitor_id);
         pthread_mutex_unlock(&boat_mutex[boat_id]);
 
         int rtime = rand() % 5 + 1;
-        printf(" Boat    %d start of ride for visitor %d\n",  boat_id, visitor_id);
-        sleep(rtime); // Simulate ride in seconds
+        sleep(rtime); 
 
-        // Signal ride completion
-        printf(" Boat    %d end of ride for visitor %d (ride time = %d)\n",  boat_id, visitor_id, rtime);
+        
+        printf("Boat    %d end of ride for visitor %d (ride time = %d)\n", boat_id, visitor_id, rtime);
+        
         pthread_mutex_lock(&boat_mutex[boat_id]);
-        BT[boat_id] = -1; // Reset for next visitor
-        pthread_cond_signal(&boat_cond[boat_id]); // Signal visitor to leave
+        BT[boat_id] = -1;
+        pthread_cond_signal(&boat_cond[boat_id]); 
         pthread_mutex_unlock(&boat_mutex[boat_id]);
 
-        __sync_fetch_and_add(&visitors_served, 1);
-        n = total_visitors - visitors_served;
-        // printf(" Boat    %d served visitor %d, %d visitors remaining\n",  boat_id, visitor_id, n);
-        if (n == 0) {
-            // printf("All visitors served\n");
+        pthread_mutex_lock(&status_mutex);
+        visitors_served++;
+        int remaining = total_visitors - visitors_served;
+        // printf("No of visitors remaining: %d\n", remaining);
+        
+        if (remaining == 0) {
+            printf("All visitors served\n");
+            simulation_done = 1;
+            pthread_mutex_unlock(&status_mutex);
             break;
         }
+        pthread_mutex_unlock(&status_mutex);
     }
 
-    // Wait for simulation end signal
-    pthread_mutex_lock(&boat_exit_mutex[boat_id]);
-    while (!simulation_done) {
-        pthread_cond_wait(&boat_exit_cond[boat_id], &boat_exit_mutex[boat_id]);
-    }
-    pthread_mutex_unlock(&boat_exit_mutex[boat_id]);
-
-    printf(" No more visitors left, finished serving visitors\n");
+exit_boat:
+    printf("Boat %d: No more visitors left, finished serving visitors\n", boat_id);
     return NULL;
 }
 
@@ -79,43 +110,85 @@ void *visitor_thread(void *arg) {
     int visitor_id = *((int *)arg);
     free(arg);
 
-    srand(time(NULL)%10 ^ (visitor_id << 2));
+    srand(time(NULL) ^ (visitor_id + 1));
     int vtime = rand() % 5 + 1;
-    printf(" Visitor %d Starts sightseeing for %d minutes\n",  visitor_id, vtime);
-    sleep(vtime); // Simulate sightseeing in seconds
+    int rtime = rand() % 5 + 1; 
+    
+    printf("Visitor %d Starts sightseeing for %d seconds\n", visitor_id, vtime);
+    sleep(vtime);
 
-    // Find an available boat
-    int boat_id = -1;
-    printf(" Visitor %d Ready to ride a boat\n",  visitor_id);
-    pthread_mutex_lock(&bmtx);
-    for (int i = 0; i < m; i++) {
-        if (BA[i] == 1) {
-            BA[i] = 0; // Mark boat as busy
-            BT[i] = visitor_id; // Assign visitor to boat
-            boat_id = i;
-            pthread_mutex_lock(&boat_mutex[boat_id]);
-            pthread_cond_signal(&boat_cond[boat_id]); // Wake the boat
-            pthread_mutex_unlock(&boat_mutex[boat_id]);
-            break;
-        }
-    }
-    pthread_mutex_unlock(&bmtx);
-
-    if (boat_id == -1) {
-        printf(" Visitor %d found no available boat\n",  visitor_id);
+    pthread_mutex_lock(&status_mutex);
+    if (simulation_done) {
+        pthread_mutex_unlock(&status_mutex);
+        printf("Visitor %d: Simulation ended before ride\n", visitor_id);
         pthread_barrier_wait(&EOS);
         return NULL;
     }
+    pthread_mutex_unlock(&status_mutex);
+
+    // Find an available boat
+    int boat_id = -1;
+    printf("Visitor %d Ready to ride a boat (ride time = %d)\n", visitor_id, rtime);
+    
+    while (boat_id == -1) {
+        // Check if simulation is done
+        pthread_mutex_lock(&status_mutex);
+        if (simulation_done) {
+            pthread_mutex_unlock(&status_mutex);
+            printf("Visitor %d: Simulation ended while waiting for a boat\n", visitor_id);
+            pthread_barrier_wait(&EOS);
+            return NULL;
+        }
+        pthread_mutex_unlock(&status_mutex);
+        
+        
+        pthread_mutex_lock(&bmtx);
+        for (int i = 0; i < m; i++) {
+            if (BA[i] == 1) {
+                BA[i] = 0; //boat busy
+                BT[i] = visitor_id; 
+                boat_id = i;
+                pthread_mutex_lock(&boat_mutex[boat_id]);
+                pthread_cond_signal(&boat_cond[boat_id]); 
+                pthread_mutex_unlock(&boat_mutex[boat_id]);
+                break;
+            }
+        }
+        pthread_mutex_unlock(&bmtx);
+        
+        if (boat_id == -1) {
+            // No boat available, wait a bit before trying again
+            usleep(100000); // 100ms wait
+        }
+    }
+
+    printf("Visitor %d Finds Boat %d\n", visitor_id, boat_id);
 
     // Wait for ride to complete
     pthread_mutex_lock(&boat_mutex[boat_id]);
-    printf(" Visitor %d Finds Boat %d\n",  visitor_id, boat_id);
-    while (BT[boat_id] != -1) { // Wait for boat to reset BT
-        pthread_cond_wait(&boat_cond[boat_id], &boat_mutex[boat_id]);
+    while (BT[boat_id] == visitor_id) {
+        // Use a timed wait to avoid permanent deadlock
+        struct timespec ts;
+        clock_gettime(CLOCK_REALTIME, &ts);
+        ts.tv_sec += 2; 
+        int ret = pthread_cond_timedwait(&boat_cond[boat_id], &boat_mutex[boat_id], &ts);
+        
+        // If timeout, checks if we're still assigned to the boat
+        if (ret == ETIMEDOUT) {
+            pthread_mutex_lock(&status_mutex);
+            if (simulation_done) {
+                pthread_mutex_unlock(&status_mutex);
+                pthread_mutex_unlock(&boat_mutex[boat_id]);
+                goto exit_visitor;
+            }
+            pthread_mutex_unlock(&status_mutex);
+        }
     }
     pthread_mutex_unlock(&boat_mutex[boat_id]);
-    printf(" Visitor %d leaving\n",  visitor_id);
-
+    
+    printf("Visitor %d leaving\n", visitor_id);
+    
+exit_visitor:
     pthread_barrier_wait(&EOS);
     return NULL;
 }
@@ -130,16 +203,17 @@ int main(int argc, char *argv[]) {
     total_visitors = n = atoi(argv[2]);
     printf("m = %d, n = %d\n", m, n);
 
-    pthread_t bid[m], vid[n];
+    pthread_t *bid, *vid;
+    bid = (pthread_t *)malloc(m * sizeof(pthread_t));
+    vid = (pthread_t *)malloc(n * sizeof(pthread_t));
 
     pthread_mutex_init(&bmtx, NULL);
+    pthread_mutex_init(&status_mutex, NULL);
     BA = (int *)calloc(m, sizeof(int));
     BC = (int *)calloc(m, sizeof(int));
     BT = (int *)calloc(m, sizeof(int));
     boat_cond = (pthread_cond_t *)malloc(m * sizeof(pthread_cond_t));
     boat_mutex = (pthread_mutex_t *)malloc(m * sizeof(pthread_mutex_t));
-    boat_exit_cond = (pthread_cond_t *)malloc(m * sizeof(pthread_cond_t));
-    boat_exit_mutex = (pthread_mutex_t *)malloc(m * sizeof(pthread_mutex_t));
 
     for (int i = 0; i < m; i++) {
         BA[i] = 1;
@@ -147,13 +221,11 @@ int main(int argc, char *argv[]) {
         BT[i] = -1;
         pthread_cond_init(&boat_cond[i], NULL);
         pthread_mutex_init(&boat_mutex[i], NULL);
-        pthread_cond_init(&boat_exit_cond[i], NULL);
-        pthread_mutex_init(&boat_exit_mutex[i], NULL);
     }
 
     pthread_barrier_init(&EOS, NULL, n + 1);
 
-    printf(" Main thread initialized\n");
+    printf("Main thread initialized\n");
 
     for (int i = 0; i < m; i++) {
         int *boat_id = malloc(sizeof(int));
@@ -166,46 +238,46 @@ int main(int argc, char *argv[]) {
         *visitor_id = i;
         pthread_create(&vid[i], NULL, visitor_thread, visitor_id);
     }
-
+    // Wait for all visitors to complete
     pthread_barrier_wait(&EOS);
+    
+    pthread_mutex_lock(&status_mutex);
     simulation_done = 1;
-    // printf("i am here now...\n");
+    pthread_mutex_unlock(&status_mutex);
+    
+    // printf("Simulation complete, signaling threads to exit...\n");
 
-    // Signal all boats to exit
     for (int i = 0; i < m; i++) {
         pthread_mutex_lock(&boat_mutex[i]);
-        pthread_cond_signal(&boat_cond[i]); // Wake boats from pairing wait
+        pthread_cond_broadcast(&boat_cond[i]);
         pthread_mutex_unlock(&boat_mutex[i]);
-        pthread_mutex_lock(&boat_exit_mutex[i]);
-        pthread_cond_signal(&boat_exit_cond[i]); // Wake boats from exit wait
-        pthread_mutex_unlock(&boat_exit_mutex[i]);
     }
-    // printf("aaaa...\n");
+
     for (int i = 0; i < n; i++) {
         pthread_join(vid[i], NULL);
     }
-    // printf("bbbb...\n");
+    
     for (int i = 0; i < m; i++) {
-        // printf("joining boat %d\n", i);
         pthread_join(bid[i], NULL);
     }
 
-    // printf(" Main thread terminating\n");
+    printf("Main thread terminating\n");
 
     pthread_mutex_destroy(&bmtx);
+    pthread_mutex_destroy(&status_mutex);
+    
     for (int i = 0; i < m; i++) {
         pthread_cond_destroy(&boat_cond[i]);
         pthread_mutex_destroy(&boat_mutex[i]);
-        pthread_cond_destroy(&boat_exit_cond[i]);
-        pthread_mutex_destroy(&boat_exit_mutex[i]);
     }
+    
     free(boat_cond);
     free(boat_mutex);
-    free(boat_exit_cond);
-    free(boat_exit_mutex);
     free(BA);
     free(BC);
     free(BT);
+    free(bid);
+    free(vid);
     pthread_barrier_destroy(&EOS);
 
     return 0;
