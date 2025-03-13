@@ -28,7 +28,7 @@ void *boat_thread(void *arg) {
         pthread_mutex_lock(&bmtx);
         BA[boat_id] = 1;
         BT[boat_id] = -1;
-        printf("[Time %ld] Boat    %d ready\n", time(NULL)%100, boat_id);
+        printf(" Boat    %d ready\n",  boat_id);
         pthread_mutex_unlock(&bmtx);
 
         // Wait for a visitor to pair
@@ -41,15 +41,15 @@ void *boat_thread(void *arg) {
             break;
         }
         int visitor_id = BT[boat_id];
-        printf("[Time %ld] Visitor %d assigned to Boat %d\n", time(NULL)%100, visitor_id, boat_id);
+        printf(" Visitor %d assigned to Boat %d\n",  visitor_id, boat_id);
         pthread_mutex_unlock(&boat_mutex[boat_id]);
 
         int rtime = rand() % 5 + 1;
-        printf("[Time %ld] Boat    %d start of ride for visitor %d\n", time(NULL)%100, boat_id, visitor_id);
+        printf(" Boat    %d start of ride for visitor %d\n",  boat_id, visitor_id);
         sleep(rtime); // Simulate ride in seconds
 
         // Signal ride completion
-        printf("[Time %ld] Boat    %d end of ride for visitor %d (ride time = %d)\n", time(NULL)%100, boat_id, visitor_id, rtime);
+        printf(" Boat    %d end of ride for visitor %d (ride time = %d)\n",  boat_id, visitor_id, rtime);
         pthread_mutex_lock(&boat_mutex[boat_id]);
         BT[boat_id] = -1; // Reset for next visitor
         pthread_cond_signal(&boat_cond[boat_id]); // Signal visitor to leave
@@ -57,7 +57,7 @@ void *boat_thread(void *arg) {
 
         __sync_fetch_and_add(&visitors_served, 1);
         n = total_visitors - visitors_served;
-        printf("[Time %ld] Boat    %d served visitor %d, %d visitors remaining\n", time(NULL)%100, boat_id, visitor_id, n);
+        // printf(" Boat    %d served visitor %d, %d visitors remaining\n",  boat_id, visitor_id, n);
         if (n == 0) {
             // printf("All visitors served\n");
             break;
@@ -71,7 +71,7 @@ void *boat_thread(void *arg) {
     }
     pthread_mutex_unlock(&boat_exit_mutex[boat_id]);
 
-    printf("[Time %ld] No more visitors left, finished serving visitors\n", time(NULL)%100);
+    printf(" No more visitors left, finished serving visitors\n");
     return NULL;
 }
 
@@ -79,14 +79,14 @@ void *visitor_thread(void *arg) {
     int visitor_id = *((int *)arg);
     free(arg);
 
-    srand(time(NULL)%100 ^ (visitor_id << 2));
+    srand(time(NULL)%10 ^ (visitor_id << 2));
     int vtime = rand() % 5 + 1;
-    printf("[Time %ld] Visitor %d Starts sightseeing for %d seconds\n", time(NULL)%100, visitor_id, vtime);
+    printf(" Visitor %d Starts sightseeing for %d minutes\n",  visitor_id, vtime);
     sleep(vtime); // Simulate sightseeing in seconds
 
     // Find an available boat
     int boat_id = -1;
-    printf("[Time %ld] Visitor %d Ready to ride a boat\n", time(NULL)%100, visitor_id);
+    printf(" Visitor %d Ready to ride a boat\n",  visitor_id);
     pthread_mutex_lock(&bmtx);
     for (int i = 0; i < m; i++) {
         if (BA[i] == 1) {
@@ -102,19 +102,19 @@ void *visitor_thread(void *arg) {
     pthread_mutex_unlock(&bmtx);
 
     if (boat_id == -1) {
-        printf("[Time %ld] Visitor %d found no available boat\n", time(NULL)%100, visitor_id);
+        printf(" Visitor %d found no available boat\n",  visitor_id);
         pthread_barrier_wait(&EOS);
         return NULL;
     }
 
     // Wait for ride to complete
     pthread_mutex_lock(&boat_mutex[boat_id]);
-    printf("[Time %ld] Visitor %d Finds Boat %d\n", time(NULL)%100, visitor_id, boat_id);
+    printf(" Visitor %d Finds Boat %d\n",  visitor_id, boat_id);
     while (BT[boat_id] != -1) { // Wait for boat to reset BT
         pthread_cond_wait(&boat_cond[boat_id], &boat_mutex[boat_id]);
     }
     pthread_mutex_unlock(&boat_mutex[boat_id]);
-    printf("[Time %ld] Visitor %d leaving\n", time(NULL)%100, visitor_id);
+    printf(" Visitor %d leaving\n",  visitor_id);
 
     pthread_barrier_wait(&EOS);
     return NULL;
@@ -153,7 +153,7 @@ int main(int argc, char *argv[]) {
 
     pthread_barrier_init(&EOS, NULL, n + 1);
 
-    printf("[Time %ld] Main thread initialized\n", time(NULL)%100);
+    printf(" Main thread initialized\n");
 
     for (int i = 0; i < m; i++) {
         int *boat_id = malloc(sizeof(int));
@@ -190,7 +190,7 @@ int main(int argc, char *argv[]) {
         pthread_join(bid[i], NULL);
     }
 
-    // printf("[Time %ld] Main thread terminating\n", time(NULL)%100);
+    // printf(" Main thread terminating\n");
 
     pthread_mutex_destroy(&bmtx);
     for (int i = 0; i < m; i++) {
