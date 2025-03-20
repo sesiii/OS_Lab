@@ -1,0 +1,7 @@
+Milestones
+
+    Setup and Input Parsing: Read and parse the input files (system.txt and thread??.txt), initialize global data structures, and set up shared memory.
+    Thread Creation and Synchronization Primitives: Initialize the master thread, create user threads, and set up synchronization tools (barriers, mutexes, condition variables).
+    User Thread Logic: Implement the user thread function to read requests, simulate delays, and communicate with the master thread.
+    Master Thread Logic: Implement the master thread’s request handling, including the FIFO queue and Banker’s Algorithm for deadlock avoidance.
+    Deadlock Avoidance and Output: Integrate the compile-time flag for deadlock avoidance, implement the Banker’s Algorithm, and ensure proper output formatting.
