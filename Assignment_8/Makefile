@@ -1,6 +1,6 @@
 all:
-	gcc -o resource resource.c -pthread
-	gcc -DNO_DEADLOCK -o resource_nodeadlock resource.c -pthread
+	gcc -Wall -o resource -pthread resource.c
+	gcc -Wall -D_DLAVOID -o resource_nodeadlock -pthread resource.c
 
 allow: all
 	./resource
@@ -8,5 +8,9 @@ allow: all
 avoid: all
 	./resource_nodeadlock
 
+db: geninput.c
+	gcc -Wall -o geninput geninput.c
+	./geninput 10 20
+
 clean:
-	rm -f resource
+	-rm -f resource resource_nodeadlock geninput
