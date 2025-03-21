@@ -35,7 +35,7 @@ def commit_and_push():
             subprocess.run(["git", "add", file])  # Add new/modified files
 
         current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        commit_message = f"changes in {os.path.basename(file)} on {current_time}, auto-commit, stage of file parsing in resource_2.c, complete"
+        commit_message = f"changes in {os.path.basename(file)} on {current_time}, #auto-commit"
         # Commit changes with a message
         subprocess.run(["git", "commit", "-m", commit_message])
 
