@@ -1,1058 +1,1375 @@
+// // #include <stdio.h>
+// // #include <stdlib.h>
+// // #include <string.h>
+// // #include <pthread.h>
+// // #include <unistd.h>
+
+// // // Structure for user thread requests
+// // struct UserRequest {
+// //     int delay;
+// //     char type;
+// //     int* req;
+// //     struct UserRequest* next;
+// // };
+
+// // // Structure for queued requests
+// // struct QueuedRequest {
+// //     int thread_id;
+// //     int* req;
+// //     struct QueuedRequest* next;
+// // };
+
+// // // Global synchronization tools
+// // pthread_barrier_t BOS;
+// // pthread_barrier_t REQB;
+// // pthread_barrier_t* ACKB;
+// // pthread_mutex_t rmtx;
+// // pthread_mutex_t pmtx;
+// // pthread_mutex_t* grant_mutex;
+// // pthread_cond_t* grant_cond;
+// // int* done;
+// // int* pending_additional;
+
+// // // Global resource state
+// // int m, n;
+// // int* available;
+// // int** need;
+// // int** allocation;
+
+// // // Shared memory for requests
+// // struct Request {
+// //     char type;
+// //     int thread_id;
+// //     int* req;
+// // } shared_request;
+
+// // // Struct for thread data
+// // struct ThreadData {
+// //     int thread_id;
+// //     int* done;
+// //     int* pending_additional;
+// // };
+
+// // // Read system.txt
+// // int read_system(const char* filename) {
+// //     FILE* file = fopen(filename, "r");
+// //     if (!file) return 1;
+// //     if (fscanf(file, "%d %d", &m, &n) != 2) { fclose(file); return 1; }
+// //     available = malloc(m * sizeof(int));
+// //     need = malloc(n * sizeof(int*));
+// //     allocation = malloc(n * sizeof(int*));
+// //     for (int i = 0; i < n; i++) {
+// //         need[i] = malloc(m * sizeof(int));
+// //         allocation[i] = malloc(m * sizeof(int));
+// //         memset(allocation[i], 0, m * sizeof(int));
+// //     }
+// //     for (int j = 0; j < m; j++) {
+// //         fscanf(file, "%d", &available[j]);
+// //     }
+// //     fclose(file);
+// //     printf("System initialized: m=%d, n=%d\n", m, n);
+// //     return 0;
+// // }
+
+// // // Read thread file
+// // struct UserRequest* read_thread(const char* filename, int thread_id) {
+// //     FILE* file = fopen(filename, "r");
+// //     if (!file) return NULL;
+// //     for (int j = 0; j < m; j++) {
+// //         fscanf(file, "%d", &need[thread_id][j]);
+// //     }
+// //     struct UserRequest* head = NULL;
+// //     struct UserRequest* tail = NULL;
+// //     int delay;
+// //     char type;
+// //     while (fscanf(file, "%d %c", &delay, &type) == 2) {
+// //         struct UserRequest* req = malloc(sizeof(struct UserRequest));
+// //         req->delay = delay;
+// //         req->type = type;
+// //         req->req = type == 'Q' ? NULL : malloc(m * sizeof(int));
+// //         req->next = NULL;
+// //         if (type == 'R') {
+// //             for (int j = 0; j < m; j++) {
+// //                 fscanf(file, "%d", &req->req[j]);
+// //             }
+// //         }
+// //         if (!head) head = tail = req;
+// //         else { tail->next = req; tail = req; }
+// //     }
+// //     fclose(file);
+// //     return head;
+// // }
+
+// // void free_user_requests(struct UserRequest* head) {
+// //     while (head) {
+// //         struct UserRequest* next = head->next;
+// //         if (head->req) free(head->req);
+// //         free(head);
+// //         head = next;
+// //     }
+// // }
+
+// // // User thread function
+// // void* user_thread(void* arg) {
+// //     struct ThreadData* data = (struct ThreadData*)arg;
+// //     int id = data->thread_id;
+// //     int* done = data->done;
+// //     int* pending_additional = data->pending_additional;
+
+// //     pthread_mutex_lock(&pmtx);
+// //     printf("\tThread %2d born\n", id);
+// //     pthread_mutex_unlock(&pmtx);
+
+// //     char filename[50];
+// //     sprintf(filename, "../input/thread%02d.txt", id);
+// //     struct UserRequest* requests = read_thread(filename, id);
+// //     if (!requests) pthread_exit(NULL);
+
+// //     pthread_barrier_wait(&BOS);
+
+// //     struct UserRequest* curr = requests;
+// //     int* holding = calloc(m, sizeof(int));
+// //     while (curr) {
+// //         usleep(curr->delay * 1000);
+
+// //         pthread_mutex_lock(&rmtx);
+// //         shared_request.thread_id = id;
+// //         shared_request.type = curr->type == 'Q' ? 'Q' : 'R';
+// //         if (curr->type == 'Q') {
+// //             shared_request.req = malloc(m * sizeof(int));
+// //             for (int j = 0; j < m; j++) {
+// //                 shared_request.req[j] = -holding[j];
+// //             }
+// //         } else {
+// //             shared_request.req = curr->req;
+// //             int is_additional = 0;
+// //             for (int j = 0; j < m; j++) {
+// //                 if (curr->req[j] > 0) { is_additional = 1; break; }
+// //             }
+// //             pthread_mutex_lock(&pmtx);
+// //             printf("\tThread %2d sends resource request: type = %s\n", id, is_additional ? "ADDITIONAL" : "RELEASE");
+// //             pthread_mutex_unlock(&pmtx);
+// //             if (is_additional) pending_additional[id] = 1;
+// //         }
+
+// //         pthread_barrier_wait(&REQB);
+// //         pthread_barrier_wait(&ACKB[id]);
+// //         pthread_mutex_unlock(&rmtx);
+
+// //         if (curr->type == 'R') {
+// //             int is_additional = pending_additional[id];
+// //             if (is_additional) {
+// //                 pthread_mutex_lock(&grant_mutex[id]);
+// //                 while (!done[id]) {
+// //                     pthread_cond_wait(&grant_cond[id], &grant_mutex[id]);
+// //                 }
+// //                 pthread_mutex_lock(&pmtx);
+// //                 printf("\tThread %2d is granted its last resource request\n", id);
+// //                 pthread_mutex_unlock(&pmtx);
+// //                 done[id] = 0;
+// //                 pending_additional[id] = 0;
+// //                 pthread_mutex_unlock(&grant_mutex[id]);
+// //             }
+// //             for (int j = 0; j < m; j++) {
+// //                 holding[j] += curr->req[j];
+// //             }
+// //         } else if (curr->type == 'Q') {
+// //             if (pending_additional[id]) {
+// //                 pthread_mutex_lock(&grant_mutex[id]);
+// //                 while (!done[id]) {
+// //                     pthread_cond_wait(&grant_cond[id], &grant_mutex[id]);
+// //                 }
+// //                 pthread_mutex_lock(&pmtx);
+// //                 printf("\tThread %2d is granted its last resource request\n", id);
+// //                 pthread_mutex_unlock(&pmtx);
+// //                 done[id] = 0;
+// //                 pending_additional[id] = 0;
+// //                 pthread_mutex_unlock(&grant_mutex[id]);
+// //             }
+// //             pthread_mutex_lock(&pmtx);
+// //             printf("\tThread %2d going to quit\n", id);
+// //             pthread_mutex_unlock(&pmtx);
+// //             break; // Master will free shared_request.req
+// //         }
+
+// //         curr = curr->next;
+// //     }
+
+// //     free(holding);
+// //     free_user_requests(requests);
+// //     pthread_exit(NULL);
+// // }
+
+// // // Main function (master thread)
+// // int main() {
+// //     if (read_system("../input/system.txt")) return 1;
+
+// //     struct QueuedRequest* queue_head = NULL;
+// //     struct QueuedRequest* queue_tail = NULL;
+
+// //     pthread_barrier_init(&BOS, NULL, n + 1);
+// //     pthread_barrier_init(&REQB, NULL, 2);
+// //     ACKB = malloc(n * sizeof(pthread_barrier_t));
+// //     grant_mutex = malloc(n * sizeof(pthread_mutex_t));
+// //     grant_cond = malloc(n * sizeof(pthread_cond_t));
+// //     done = calloc(n, sizeof(int));
+// //     pending_additional = calloc(n, sizeof(int));
+// //     for (int i = 0; i < n; i++) {
+// //         pthread_barrier_init(&ACKB[i], NULL, 2);
+// //         pthread_mutex_init(&grant_mutex[i], NULL);
+// //         pthread_cond_init(&grant_cond[i], NULL);
+// //     }
+// //     pthread_mutex_init(&rmtx, NULL);
+// //     pthread_mutex_init(&pmtx, NULL);
+
+// //     shared_request.req = NULL; // Initialize to NULL, allocated per request
+
+// //     pthread_t* threads = malloc(n * sizeof(pthread_t));
+// //     struct ThreadData* thread_data = malloc(n * sizeof(struct ThreadData));
+// //     for (int i = 0; i < n; i++) {
+// //         thread_data[i].thread_id = i;
+// //         thread_data[i].done = done;
+// //         thread_data[i].pending_additional = pending_additional;
+// //         pthread_create(&threads[i], NULL, user_thread, &thread_data[i]);
+// //     }
+
+// //     pthread_barrier_wait(&BOS);
+
+// //     int active_threads = n;
+// //     while (active_threads > 0) {
+// //         pthread_barrier_wait(&REQB);
+
+// //         int tid = shared_request.thread_id;
+// //         char type = shared_request.type;
+// //         int* req = malloc(m * sizeof(int));
+// //         memcpy(req, shared_request.req, m * sizeof(int));
+
+// //         pthread_barrier_wait(&ACKB[tid]);
+
+// //         for (int j = 0; j < m; j++) {
+// //             if (req[j] < 0) {
+// //                 available[j] -= req[j];
+// //                 allocation[tid][j] += req[j];
+// //                 need[tid][j] -= req[j];
+// //                 req[j] = 0;
+// //             }
+// //         }
+
+// //         if (type == 'Q') {
+// //             active_threads--;
+// //             pthread_mutex_lock(&pmtx);
+// //             printf("Master thread releases resources of thread %2d\n", tid);
+// //             if (queue_head) {
+// //                 printf("\t\tWaiting threads:");
+// //                 struct QueuedRequest* q = queue_head;
+// //                 while (q) {
+// //                     printf(" %d", q->thread_id);
+// //                     q = q->next;
+// //                 }
+// //                 printf("\n");
+// //             } else {
+// //                 printf("\t\tWaiting threads:\n");
+// //             }
+// //             printf("%d threads left\n", active_threads);
+// //             printf("Available resources: ");
+// //             for (int j = 0; j < m; j++) {
+// //                 printf("%d ", available[j]);
+// //             }
+// //             printf("\n");
+// //             pthread_mutex_unlock(&pmtx);
+// //             free(req); // Master owns this memory
+// //         } else {
+// //             int is_additional = 0;
+// //             for (int j = 0; j < m; j++) {
+// //                 if (req[j] > 0) { is_additional = 1; break; }
+// //             }
+// //             if (is_additional) {
+// //                 struct QueuedRequest* qr = malloc(sizeof(struct QueuedRequest));
+// //                 qr->thread_id = tid;
+// //                 qr->req = req;
+// //                 qr->next = NULL;
+// //                 if (!queue_head) queue_head = queue_tail = qr;
+// //                 else { queue_tail->next = qr; queue_tail = qr; }
+// //                 pthread_mutex_lock(&pmtx);
+// //                 printf("Master thread stores resource request of thread %2d\n", tid);
+// //                 printf("\t\tWaiting threads:");
+// //                 struct QueuedRequest* q = queue_head;
+// //                 while (q) {
+// //                     printf(" %d", q->thread_id);
+// //                     q = q->next;
+// //                 }
+// //                 printf("\n");
+// //                 pthread_mutex_unlock(&pmtx);
+// //             } else {
+// //                 free(req);
+// //             }
+// //         }
+
+// //         pthread_mutex_lock(&pmtx);
+// //         printf("Master thread tries to grant pending requests\n");
+// //         pthread_mutex_unlock(&pmtx);
+
+// //         struct QueuedRequest* new_head = NULL;
+// //         struct QueuedRequest* new_tail = NULL;
+// //         struct QueuedRequest* curr = queue_head;
+// //         queue_head = NULL;
+// //         queue_tail = NULL;
+
+// //         while (curr) {
+// //             int tid = curr->thread_id;
+// //             int* req = curr->req;
+// //             int can_grant = 1;
+// //             for (int j = 0; j < m; j++) {
+// //                 if (req[j] > available[j]) {
+// //                     can_grant = 0;
+// //                     break;
+// //                 }
+// //             }
+
+// //             struct QueuedRequest* next = curr->next;
+// //             if (can_grant) {
+// //                 for (int j = 0; j < m; j++) {
+// //                     available[j] -= req[j];
+// //                     allocation[tid][j] += req[j];
+// //                     need[tid][j] -= req[j];
+// //                 }
+// //                 pthread_mutex_lock(&pmtx);
+// //                 printf("Master thread grants resource request for thread %2d\n", tid);
+// //                 pthread_mutex_unlock(&pmtx);
+// //                 pthread_mutex_lock(&grant_mutex[tid]);
+// //                 done[tid] = 1;
+// //                 pthread_cond_signal(&grant_cond[tid]);
+// //                 pthread_mutex_unlock(&grant_mutex[tid]);
+// //                 free(req);
+// //                 free(curr);
+// //             } else {
+// //                 pthread_mutex_lock(&pmtx);
+// //                 printf("    +++ Insufficient resources to grant request of thread %2d\n", tid);
+// //                 pthread_mutex_unlock(&pmtx);
+// //                 curr->next = NULL;
+// //                 if (!new_head) new_head = new_tail = curr;
+// //                 else { new_tail->next = curr; new_tail = curr; }
+// //             }
+// //             curr = next;
+// //         }
+// //         queue_head = new_head;
+// //         queue_tail = new_tail;
+
+// //         pthread_mutex_lock(&pmtx);
+// //         printf("\t\tWaiting threads:");
+// //         struct QueuedRequest* q = queue_head;
+// //         while (q) {
+// //             printf(" %d", q->thread_id);
+// //             q = q->next;
+// //         }
+// //         printf("\n");
+// //         pthread_mutex_unlock(&pmtx);
+// //     }
+
+// //     for (int i = 0; i < n; i++) {
+// //         pthread_join(threads[i], NULL);
+// //         pthread_barrier_destroy(&ACKB[i]);
+// //         pthread_mutex_destroy(&grant_mutex[i]);
+// //         pthread_cond_destroy(&grant_cond[i]);
+// //     }
+
+// //     free(threads);
+// //     free(thread_data);
+// //     free(done);
+// //     free(pending_additional);
+// //     while (queue_head) {
+// //         struct QueuedRequest* temp = queue_head;
+// //         queue_head = queue_head->next;
+// //         free(temp->req);
+// //         free(temp);
+// //     }
+// //     pthread_barrier_destroy(&BOS);
+// //     pthread_barrier_destroy(&REQB);
+// //     pthread_mutex_destroy(&rmtx);
+// //     pthread_mutex_destroy(&pmtx);
+// //     free(ACKB);
+// //     free(grant_mutex);
+// //     free(grant_cond);
+// //     if (shared_request.req) free(shared_request.req); // Only if not already freed
+// //     free(available);
+// //     for (int i = 0; i < n; i++) {
+// //         free(need[i]);
+// //         free(allocation[i]);
+// //     }
+// //     free(need);
+// //     free(allocation);
+
+// //     return 0;
+// // }
+
+
+
 // #include <stdio.h>
 // #include <stdlib.h>
+// #include <string.h>
 // #include <pthread.h>
 // #include <unistd.h>
-// #include <string.h>
-// #include <stdarg.h>
 
-// #define MAX_M 20
-// #define MAX_N 100
-// #define MAX_REQUESTS 1000 // Arbitrary limit for requests per thread
-
-// // Structure for a single request
-// typedef struct {
+// // Structure for user thread requests
+// struct UserRequest {
 //     int delay;
-//     char type; // 'R' for resource request, 'Q' for quit
-//     int req[MAX_M];
-// } Request;
-
-// // Structure for thread data
-// typedef struct {
-//     int max_need[MAX_M];
-//     Request requests[MAX_REQUESTS];
-//     int num_requests;
-// } ThreadData;
-
-// // Global variables
-// int m, n;
-// int available[MAX_M];
-// ThreadData thread_data[MAX_N];
-
-// // Debug function to print arrays with formatted string
-// void print_array(int arr[], int size, const char* format, ...) {
-//     va_list args;
-//     va_start(args, format);
-//     vprintf(format, args);
-//     va_end(args);
-//     printf(": ");
-//     for (int i = 0; i < size; i++) {
-//         printf("%d ", arr[i]);
-//     }
-//     printf("\n");
-// }
-
-// void parse_system_file() {
-//     FILE *fp = fopen("input/system.txt", "r");
-//     if (!fp) {
-//         perror("Failed to open system.txt");
-//         exit(1);
-//     }
-//     fscanf(fp, "%d %d", &m, &n);
-//     //debug
-//     printf("//debug: m = %d, n = %d\n", m, n);
-//     for (int i = 0; i < m; i++) {
-//         fscanf(fp, "%d", &available[i]);
-//     }
-//     //debug
-//     print_array(available, m, "//debug: Initial AVAILABLE");
-//     fclose(fp);
-// }
-
-// void parse_thread_file(int tid) {
-//     char filename[20];
-//     sprintf(filename, "input/thread%02d.txt", tid);
-//     FILE *fp = fopen(filename, "r");
-//     if (!fp) {
-//         perror("Failed to open thread file");
-//         exit(1);
-//     }
-
-//     ThreadData *td = &thread_data[tid];
-//     for (int j = 0; j < m; j++) {
-//         fscanf(fp, "%d", &td->max_need[j]);
-//     }
-//     //debug
-//     print_array(td->max_need, m, "//debug: Thread %d MAX_NEED", tid);
-
-//     int req_idx = 0;
-//     char line[1024];
-//     while (fgets(line, sizeof(line), fp)) {
-//         Request *req = &td->requests[req_idx];
-//         if (sscanf(line, "%d Q", &req->delay) == 1) {
-//             req->type = 'Q';
-//             //debug
-//             printf("//debug: Thread %d, Request %d: DELAY %d Q\n", tid, req_idx, req->delay);
-//             req_idx++;
-//             break;
-//         } else if (sscanf(line, "%d R", &req->delay) == 1) {
-//             req->type = 'R';
-//             char *token = strtok(line, " ");
-//             token = strtok(NULL, " "); // Skip DELAY
-//             token = strtok(NULL, " "); // Skip R
-//             for (int j = 0; j < m; j++) {
-//                 req->req[j] = atoi(token);
-//                 token = strtok(NULL, " ");
-//             }
-//             //debug
-//             print_array(req->req, m, "//debug: Thread %d, Request %d REQ", tid, req_idx);
-//             req_idx++;
-//         }
-//     }
-//     td->num_requests = req_idx;
-//     //debug
-//     printf("//debug: Thread %d has %d requests\n", tid, td->num_requests);
-//     fclose(fp);
-// }
-
-// int main() {
-//     parse_system_file();
-//     for (int i = 0; i < n; i++) {
-//         parse_thread_file(i);
-//     }
-//     //debug
-//     printf("//debug: Input parsing complete\n");
-//     return 0;
-// }
-
-
-// //milestone 2
-// #include <stdio.h>
-// #include <stdlib.h>
-// #include <pthread.h>
-// #include <unistd.h>
-// #include <string.h>
-// #include <stdarg.h>
-
-// #define MAX_M 20
-// #define MAX_N 100
-// #define MAX_REQUESTS 1000
-
-// typedef struct {
-//     int delay;
-//     char type; // 'R' for resource request, 'Q' for quit
-//     int req[MAX_M];
-// } Request;
-
-// typedef struct {
-//     int max_need[MAX_M];
-//     Request requests[MAX_REQUESTS];
-//     int num_requests;
-// } ThreadData;
-
-// // Global variables
-// int m, n;
-// int available[MAX_M];
-// ThreadData thread_data[MAX_N];
-
-// // Synchronization primitives
-// pthread_barrier_t bos; // Beginning of session barrier
-// pthread_mutex_t rmtx;  // Mutex for request communication
-// pthread_barrier_t reqb; // Request barrier
-// pthread_barrier_t ackb; // Acknowledgment barrier
-// pthread_mutex_t pmtx;   // Mutex for printing
-
-// // Structure for user thread arguments
-// typedef struct {
-//     int tid;
-// } ThreadArg;
-
-// // Debug function
-// void print_array(int arr[], int size, const char* format, ...) {
-//     va_list args;
-//     va_start(args, format);
-//     vprintf(format, args);
-//     va_end(args);
-//     printf(": ");
-//     for (int i = 0; i < size; i++) printf("%d ", arr[i]);
-//     printf("\n");
-// }
-
-// void parse_system_file() {
-//     FILE *fp = fopen("input/system.txt", "r");
-//     if (!fp) { perror("Failed to open system.txt"); exit(1); }
-//     fscanf(fp, "%d %d", &m, &n);
-//     printf("//debug: m = %d, n = %d\n", m, n);
-//     for (int i = 0; i < m; i++) fscanf(fp, "%d", &available[i]);
-//     print_array(available, m, "//debug: Initial AVAILABLE");
-//     fclose(fp);
-// }
-
-// void parse_thread_file(int tid) {
-//     char filename[20];
-//     sprintf(filename, "input/thread%02d.txt", tid);
-//     FILE *fp = fopen(filename, "r");
-//     if (!fp) { perror("Failed to open thread file"); exit(1); }
-
-//     ThreadData *td = &thread_data[tid];
-//     for (int j = 0; j < m; j++) fscanf(fp, "%d", &td->max_need[j]);
-//     print_array(td->max_need, m, "//debug: Thread %d MAX_NEED", tid);
-
-//     int req_idx = 0;
-//     char line[1024];
-//     while (fgets(line, sizeof(line), fp)) {
-//         Request *req = &td->requests[req_idx];
-//         if (sscanf(line, "%d Q", &req->delay) == 1) {
-//             req->type = 'Q';
-//             printf("//debug: Thread %d, Request %d: DELAY %d Q\n", tid, req_idx, req->delay);
-//             req_idx++;
-//             break;
-//         } else if (sscanf(line, "%d R", &req->delay) == 1) {
-//             req->type = 'R';
-//             char *token = strtok(line, " ");
-//             token = strtok(NULL, " "); // Skip DELAY
-//             token = strtok(NULL, " "); // Skip R
-//             for (int j = 0; j < m; j++) {
-//                 req->req[j] = atoi(token);
-//                 token = strtok(NULL, " ");
-//             }
-//             print_array(req->req, m, "//debug: Thread %d, Request %d REQ", tid, req_idx);
-//             req_idx++;
-//         }
-//     }
-//     td->num_requests = req_idx;
-//     printf("//debug: Thread %d has %d requests\n", tid, td->num_requests);
-//     fclose(fp);
-// }
-
-// void* user_thread(void* arg) {
-//     ThreadArg *ta = (ThreadArg*)arg;
-//     int tid = ta->tid;
-
-//     // Wait at BOS barrier
-//     pthread_barrier_wait(&bos);
-//     printf("//debug: Thread %d started\n", tid);
-
-//     // Placeholder for request handling (Milestone 3)
-//     pthread_exit(NULL);
-// }
-
-// int main() {
-//     // Parse inputs
-//     parse_system_file();
-//     for (int i = 0; i < n; i++) parse_thread_file(i);
-
-//     // Initialize synchronization primitives
-//     pthread_barrier_init(&bos, NULL, n + 1); // n user threads + master
-//     pthread_mutex_init(&rmtx, NULL);
-//     pthread_barrier_init(&reqb, NULL, 2); // Master + 1 user thread
-//     pthread_barrier_init(&ackb, NULL, 2); // Master + 1 user thread
-//     pthread_mutex_init(&pmtx, NULL);
-
-//     // Create user threads
-//     pthread_t threads[MAX_N];
-//     ThreadArg args[MAX_N];
-//     for (int i = 0; i < n; i++) {
-//         args[i].tid = i;
-//         if (pthread_create(&threads[i], NULL, user_thread, &args[i]) != 0) {
-//             perror("Failed to create thread");
-//             exit(1);
-//         }
-//         printf("//debug: Created thread %d\n", i);
-//     }
-
-//     // Master thread waits at BOS
-//     pthread_barrier_wait(&bos);
-//     printf("//debug: Master thread started simulation\n");
-
-//     // Join threads
-//     for (int i = 0; i < n; i++) {
-//         pthread_join(threads[i], NULL);
-//         printf("//debug: Thread %d joined\n", i);
-//     }
-
-//     // Cleanup
-//     pthread_barrier_destroy(&bos);
-//     pthread_mutex_destroy(&rmtx);
-//     pthread_barrier_destroy(&reqb);
-//     pthread_barrier_destroy(&ackb);
-//     pthread_mutex_destroy(&pmtx);
-
-//     printf("//debug: Simulation complete\n");
-//     return 0;
-// }
-
-
-// //milestone 3
-// #include <stdio.h>
-// #include <stdlib.h>
-// #include <pthread.h>
-// #include <unistd.h>
-// #include <string.h>
-// #include <stdarg.h>
-
-// #define MAX_M 20
-// #define MAX_N 100
-// #define MAX_REQUESTS 1000
-
-// typedef struct {
-//     int delay;
-//     char type; // 'R' for resource request, 'Q' for quit
-//     int req[MAX_M];
-// } Request;
-
-// typedef struct {
-//     int max_need[MAX_M];
-//     Request requests[MAX_REQUESTS];
-//     int num_requests;
-// } ThreadData;
-
-// typedef struct {
-//     int tid;
-// } ThreadArg;
-
-// // Global variables
-// int m, n;
-// int available[MAX_M];
-// ThreadData thread_data[MAX_N];
-
-// // Synchronization primitives (only BOS and pmtx for now)
-// pthread_barrier_t bos;
-// pthread_mutex_t pmtx;
-
-// void print_array(int arr[], int size, const char* format, ...) {
-//     va_list args;
-//     va_start(args, format);
-//     vprintf(format, args);
-//     va_end(args);
-//     printf(": ");
-//     for (int i = 0; i < size; i++) printf("%d ", arr[i]);
-//     printf("\n");
-// }
-
-// void parse_system_file() {
-//     FILE *fp = fopen("input/system.txt", "r");
-//     if (!fp) { perror("Failed to open system.txt"); exit(1); }
-//     fscanf(fp, "%d %d", &m, &n);
-//     printf("//debug: m = %d, n = %d\n", m, n);
-//     for (int i = 0; i < m; i++) fscanf(fp, "%d", &available[i]);
-//     print_array(available, m, "//debug: Initial AVAILABLE");
-//     fclose(fp);
-// }
-
-// void parse_thread_file(int tid) {
-//     char filename[20];
-//     sprintf(filename, "input/thread%02d.txt", tid);
-//     FILE *fp = fopen(filename, "r");
-//     if (!fp) { perror("Failed to open thread file"); exit(1); }
-
-//     ThreadData *td = &thread_data[tid];
-//     for (int j = 0; j < m; j++) fscanf(fp, "%d", &td->max_need[j]);
-//     print_array(td->max_need, m, "//debug: Thread %d MAX_NEED", tid);
-
-//     int req_idx = 0;
-//     char line[1024];
-//     while (fgets(line, sizeof(line), fp)) {
-//         Request *req = &td->requests[req_idx];
-//         if (sscanf(line, "%d Q", &req->delay) == 1) {
-//             req->type = 'Q';
-//             printf("//debug: Thread %d, Request %d: DELAY %d Q\n", tid, req_idx, req->delay);
-//             req_idx++;
-//             break;
-//         } else if (sscanf(line, "%d R", &req->delay) == 1) {
-//             req->type = 'R';
-//             char *token = strtok(line, " ");
-//             token = strtok(NULL, " "); // Skip DELAY
-//             token = strtok(NULL, " "); // Skip R
-//             for (int j = 0; j < m; j++) {
-//                 req->req[j] = atoi(token);
-//                 token = strtok(NULL, " ");
-//             }
-//             print_array(req->req, m, "//debug: Thread %d, Request %d REQ", tid, req_idx);
-//             req_idx++;
-//         }
-//     }
-//     td->num_requests = req_idx;
-//     printf("//debug: Thread %d has %d requests\n", tid, td->num_requests);
-//     fclose(fp);
-// }
-
-// void* user_thread(void* arg) {
-//     ThreadArg *ta = (ThreadArg*)arg;
-//     int tid = ta->tid;
-//     ThreadData *td = &thread_data[tid];
-
-//     pthread_barrier_wait(&bos);
-//     pthread_mutex_lock(&pmtx);
-//     printf("//debug: Thread %d started\n", tid);
-//     pthread_mutex_unlock(&pmtx);
-
-//     for (int i = 0; i < td->num_requests; i++) {
-//         Request *req = &td->requests[i];
-//         usleep(req->delay * 1000); // Simulate delay in microseconds (ms * 1000)
-
-//         pthread_mutex_lock(&pmtx);
-//         if (req->type == 'R') {
-//             print_array(req->req, m, "//debug: Thread %d processing R request", tid);
-//         } else if (req->type == 'Q') {
-//             printf("//debug: Thread %d processing Q request\n", tid);
-//         }
-//         pthread_mutex_unlock(&pmtx);
-//     }
-
-//     pthread_mutex_lock(&pmtx);
-//     printf("//debug: Thread %d exiting\n", tid);
-//     pthread_mutex_unlock(&pmtx);
-//     pthread_exit(NULL);
-// }
-
-// int main() {
-//     parse_system_file();
-//     for (int i = 0; i < n; i++) parse_thread_file(i);
-
-//     pthread_barrier_init(&bos, NULL, n + 1);
-//     pthread_mutex_init(&pmtx, NULL);
-
-//     pthread_t threads[MAX_N];
-//     ThreadArg args[MAX_N];
-//     for (int i = 0; i < n; i++) {
-//         args[i].tid = i;
-//         if (pthread_create(&threads[i], NULL, user_thread, &args[i]) != 0) {
-//             perror("Failed to create thread");
-//             exit(1);
-//         }
-//         printf("//debug: Created thread %d\n", i);
-//     }
-
-//     pthread_barrier_wait(&bos);
-//     printf("//debug: Master thread started simulation\n");
-
-//     for (int i = 0; i < n; i++) {
-//         pthread_join(threads[i], NULL);
-//         printf("//debug: Thread %d joined\n", i);
-//     }
-
-//     pthread_barrier_destroy(&bos);
-//     pthread_mutex_destroy(&pmtx);
-
-//     printf("//debug: Simulation complete\n");
-//     return 0;
-// }
-
-
-// //milestone 4
-// #include <stdio.h>
-// #include <stdlib.h>
-// #include <pthread.h>
-// #include <unistd.h>
-// #include <string.h>
-// #include <stdarg.h>
-
-// #define MAX_M 20
-// #define MAX_N 100
-// #define MAX_REQUESTS 1000
-// #define MAX_QUEUE 100
-
-// typedef struct {
-//     int delay;
-//     char type; // 'R' for resource request, 'Q' for quit
-//     int req[MAX_M];
-// } Request;
-
-// typedef struct {
-//     int max_need[MAX_M];
-//     Request requests[MAX_REQUESTS];
-//     int num_requests;
-// } ThreadData;
-
-// typedef struct {
-//     int tid;
-// } ThreadArg;
-
-// typedef struct {
-//     int tid;
-//     int req[MAX_M];
-// } QueueEntry;
-
-// // Global variables
-// int m, n;
-// int available[MAX_M];
-// int alloc[MAX_N][MAX_M];
-// int need[MAX_N][MAX_M];
-// ThreadData thread_data[MAX_N];
-
-// // Synchronization primitives
-// pthread_barrier_t bos;
-// pthread_mutex_t rmtx;
-// pthread_barrier_t reqb;
-// pthread_barrier_t ackb;
-// pthread_mutex_t pmtx;
-// pthread_cond_t cv[MAX_N];
-// pthread_mutex_t cmtx[MAX_N];
-
-// // Global request and queue
-// typedef struct {
-//     int tid;
 //     char type;
-//     int req[MAX_M];
-// } GlobalRequest;
-// GlobalRequest global_req;
-// QueueEntry queue[MAX_QUEUE];
-// int q_front = 0, q_rear = 0, q_size = 0;
+//     int* req;
+//     struct UserRequest* next;
+// };
 
-// void print_array(int arr[], int size, const char* format, ...) {
-//     va_list args;
-//     va_start(args, format);
-//     vprintf(format, args);
-//     va_end(args);
-//     printf(": ");
-//     for (int i = 0; i < size; i++) printf("%d ", arr[i]);
-//     printf("\n");
+// // Structure for queued requests
+// struct QueuedRequest {
+//     int thread_id;
+//     int* req;
+//     struct QueuedRequest* next;
+// };
+
+// // Global synchronization tools
+// pthread_barrier_t BOS;
+// pthread_barrier_t REQB;
+// pthread_barrier_t* ACKB;
+// pthread_mutex_t rmtx;
+// pthread_mutex_t pmtx;
+// pthread_mutex_t* grant_mutex;
+// pthread_cond_t* grant_cond;
+// int* done;
+// int* pending_additional;
+
+// // Global resource state
+// int m, n;
+// int* available;
+// int** need;
+// int** allocation;
+
+// // Shared memory for requests
+// struct Request {
+//     char type;
+//     int thread_id;
+//     int* req;
+// } shared_request;
+
+// // Struct for thread data
+// struct ThreadData {
+//     int thread_id;
+//     int* done;
+//     int* pending_additional;
+// };
+
+// // Read system.txt
+// int read_system(const char* filename) {
+//     FILE* file = fopen(filename, "r");
+//     if (!file) return 1;
+//     if (fscanf(file, "%d %d", &m, &n) != 2) { fclose(file); return 1; }
+//     available = malloc(m * sizeof(int));
+//     need = malloc(n * sizeof(int*));
+//     allocation = malloc(n * sizeof(int*));
+//     for (int i = 0; i < n; i++) {
+//         need[i] = malloc(m * sizeof(int));
+//         allocation[i] = malloc(m * sizeof(int));
+//         memset(allocation[i], 0, m * sizeof(int));
+//     }
+//     for (int j = 0; j < m; j++) {
+//         fscanf(file, "%d", &available[j]);
+//     }
+//     fclose(file);
+//     printf("System initialized: m=%d, n=%d\n", m, n);
+//     return 0;
 // }
 
-// void parse_system_file() {
-//     FILE *fp = fopen("input/system.txt", "r");
-//     if (!fp) { perror("Failed to open system.txt"); exit(1); }
-//     fscanf(fp, "%d %d", &m, &n);
-//     printf("//debug: m = %d, n = %d\n", m, n);
-//     for (int i = 0; i < m; i++) fscanf(fp, "%d", &available[i]);
-//     print_array(available, m, "//debug: Initial AVAILABLE");
-//     fclose(fp);
-// }
-
-// void parse_thread_file(int tid) {
-//     char filename[20];
-//     sprintf(filename, "input/thread%02d.txt", tid);
-//     FILE *fp = fopen(filename, "r");
-//     if (!fp) { perror("Failed to open thread file"); exit(1); }
-
-//     ThreadData *td = &thread_data[tid];
-//     for (int j = 0; j < m; j++) fscanf(fp, "%d", &td->max_need[j]);
-//     print_array(td->max_need, m, "//debug: Thread %d MAX_NEED", tid);
-//     memcpy(need[tid], td->max_need, m * sizeof(int)); // Initialize NEED
-
-//     int req_idx = 0;
-//     char line[1024];
-//     while (fgets(line, sizeof(line), fp)) {
-//         Request *req = &td->requests[req_idx];
-//         if (sscanf(line, "%d Q", &req->delay) == 1) {
-//             req->type = 'Q';
-//             printf("//debug: Thread %d, Request %d: DELAY %d Q\n", tid, req_idx, req->delay);
-//             req_idx++;
-//             break;
-//         } else if (sscanf(line, "%d R", &req->delay) == 1) {
-//             req->type = 'R';
-//             char *token = strtok(line, " ");
-//             token = strtok(NULL, " "); // Skip DELAY
-//             token = strtok(NULL, " "); // Skip R
+// // Read thread file
+// struct UserRequest* read_thread(const char* filename, int thread_id) {
+//     FILE* file = fopen(filename, "r");
+//     if (!file) return NULL;
+//     for (int j = 0; j < m; j++) {
+//         fscanf(file, "%d", &need[thread_id][j]);
+//     }
+//     struct UserRequest* head = NULL;
+//     struct UserRequest* tail = NULL;
+//     int delay;
+//     char type;
+//     while (fscanf(file, "%d %c", &delay, &type) == 2) {
+//         struct UserRequest* req = malloc(sizeof(struct UserRequest));
+//         req->delay = delay;
+//         req->type = type;
+//         req->req = type == 'Q' ? NULL : malloc(m * sizeof(int));
+//         req->next = NULL;
+//         if (type == 'R') {
 //             for (int j = 0; j < m; j++) {
-//                 req->req[j] = atoi(token);
-//                 token = strtok(NULL, " ");
+//                 fscanf(file, "%d", &req->req[j]);
 //             }
-//             print_array(req->req, m, "//debug: Thread %d, Request %d REQ", tid, req_idx);
-//             req_idx++;
 //         }
+//         if (!head) head = tail = req;
+//         else { tail->next = req; tail = req; }
 //     }
-//     td->num_requests = req_idx;
-//     printf("//debug: Thread %d has %d requests\n", tid, td->num_requests);
-//     fclose(fp);
+//     fclose(file);
+//     return head;
 // }
 
-// void enqueue(int tid, int req[]) {
-//     if (q_size < MAX_QUEUE) {
-//         queue[q_rear].tid = tid;
-//         memcpy(queue[q_rear].req, req, m * sizeof(int));
-//         q_rear = (q_rear + 1) % MAX_QUEUE;
-//         q_size++;
-//         printf("//debug: Enqueued request for Thread %d\n", tid);
+// void free_user_requests(struct UserRequest* head) {
+//     while (head) {
+//         struct UserRequest* next = head->next;
+//         if (head->req) free(head->req);
+//         free(head);
+//         head = next;
 //     }
 // }
 
-// void process_queue() {
-//     while (q_size > 0) {
-//         int tid = queue[q_front].tid;
-//         int* req = queue[q_front].req;
-//         int can_grant = 1;
-//         for (int j = 0; j < m; j++) {
-//             if (req[j] > available[j]) {
-//                 can_grant = 0;
-//                 break;
+// // Banker's algorithm for deadlock avoidance
+// #ifdef _DLAVOID
+// int banker_algo(int** alloc, int** need, int* avail, int* req, int tid) {
+//     int* temp_avail = malloc(m * sizeof(int));
+//     int** temp_alloc = malloc(n * sizeof(int*));
+//     int** temp_need = malloc(n * sizeof(int*));
+//     for (int i = 0; i < n; i++) {
+//         temp_alloc[i] = malloc(m * sizeof(int));
+//         temp_need[i] = malloc(m * sizeof(int));
+//         memcpy(temp_alloc[i], alloc[i], m * sizeof(int));
+//         memcpy(temp_need[i], need[i], m * sizeof(int));
+//     }
+//     memcpy(temp_avail, avail, m * sizeof(int));
+
+//     // Temporarily grant the request
+//     for (int j = 0; j < m; j++) {
+//         temp_avail[j] -= req[j];
+//         temp_alloc[tid][j] += req[j];
+//         temp_need[tid][j] -= req[j];
+//     }
+
+//     // Simulate resource allocation
+//     int* work = malloc(m * sizeof(int));
+//     memcpy(work, temp_avail, m * sizeof(int));
+//     int* finish = calloc(n, sizeof(int));
+//     int finished = 0;
+
+//     while (finished < n) {
+//         int found = 0;
+//         for (int i = 0; i < n; i++) {
+//             if (!finish[i]) {
+//                 int can_finish = 1;
+//                 for (int j = 0; j < m; j++) {
+//                     if (temp_need[i][j] > work[j]) {
+//                         can_finish = 0;
+//                         break;
+//                     }
+//                 }
+//                 if (can_finish) {
+//                     for (int j = 0; j < m; j++) {
+//                         work[j] += temp_alloc[i][j];
+//                     }
+//                     finish[i] = 1;
+//                     finished++;
+//                     found = 1;
+//                 }
 //             }
 //         }
-//         if (can_grant) {
-//             for (int j = 0; j < m; j++) {
-//                 available[j] -= req[j];
-//                 alloc[tid][j] += req[j];
-//                 need[tid][j] -= req[j];
+//         if (!found) {
+//             free(work);
+//             free(finish);
+//             for (int i = 0; i < n; i++) {
+//                 free(temp_alloc[i]);
+//                 free(temp_need[i]);
 //             }
-//             q_front = (q_front + 1) % MAX_QUEUE;
-//             q_size--;
-//             pthread_mutex_lock(&pmtx);
-//             print_array(available, m, "//debug: Granted request for Thread %d, AVAILABLE", tid);
-//             pthread_mutex_unlock(&pmtx);
-//             pthread_cond_signal(&cv[tid]);
-//         } else {
-//             break; // Wait for more resources
+//             free(temp_alloc);
+//             free(temp_need);
+//             free(temp_avail);
+//             return 0; // Unsafe state
 //         }
 //     }
-// }
 
+//     free(work);
+//     free(finish);
+//     for (int i = 0; i < n; i++) {
+//         free(temp_alloc[i]);
+//         free(temp_need[i]);
+//     }
+//     free(temp_alloc);
+//     free(temp_need);
+//     free(temp_avail);
+//     return 1; // Safe state
+// }
+// #endif
+
+// // User thread function
 // void* user_thread(void* arg) {
-//     ThreadArg *ta = (ThreadArg*)arg;
-//     int tid = ta->tid;
-//     ThreadData *td = &thread_data[tid];
+//     struct ThreadData* data = (struct ThreadData*)arg;
+//     int id = data->thread_id;
+//     int* done = data->done;
+//     int* pending_additional = data->pending_additional;
 
-//     pthread_barrier_wait(&bos);
 //     pthread_mutex_lock(&pmtx);
-//     printf("//debug: Thread %d started\n", tid);
+//     printf("\tThread %2d born\n", id);
 //     pthread_mutex_unlock(&pmtx);
 
-//     for (int i = 0; i < td->num_requests; i++) {
-//         Request *req = &td->requests[i];
-//         usleep(req->delay * 1000);
+//     char filename[50];
+//     sprintf(filename, "../input/thread%02d.txt", id);
+//     struct UserRequest* requests = read_thread(filename, id);
+//     if (!requests) pthread_exit(NULL);
+
+//     pthread_barrier_wait(&BOS);
+
+//     struct UserRequest* curr = requests;
+//     int* holding = calloc(m, sizeof(int));
+//     while (curr) {
+//         usleep(curr->delay * 1000);
 
 //         pthread_mutex_lock(&rmtx);
-//         global_req.tid = tid;
-//         global_req.type = req->type;
-//         if (req->type == 'R') memcpy(global_req.req, req->req, m * sizeof(int));
-//         else memset(global_req.req, 0, m * sizeof(int));
-//         pthread_mutex_lock(&pmtx);
-//         if (req->type == 'R') print_array(global_req.req, m, "//debug: Thread %d sending R request", tid);
-//         else printf("//debug: Thread %d sending Q request\n", tid);
-//         pthread_mutex_unlock(&pmtx);
-
-//         pthread_barrier_wait(&reqb);
-//         pthread_barrier_wait(&ackb);
-
-//         int is_additional = (req->type == 'R' && memchr(req->req, 1, m * sizeof(int)) != NULL);
-//         if (is_additional) {
-//             pthread_mutex_lock(&cmtx[tid]);
-//             pthread_cond_wait(&cv[tid], &cmtx[tid]);
-//             pthread_mutex_unlock(&cmtx[tid]);
+//         shared_request.thread_id = id;
+//         shared_request.type = curr->type == 'Q' ? 'Q' : 'R';
+//         if (curr->type == 'Q') {
+//             shared_request.req = malloc(m * sizeof(int));
+//             for (int j = 0; j < m; j++) {
+//                 shared_request.req[j] = -holding[j];
+//             }
+//         } else {
+//             shared_request.req = curr->req;
+//             int is_additional = 0;
+//             for (int j = 0; j < m; j++) {
+//                 if (curr->req[j] > 0) { is_additional = 1; break; }
+//             }
 //             pthread_mutex_lock(&pmtx);
-//             printf("//debug: Thread %d ADDITIONAL request granted\n", tid);
+//             printf("\tThread %2d sends resource request: type = %s\n", id, is_additional ? "ADDITIONAL" : "RELEASE");
 //             pthread_mutex_unlock(&pmtx);
+//             if (is_additional) pending_additional[id] = 1;
 //         }
+
+//         pthread_barrier_wait(&REQB);
+//         pthread_barrier_wait(&ACKB[id]);
 //         pthread_mutex_unlock(&rmtx);
+
+//         if (curr->type == 'R') {
+//             int is_additional = pending_additional[id];
+//             if (is_additional) {
+//                 pthread_mutex_lock(&grant_mutex[id]);
+//                 while (!done[id]) {
+//                     pthread_cond_wait(&grant_cond[id], &grant_mutex[id]);
+//                 }
+//                 pthread_mutex_lock(&pmtx);
+//                 printf("\tThread %2d is granted its last resource request\n", id);
+//                 pthread_mutex_unlock(&pmtx);
+//                 done[id] = 0;
+//                 pending_additional[id] = 0;
+//                 pthread_mutex_unlock(&grant_mutex[id]);
+//             }
+//             for (int j = 0; j < m; j++) {
+//                 holding[j] += curr->req[j];
+//             }
+//         } else if (curr->type == 'Q') {
+//             if (pending_additional[id]) {
+//                 pthread_mutex_lock(&grant_mutex[id]);
+//                 while (!done[id]) {
+//                     pthread_cond_wait(&grant_cond[id], &grant_mutex[id]);
+//                 }
+//                 pthread_mutex_lock(&pmtx);
+//                 printf("\tThread %2d is granted its last resource request\n", id);
+//                 pthread_mutex_unlock(&pmtx);
+//                 done[id] = 0;
+//                 pending_additional[id] = 0;
+//                 pthread_mutex_unlock(&grant_mutex[id]);
+//             }
+//             pthread_mutex_lock(&pmtx);
+//             printf("\tThread %2d going to quit\n", id);
+//             pthread_mutex_unlock(&pmtx);
+//             break;
+//         }
+
+//         curr = curr->next;
 //     }
 
-//     pthread_mutex_lock(&pmtx);
-//     printf("//debug: Thread %d exiting\n", tid);
-//     pthread_mutex_unlock(&pmtx);
+//     free(holding);
+//     free_user_requests(requests);
 //     pthread_exit(NULL);
 // }
 
-// void* master_thread(void* arg) {
-//     pthread_barrier_wait(&bos);
-//     printf("//debug: Master thread started simulation\n");
+// // Main function (master thread)
+// int main() {
+//     if (read_system("../input/system.txt")) return 1;
+
+//     struct QueuedRequest* queue_head = NULL;
+//     struct QueuedRequest* queue_tail = NULL;
+
+//     pthread_barrier_init(&BOS, NULL, n + 1);
+//     pthread_barrier_init(&REQB, NULL, 2);
+//     ACKB = malloc(n * sizeof(pthread_barrier_t));
+//     grant_mutex = malloc(n * sizeof(pthread_mutex_t));
+//     grant_cond = malloc(n * sizeof(pthread_cond_t));
+//     done = calloc(n, sizeof(int));
+//     pending_additional = calloc(n, sizeof(int));
+//     for (int i = 0; i < n; i++) {
+//         pthread_barrier_init(&ACKB[i], NULL, 2);
+//         pthread_mutex_init(&grant_mutex[i], NULL);
+//         pthread_cond_init(&grant_cond[i], NULL);
+//     }
+//     pthread_mutex_init(&rmtx, NULL);
+//     pthread_mutex_init(&pmtx, NULL);
+
+//     shared_request.req = NULL;
+
+//     pthread_t* threads = malloc(n * sizeof(pthread_t));
+//     struct ThreadData* thread_data = malloc(n * sizeof(struct ThreadData));
+//     for (int i = 0; i < n; i++) {
+//         thread_data[i].thread_id = i;
+//         thread_data[i].done = done;
+//         thread_data[i].pending_additional = pending_additional;
+//         pthread_create(&threads[i], NULL, user_thread, &thread_data[i]);
+//     }
+
+//     pthread_barrier_wait(&BOS);
 
 //     int active_threads = n;
 //     while (active_threads > 0) {
-//         pthread_barrier_wait(&reqb);
-//         int tid = global_req.tid;
+//         pthread_barrier_wait(&REQB);
+
+//         int tid = shared_request.thread_id;
+//         char type = shared_request.type;
+//         int* req = malloc(m * sizeof(int));
+//         memcpy(req, shared_request.req, m * sizeof(int));
+
+//         pthread_barrier_wait(&ACKB[tid]);
+
+//         for (int j = 0; j < m; j++) {
+//             if (req[j] < 0) {
+//                 available[j] -= req[j];
+//                 allocation[tid][j] += req[j];
+//                 need[tid][j] -= req[j];
+//                 req[j] = 0;
+//             }
+//         }
+
+//         if (type == 'Q') {
+//             active_threads--;
+//             pthread_mutex_lock(&pmtx);
+//             printf("Master thread releases resources of thread %2d\n", tid);
+//             if (queue_head) {
+//                 printf("\t\tWaiting threads:");
+//                 struct QueuedRequest* q = queue_head;
+//                 while (q) {
+//                     printf(" %d", q->thread_id);
+//                     q = q->next;
+//                 }
+//                 printf("\n");
+//             } else {
+//                 printf("\t\tWaiting threads:\n");
+//             }
+//             printf("%d threads left\n", active_threads);
+//             printf("Available resources: ");
+//             for (int j = 0; j < m; j++) {
+//                 printf("%d ", available[j]);
+//             }
+//             printf("\n");
+//             pthread_mutex_unlock(&pmtx);
+//             free(req);
+//         } else {
+//             int is_additional = 0;
+//             for (int j = 0; j < m; j++) {
+//                 if (req[j] > 0) { is_additional = 1; break; }
+//             }
+//             if (is_additional) {
+//                 struct QueuedRequest* qr = malloc(sizeof(struct QueuedRequest));
+//                 qr->thread_id = tid;
+//                 qr->req = req;
+//                 qr->next = NULL;
+//                 if (!queue_head) queue_head = queue_tail = qr;
+//                 else { queue_tail->next = qr; queue_tail = qr; }
+//                 pthread_mutex_lock(&pmtx);
+//                 printf("Master thread stores resource request of thread %2d\n", tid);
+//                 printf("\t\tWaiting threads:");
+//                 struct QueuedRequest* q = queue_head;
+//                 while (q) {
+//                     printf(" %d", q->thread_id);
+//                     q = q->next;
+//                 }
+//                 printf("\n");
+//                 pthread_mutex_unlock(&pmtx);
+//             } else {
+//                 free(req);
+//             }
+//         }
+
 //         pthread_mutex_lock(&pmtx);
-//         printf("//debug: Master received request from Thread %d, type %c\n", tid, global_req.type);
+//         printf("Master thread tries to grant pending requests\n");
 //         pthread_mutex_unlock(&pmtx);
 
-//         if (global_req.type == 'Q' || (global_req.type == 'R' && !memchr(global_req.req, 1, m * sizeof(int)))) {
-//             // RELEASE request
+//         struct QueuedRequest* new_head = NULL;
+//         struct QueuedRequest* new_tail = NULL;
+//         struct QueuedRequest* curr = queue_head;
+//         queue_head = NULL;
+//         queue_tail = NULL;
+
+//         while (curr) {
+//             int tid = curr->thread_id;
+//             int* req = curr->req;
+//             int can_grant = 1;
 //             for (int j = 0; j < m; j++) {
-//                 if (global_req.type == 'R' && global_req.req[j] < 0) {
-//                     available[j] += -global_req.req[j];
-//                     alloc[tid][j] -= -global_req.req[j];
-//                     need[tid][j] += -global_req.req[j];
-//                 } else if (global_req.type == 'Q' && alloc[tid][j] > 0) {
-//                     available[j] += alloc[tid][j];
-//                     alloc[tid][j] = 0;
-//                     need[tid][j] = 0;
+//                 if (req[j] > available[j]) {
+//                     can_grant = 0;
+//                     break;
 //                 }
 //             }
-//             if (global_req.type == 'Q') active_threads--;
-//             process_queue();
-//         } else {
-//             // ADDITIONAL request
-//             for (int j = 0; j < m; j++) {
-//                 if (global_req.req[j] < 0) {
-//                     available[j] += -global_req.req[j];
-//                     alloc[tid][j] -= -global_req.req[j];
-//                     need[tid][j] += -global_req.req[j];
-//                     global_req.req[j] = 0;
-//                 }
+// #ifdef _DLAVOID
+//             if (can_grant) {
+//                 can_grant = banker_algo(allocation, need, available, req, tid);
 //             }
-//             enqueue(tid, global_req.req);
-//             process_queue();
+// #endif
+//             struct QueuedRequest* next = curr->next;
+//             if (can_grant) {
+//                 for (int j = 0; j < m; j++) {
+//                     available[j] -= req[j];
+//                     allocation[tid][j] += req[j];
+//                     need[tid][j] -= req[j];
+//                 }
+//                 pthread_mutex_lock(&pmtx);
+//                 printf("Master thread grants resource request for thread %2d\n", tid);
+//                 pthread_mutex_unlock(&pmtx);
+//                 pthread_mutex_lock(&grant_mutex[tid]);
+//                 done[tid] = 1;
+//                 pthread_cond_signal(&grant_cond[tid]);
+//                 pthread_mutex_unlock(&grant_mutex[tid]);
+//                 free(req);
+//                 free(curr);
+//             } else {
+//                 pthread_mutex_lock(&pmtx);
+//                 printf("    +++ Insufficient resources to grant request of thread %2d\n", tid);
+//                 pthread_mutex_unlock(&pmtx);
+//                 curr->next = NULL;
+//                 if (!new_head) new_head = new_tail = curr;
+//                 else { new_tail->next = curr; new_tail = curr; }
+//             }
+//             curr = next;
 //         }
-//         pthread_barrier_wait(&ackb);
+//         queue_head = new_head;
+//         queue_tail = new_tail;
+
+//         pthread_mutex_lock(&pmtx);
+//         printf("\t\tWaiting threads:");
+//         struct QueuedRequest* q = queue_head;
+//         while (q) {
+//             printf(" %d", q->thread_id);
+//             q = q->next;
+//         }
+//         printf("\n");
+//         pthread_mutex_unlock(&pmtx);
 //     }
-//     pthread_exit(NULL);
-// }
 
-// int main() {
-//     parse_system_file();
-//     for (int i = 0; i < n; i++) parse_thread_file(i);
-
-//     pthread_barrier_init(&bos, NULL, n + 1);
-//     pthread_mutex_init(&rmtx, NULL);
-//     pthread_barrier_init(&reqb, NULL, 2);
-//     pthread_barrier_init(&ackb, NULL, 2);
-//     pthread_mutex_init(&pmtx, NULL);
 //     for (int i = 0; i < n; i++) {
-//         pthread_cond_init(&cv[i], NULL);
-//         pthread_mutex_init(&cmtx[i], NULL);
+//         pthread_join(threads[i], NULL);
+//         pthread_barrier_destroy(&ACKB[i]);
+//         pthread_mutex_destroy(&grant_mutex[i]);
+//         pthread_cond_destroy(&grant_cond[i]);
 //     }
 
-//     pthread_t threads[MAX_N], master;
-//     ThreadArg args[MAX_N];
-//     pthread_create(&master, NULL, master_thread, NULL);
-//     for (int i = 0; i < n; i++) {
-//         args[i].tid = i;
-//         pthread_create(&threads[i], NULL, user_thread, &args[i]);
-//         printf("//debug: Created thread %d\n", i);
+//     free(threads);
+//     free(thread_data);
+//     free(done);
+//     free(pending_additional);
+//     while (queue_head) {
+//         struct QueuedRequest* temp = queue_head;
+//         queue_head = queue_head->next;
+//         free(temp->req);
+//         free(temp);
 //     }
-
-//     for (int i = 0; i < n; i++) pthread_join(threads[i], NULL);
-//     pthread_join(master, NULL);
-//     printf("//debug: All threads joined\n");
-
-//     pthread_barrier_destroy(&bos);
+//     pthread_barrier_destroy(&BOS);
+//     pthread_barrier_destroy(&REQB);
 //     pthread_mutex_destroy(&rmtx);
-//     pthread_barrier_destroy(&reqb);
-//     pthread_barrier_destroy(&ackb);
 //     pthread_mutex_destroy(&pmtx);
+//     free(ACKB);
+//     free(grant_mutex);
+//     free(grant_cond);
+//     if (shared_request.req) free(shared_request.req);
+//     free(available);
 //     for (int i = 0; i < n; i++) {
-//         pthread_cond_destroy(&cv[i]);
-//         pthread_mutex_destroy(&cmtx[i]);
+//         free(need[i]);
+//         free(allocation[i]);
 //     }
+//     free(need);
+//     free(allocation);
 
-//     printf("//debug: Simulation complete\n");
 //     return 0;
 // }
 
 
-//milestone 5
+
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <pthread.h>
 #include <unistd.h>
-#include <string.h>
-#include <stdarg.h>
 
-#define MAX_M 20
-#define MAX_N 100
-#define MAX_REQUESTS 1000
-#define MAX_QUEUE 100
-
-typedef struct {
+// Structure for user thread requests
+struct UserRequest {
     int delay;
     char type;
-    int req[MAX_M];
-} Request;
+    int* req;
+    struct UserRequest* next;
+};
 
-typedef struct {
-    int max_need[MAX_M];
-    Request requests[MAX_REQUESTS];
-    int num_requests;
-} ThreadData;
+// Structure for queued requests
+struct QueuedRequest {
+    int thread_id;
+    int* req;
+    struct QueuedRequest* next;
+};
 
-typedef struct {
-    int tid;
-} ThreadArg;
-
-typedef struct {
-    int tid;
-    int req[MAX_M];
-} QueueEntry;
-
-// Global variables
-int m, n;
-int available[MAX_M];
-int alloc[MAX_N][MAX_M];
-int need[MAX_N][MAX_M];
-ThreadData thread_data[MAX_N];
-
-// Synchronization primitives
-pthread_barrier_t bos;
+// Global synchronization tools
+pthread_barrier_t BOS;
+pthread_barrier_t REQB;
+pthread_barrier_t* ACKB;
 pthread_mutex_t rmtx;
-pthread_barrier_t reqb;
-pthread_barrier_t ackb;
 pthread_mutex_t pmtx;
-pthread_cond_t cv[MAX_N];
-pthread_mutex_t cmtx[MAX_N];
+pthread_mutex_t* grant_mutex;
+pthread_cond_t* grant_cond;
+int* done;
+int* pending_additional;
 
-// Global request and queue
-typedef struct {
-    int tid;
+// Global resource state
+int m, n;
+int* available;
+int** need;
+int** allocation;
+
+// Shared memory for requests
+struct Request {
     char type;
-    int req[MAX_M];
-} GlobalRequest;
-GlobalRequest global_req;
-QueueEntry queue[MAX_QUEUE];
-int q_front = 0, q_rear = 0, q_size = 0;
+    int thread_id;
+    int* req;
+} shared_request;
 
-void print_array(int arr[], int size, const char* format, ...) {
-    va_list args;
-    va_start(args, format);
-    vprintf(format, args);
-    va_end(args);
-    printf(": ");
-    for (int i = 0; i < size; i++) printf("%d ", arr[i]);
-    printf("\n");
-}
+// Struct for thread data
+struct ThreadData {
+    int thread_id;
+    int* done;
+    int* pending_additional;
+};
 
-void parse_system_file() {
-    FILE *fp = fopen("input/system.txt", "r");
-    if (!fp) { perror("Failed to open system.txt"); exit(1); }
-    fscanf(fp, "%d %d", &m, &n);
-    printf("m = %d, n = %d\n", m, n);
-    for (int i = 0; i < m; i++) fscanf(fp, "%d", &available[i]);
-    print_array(available, m, "Initial AVAILABLE");
-    fclose(fp);
-}
-
-void parse_thread_file(int tid) {
-    char filename[20];
-    sprintf(filename, "input/thread%02d.txt", tid);
-    FILE *fp = fopen(filename, "r");
-    if (!fp) { perror("Failed to open thread file"); exit(1); }
-
-    ThreadData *td = &thread_data[tid];
-    for (int j = 0; j < m; j++) fscanf(fp, "%d", &td->max_need[j]);
-    print_array(td->max_need, m, "Thread %d MAX_NEED", tid);
-    memcpy(need[tid], td->max_need, m * sizeof(int));
-
-    int req_idx = 0;
-    char line[1024];
-    while (fgets(line, sizeof(line), fp)) {
-        Request *req = &td->requests[req_idx];
-        if (sscanf(line, "%d Q", &req->delay) == 1) {
-            req->type = 'Q';
-            printf("Thread %d, Request %d: DELAY %d Q\n", tid, req_idx, req->delay);
-            req_idx++;
-            break;
-        } else if (sscanf(line, "%d R", &req->delay) == 1) {
-            req->type = 'R';
-            char *token = strtok(line, " ");
-            token = strtok(NULL, " "); // Skip DELAY
-            token = strtok(NULL, " "); // Skip R
-            for (int j = 0; j < m; j++) {
-                req->req[j] = atoi(token);
-                token = strtok(NULL, " ");
-            }
-            print_array(req->req, m, "Thread %d, Request %d REQ", tid, req_idx);
-            req_idx++;
-        }
+// Reads system.txt
+int read_system(const char* filename) {
+    FILE* file = fopen(filename, "r");
+    if (!file) return 1;
+    if (fscanf(file, "%d %d", &m, &n) != 2) { fclose(file); return 1; }
+    available = malloc(m * sizeof(int));
+    need = malloc(n * sizeof(int*));
+    allocation = malloc(n * sizeof(int*));
+    for (int i = 0; i < n; i++) {
+        need[i] = malloc(m * sizeof(int));
+        allocation[i] = malloc(m * sizeof(int));
+        memset(allocation[i], 0, m * sizeof(int));
     }
-    td->num_requests = req_idx;
-    printf("Thread %d has %d requests\n", tid, td->num_requests);
-    fclose(fp);
+    for (int j = 0; j < m; j++) {
+        fscanf(file, "%d", &available[j]);
+    }
+    fclose(file);
+    printf("System initialized: m=%d, n=%d\n", m, n);
+    return 0;
 }
 
-int is_safe_state(int temp_available[], int temp_alloc[][MAX_M], int temp_need[][MAX_M]) {
-    int work[MAX_M];
-    int finish[MAX_N] = {0};
-    memcpy(work, temp_available, m * sizeof(int));
+// Reads thread file
+struct UserRequest* read_thread(const char* filename, int thread_id) {
+    FILE* file = fopen(filename, "r");
+    if (!file) return NULL;
+    for (int j = 0; j < m; j++) {
+        fscanf(file, "%d", &need[thread_id][j]);
+    }
+    struct UserRequest* head = NULL;
+    struct UserRequest* tail = NULL;
+    int delay;
+    char type;
+    while (fscanf(file, "%d %c", &delay, &type) == 2) {
+        struct UserRequest* req = malloc(sizeof(struct UserRequest));
+        req->delay = delay;
+        req->type = type;
+        req->req = type == 'Q' ? NULL : malloc(m * sizeof(int));
+        req->next = NULL;
+        if (type == 'R') {
+            for (int j = 0; j < m; j++) {
+                fscanf(file, "%d", &req->req[j]);
+            }
+        }
+        if (!head) head = tail = req;
+        else { tail->next = req; tail = req; }
+    }
+    fclose(file);
+    return head;
+}
 
-    int safe = 1;
-    for (int count = 0; count < n; count++) {
+void free_user_requests(struct UserRequest* head) {
+    while (head) {
+        struct UserRequest* next = head->next;
+        if (head->req) free(head->req);
+        free(head);
+        head = next;
+    }
+}
+
+// Banker's algorithm for deadlock avoidance
+#ifdef _DLAVOID
+int banker_algo(int** alloc, int** need, int* avail, int* req, int tid) {
+    int* temp_avail = malloc(m * sizeof(int));
+    int** temp_alloc = malloc(n * sizeof(int*));
+    int** temp_need = malloc(n * sizeof(int*));
+    for (int i = 0; i < n; i++) {
+        temp_alloc[i] = malloc(m * sizeof(int));
+        temp_need[i] = malloc(m * sizeof(int));
+        memcpy(temp_alloc[i], alloc[i], m * sizeof(int));
+        memcpy(temp_need[i], need[i], m * sizeof(int));
+    }
+    memcpy(temp_avail, avail, m * sizeof(int));
+
+    for (int j = 0; j < m; j++) {
+        temp_avail[j] -= req[j];
+        temp_alloc[tid][j] += req[j];
+        temp_need[tid][j] -= req[j];
+    }
+
+    int* work = malloc(m * sizeof(int));
+    memcpy(work, temp_avail, m * sizeof(int));
+    int* finish = calloc(n, sizeof(int));
+    int finished = 0;
+
+    while (finished < n) {
         int found = 0;
         for (int i = 0; i < n; i++) {
             if (!finish[i]) {
-                int can_run = 1;
+                int can_finish = 1;
                 for (int j = 0; j < m; j++) {
                     if (temp_need[i][j] > work[j]) {
-                        can_run = 0;
+                        can_finish = 0;
                         break;
                     }
                 }
-                if (can_run) {
-                    for (int j = 0; j < m; j++) work[j] += temp_alloc[i][j];
+                if (can_finish) {
+                    for (int j = 0; j < m; j++) {
+                        work[j] += temp_alloc[i][j];
+                    }
                     finish[i] = 1;
+                    finished++;
                     found = 1;
                 }
             }
         }
         if (!found) {
-            safe = 0;
-            break;
+            free(work);
+            free(finish);
+            for (int i = 0; i < n; i++) {
+                free(temp_alloc[i]);
+                free(temp_need[i]);
+            }
+            free(temp_alloc);
+            free(temp_need);
+            free(temp_avail);
+            return 0;
         }
     }
-    return safe;
-}
 
-void enqueue(int tid, int req[]) {
-    if (q_size < MAX_QUEUE) {
-        queue[q_rear].tid = tid;
-        memcpy(queue[q_rear].req, req, m * sizeof(int));
-        q_rear = (q_rear + 1) % MAX_QUEUE;
-        q_size++;
-        pthread_mutex_lock(&pmtx);
-        printf("Enqueued request for Thread %d\n", tid);
-        pthread_mutex_unlock(&pmtx);
+    free(work);
+    free(finish);
+    for (int i = 0; i < n; i++) {
+        free(temp_alloc[i]);
+        free(temp_need[i]);
     }
+    free(temp_alloc);
+    free(temp_need);
+    free(temp_avail);
+    return 1;
 }
-
-void process_queue() {
-    while (q_size > 0) {
-        int tid = queue[q_front].tid;
-        int* req = queue[q_front].req;
-        int can_grant = 1;
-        for (int j = 0; j < m; j++) {
-            if (req[j] > available[j]) {
-                can_grant = 0;
-                break;
-            }
-        }
-#ifdef NO_DEADLOCK
-        if (can_grant) {
-            int temp_available[MAX_M];
-            int temp_alloc[MAX_N][MAX_M];
-            int temp_need[MAX_N][MAX_M];
-            memcpy(temp_available, available, m * sizeof(int));
-            memcpy(temp_alloc, alloc, n * m * sizeof(int));
-            memcpy(temp_need, need, n * m * sizeof(int));
-            for (int j = 0; j < m; j++) {
-                temp_available[j] -= req[j];
-                temp_alloc[tid][j] += req[j];
-                temp_need[tid][j] -= req[j];
-            }
-            can_grant = is_safe_state(temp_available, temp_alloc, temp_need);
-        }
 #endif
-        if (can_grant) {
-            for (int j = 0; j < m; j++) {
-                available[j] -= req[j];
-                alloc[tid][j] += req[j];
-                need[tid][j] -= req[j];
-            }
-            q_front = (q_front + 1) % MAX_QUEUE;
-            q_size--;
-            pthread_mutex_lock(&pmtx);
-            print_array(available, m, "Granted request for Thread %d, AVAILABLE", tid);
-            pthread_mutex_unlock(&pmtx);
-            pthread_cond_signal(&cv[tid]);
-        } else {
-            break;
-        }
-    }
-}
 
+// User thread function
 void* user_thread(void* arg) {
-    ThreadArg *ta = (ThreadArg*)arg;
-    int tid = ta->tid;
-    ThreadData *td = &thread_data[tid];
+    struct ThreadData* data = (struct ThreadData*)arg;
+    int id = data->thread_id;
+    int* done = data->done;
+    int* pending_additional = data->pending_additional;
 
-    pthread_barrier_wait(&bos);
     pthread_mutex_lock(&pmtx);
-    printf("Thread %d started\n", tid);
+    printf("\tThread %2d born\n", id);
     pthread_mutex_unlock(&pmtx);
 
-    for (int i = 0; i < td->num_requests; i++) {
-        Request *req = &td->requests[i];
-        usleep(req->delay * 1000);
+    char filename[50];
+    sprintf(filename, "input/thread%02d.txt", id);
+    struct UserRequest* requests = read_thread(filename, id);
+    if (!requests) pthread_exit(NULL);
+
+    pthread_barrier_wait(&BOS);
+
+    struct UserRequest* curr = requests;
+    int* holding = calloc(m, sizeof(int));
+    while (curr) {
+        usleep(curr->delay * 1000);
 
         pthread_mutex_lock(&rmtx);
-        global_req.tid = tid;
-        global_req.type = req->type;
-        if (req->type == 'R') memcpy(global_req.req, req->req, m * sizeof(int));
-        else memset(global_req.req, 0, m * sizeof(int));
-        pthread_mutex_lock(&pmtx);
-        if (req->type == 'R') print_array(global_req.req, m, "Thread %d sending R request", tid);
-        else printf("Thread %d sending Q request\n", tid);
-        pthread_mutex_unlock(&pmtx);
-
-        pthread_barrier_wait(&reqb);
-        pthread_barrier_wait(&ackb);
-
-        int is_additional = (req->type == 'R' && memchr(req->req, 1, m * sizeof(int)) != NULL);
-        if (is_additional) {
-            pthread_mutex_lock(&cmtx[tid]);
-            pthread_cond_wait(&cv[tid], &cmtx[tid]);
-            pthread_mutex_unlock(&cmtx[tid]);
+        shared_request.thread_id = id;
+        shared_request.type = curr->type == 'Q' ? 'Q' : 'R';
+        if (curr->type == 'Q') {
+            shared_request.req = malloc(m * sizeof(int));
+            for (int j = 0; j < m; j++) {
+                shared_request.req[j] = -holding[j];
+            }
+        } else {
+            shared_request.req = curr->req;
+            int is_additional = 0;
+            for (int j = 0; j < m; j++) {
+                if (curr->req[j] > 0) { is_additional = 1; break; }
+            }
             pthread_mutex_lock(&pmtx);
-            printf("Thread %d ADDITIONAL request granted\n", tid);
+            printf("\tThread %2d sends resource request: type = %s\n", id, is_additional ? "ADDITIONAL" : "RELEASE");
             pthread_mutex_unlock(&pmtx);
+            if (is_additional) pending_additional[id] = 1;
         }
+
+        pthread_barrier_wait(&REQB);
+        pthread_barrier_wait(&ACKB[id]);
         pthread_mutex_unlock(&rmtx);
+
+        if (curr->type == 'R') {
+            int is_additional = pending_additional[id];
+            if (is_additional) {
+                pthread_mutex_lock(&grant_mutex[id]);
+                while (!done[id]) {
+                    pthread_cond_wait(&grant_cond[id], &grant_mutex[id]);
+                }
+                pthread_mutex_lock(&pmtx);
+                printf("\tThread %2d is granted its last resource request\n", id);
+                pthread_mutex_unlock(&pmtx);
+                done[id] = 0;
+                pending_additional[id] = 0;
+                pthread_mutex_unlock(&grant_mutex[id]);
+            } else {
+                pthread_mutex_lock(&pmtx);
+                printf("\tThread %2d is done with its resource release request\n", id);
+                pthread_mutex_unlock(&pmtx);
+            }
+            for (int j = 0; j < m; j++) {
+                holding[j] += curr->req[j];
+            }
+        } else if (curr->type == 'Q') {
+            if (pending_additional[id]) {
+                pthread_mutex_lock(&grant_mutex[id]);
+                while (!done[id]) {
+                    pthread_cond_wait(&grant_cond[id], &grant_mutex[id]);
+                }
+                pthread_mutex_lock(&pmtx);
+                printf("\tThread %2d is granted its last resource request\n", id);
+                pthread_mutex_unlock(&pmtx);
+                done[id] = 0;
+                pending_additional[id] = 0;
+                pthread_mutex_unlock(&grant_mutex[id]);
+            }
+            pthread_mutex_lock(&pmtx);
+            printf("\tThread %2d going to quit\n", id);
+            pthread_mutex_unlock(&pmtx);
+            break;
+        }
+
+        curr = curr->next;
     }
 
-    pthread_mutex_lock(&pmtx);
-    printf("Thread %d exiting\n", tid);
-    pthread_mutex_unlock(&pmtx);
+    free(holding);
+    free_user_requests(requests);
     pthread_exit(NULL);
 }
 
-void* master_thread(void* arg) {
-    pthread_barrier_wait(&bos);
-    printf("Master thread started simulation\n");
+//master thread
+int main() {
+    if (read_system("input/system.txt")) return 1;
+
+    struct QueuedRequest* queue_head = NULL;
+    struct QueuedRequest* queue_tail = NULL;
+
+    pthread_barrier_init(&BOS, NULL, n + 1);
+    pthread_barrier_init(&REQB, NULL, 2);
+    ACKB = malloc(n * sizeof(pthread_barrier_t));
+    grant_mutex = malloc(n * sizeof(pthread_mutex_t));
+    grant_cond = malloc(n * sizeof(pthread_cond_t));
+    done = calloc(n, sizeof(int));
+    pending_additional = calloc(n, sizeof(int));
+    for (int i = 0; i < n; i++) {
+        pthread_barrier_init(&ACKB[i], NULL, 2);
+        pthread_mutex_init(&grant_mutex[i], NULL);
+        pthread_cond_init(&grant_cond[i], NULL);
+    }
+    pthread_mutex_init(&rmtx, NULL);
+    pthread_mutex_init(&pmtx, NULL);
+
+    shared_request.req = NULL;
+
+    pthread_t* threads = malloc(n * sizeof(pthread_t));
+    struct ThreadData* thread_data = malloc(n * sizeof(struct ThreadData));
+    for (int i = 0; i < n; i++) {
+        thread_data[i].thread_id = i;
+        thread_data[i].done = done;
+        thread_data[i].pending_additional = pending_additional;
+        pthread_create(&threads[i], NULL, user_thread, &thread_data[i]);
+    }
+
+    pthread_barrier_wait(&BOS);
 
     int active_threads = n;
     while (active_threads > 0) {
-        pthread_barrier_wait(&reqb);
-        int tid = global_req.tid;
+        pthread_barrier_wait(&REQB);
+
+        int tid = shared_request.thread_id;
+        char type = shared_request.type;
+        int* req = malloc(m * sizeof(int));
+        memcpy(req, shared_request.req, m * sizeof(int));
+
+        pthread_barrier_wait(&ACKB[tid]);
+
+        for (int j = 0; j < m; j++) {
+            if (req[j] < 0) {
+                available[j] -= req[j];
+                allocation[tid][j] += req[j];
+                need[tid][j] -= req[j];
+                req[j] = 0;
+            }
+        }
+
+        if (type == 'Q') {
+            active_threads--;
+            pthread_mutex_lock(&pmtx);
+            printf("Master thread releases resources of thread %2d\n", tid);
+            if (queue_head) {
+                printf("\t\tWaiting threads:");
+                struct QueuedRequest* q = queue_head;
+                while (q) {
+                    printf(" %d", q->thread_id);
+                    q = q->next;
+                }
+                printf("\n");
+            } else {
+                printf("\t\tWaiting threads:\n");
+            }
+            printf("%d threads left\n", active_threads);
+            printf("Available resources: ");
+            for (int j = 0; j < m; j++) {
+                printf("%d ", available[j]);
+            }
+            printf("\n");
+            pthread_mutex_unlock(&pmtx);
+            free(req);
+        } else {
+            int is_additional = 0;
+            for (int j = 0; j < m; j++) {
+                if (req[j] > 0) { is_additional = 1; break; }
+            }
+            if (is_additional) {
+                struct QueuedRequest* qr = malloc(sizeof(struct QueuedRequest));
+                qr->thread_id = tid;
+                qr->req = req;
+                qr->next = NULL;
+                if (!queue_head) queue_head = queue_tail = qr;
+                else { queue_tail->next = qr; queue_tail = qr; }
+                pthread_mutex_lock(&pmtx);
+                printf("Master thread stores resource request of thread %2d\n", tid);
+                printf("\t\tWaiting threads:");
+                struct QueuedRequest* q = queue_head;
+                while (q) {
+                    printf(" %d", q->thread_id);
+                    q = q->next;
+                }
+                printf("\n");
+                pthread_mutex_unlock(&pmtx);
+            } else {
+                free(req);
+            }
+        }
+
         pthread_mutex_lock(&pmtx);
-        printf("Master received request from Thread %d, type %c\n", tid, global_req.type);
+        printf("Master thread tries to grant pending requests\n");
         pthread_mutex_unlock(&pmtx);
 
-        if (global_req.type == 'Q' || (global_req.type == 'R' && !memchr(global_req.req, 1, m * sizeof(int)))) {
+        struct QueuedRequest* new_head = NULL;
+        struct QueuedRequest* new_tail = NULL;
+        struct QueuedRequest* curr = queue_head;
+        queue_head = NULL;
+        queue_tail = NULL;
+
+        while (curr) {
+            int tid = curr->thread_id;
+            int* req = curr->req;
+            int can_grant = 1;
             for (int j = 0; j < m; j++) {
-                if (global_req.type == 'R' && global_req.req[j] < 0) {
-                    available[j] += -global_req.req[j];
-                    alloc[tid][j] -= -global_req.req[j];
-                    need[tid][j] += -global_req.req[j];
-                } else if (global_req.type == 'Q' && alloc[tid][j] > 0) {
-                    available[j] += alloc[tid][j];
-                    alloc[tid][j] = 0;
-                    need[tid][j] = 0;
+                if (req[j] > available[j]) {
+                    can_grant = 0;
+                    break;
                 }
             }
-            pthread_mutex_lock(&pmtx);
-            print_array(available, m, "After Thread %d RELEASE, AVAILABLE", tid);
-            pthread_mutex_unlock(&pmtx);
-            if (global_req.type == 'Q') active_threads--;
-            process_queue();
-        } else {
-            for (int j = 0; j < m; j++) {
-                if (global_req.req[j] < 0) {
-                    available[j] += -global_req.req[j];
-                    alloc[tid][j] -= -global_req.req[j];
-                    need[tid][j] += -global_req.req[j];
-                    global_req.req[j] = 0;
-                }
+#ifdef _DLAVOID
+            if (can_grant) {
+                can_grant = banker_algo(allocation, need, available, req, tid);
             }
-            enqueue(tid, global_req.req);
-            process_queue();
+#endif
+            struct QueuedRequest* next = curr->next;
+            if (can_grant) {
+                for (int j = 0; j < m; j++) {
+                    available[j] -= req[j];
+                    allocation[tid][j] += req[j];
+                    need[tid][j] -= req[j];
+                }
+                pthread_mutex_lock(&pmtx);
+                printf("Master thread grants resource request for thread %2d\n", tid);
+                pthread_mutex_unlock(&pmtx);
+                pthread_mutex_lock(&grant_mutex[tid]);
+                done[tid] = 1;
+                pthread_cond_signal(&grant_cond[tid]);
+                pthread_mutex_unlock(&grant_mutex[tid]);
+                free(req);
+                free(curr);
+            } else {
+                pthread_mutex_lock(&pmtx);
+                printf("    +++ Insufficient resources to grant request of thread %2d\n", tid);
+                pthread_mutex_unlock(&pmtx);
+                curr->next = NULL;
+                if (!new_head) new_head = new_tail = curr;
+                else { new_tail->next = curr; new_tail = curr; }
+            }
+            curr = next;
         }
-        pthread_barrier_wait(&ackb);
+        queue_head = new_head;
+        queue_tail = new_tail;
+
+        pthread_mutex_lock(&pmtx);
+        printf("\t\tWaiting threads:");
+        struct QueuedRequest* q = queue_head;
+        while (q) {
+            printf(" %d", q->thread_id);
+            q = q->next;
+        }
+        printf("\n");
+        pthread_mutex_unlock(&pmtx);
     }
-    pthread_exit(NULL);
-}
 
-int main() {
-    parse_system_file();
-    for (int i = 0; i < n; i++) parse_thread_file(i);
-
-    pthread_barrier_init(&bos, NULL, n + 1);
-    pthread_mutex_init(&rmtx, NULL);
-    pthread_barrier_init(&reqb, NULL, 2);
-    pthread_barrier_init(&ackb, NULL, 2);
-    pthread_mutex_init(&pmtx, NULL);
     for (int i = 0; i < n; i++) {
-        pthread_cond_init(&cv[i], NULL);
-        pthread_mutex_init(&cmtx[i], NULL);
+        pthread_join(threads[i], NULL);
+        pthread_barrier_destroy(&ACKB[i]);
+        pthread_mutex_destroy(&grant_mutex[i]);
+        pthread_cond_destroy(&grant_cond[i]);
     }
 
-    pthread_t threads[MAX_N], master;
-    ThreadArg args[MAX_N];
-    pthread_create(&master, NULL, master_thread, NULL);
-    for (int i = 0; i < n; i++) {
-        args[i].tid = i;
-        pthread_create(&threads[i], NULL, user_thread, &args[i]);
-        printf("Created thread %d\n", i);
+    free(threads);
+    free(thread_data);
+    free(done);
+    free(pending_additional);
+    while (queue_head) {
+        struct QueuedRequest* temp = queue_head;
+        queue_head = queue_head->next;
+        free(temp->req);
+        free(temp);
     }
-
-    for (int i = 0; i < n; i++) pthread_join(threads[i], NULL);
-    pthread_join(master, NULL);
-    printf("All threads joined\n");
-
-    pthread_barrier_destroy(&bos);
+    pthread_barrier_destroy(&BOS);
+    pthread_barrier_destroy(&REQB);
     pthread_mutex_destroy(&rmtx);
-    pthread_barrier_destroy(&reqb);
-    pthread_barrier_destroy(&ackb);
     pthread_mutex_destroy(&pmtx);
+    free(ACKB);
+    free(grant_mutex);
+    free(grant_cond);
+    if (shared_request.req) free(shared_request.req);
+    free(available);
     for (int i = 0; i < n; i++) {
-        pthread_cond_destroy(&cv[i]);
-        pthread_mutex_destroy(&cmtx[i]);
+        free(need[i]);
+        free(allocation[i]);
     }
+    free(need);
+    free(allocation);
 
-    printf("Simulation complete\n");
     return 0;
 }
