@@ -504,7 +504,7 @@ def call_together_api(diff):
 
     try:
         response = client.chat.completions.create(
-            model="meta-llama/Llama-3.1-70B-Instruct-Turbo",
+            model="deepseek-ai/DeepSeek-R1",
             messages=[{"role": "user", "content": prompt}],
             max_tokens=100,
             temperature=0.7,
