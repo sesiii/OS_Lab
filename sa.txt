@@ -1,0 +1,34 @@
+(use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   script.py
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        env/
+
+no changes added to commit (use "git add" and/or "git commit -a")
+(env) dadi@RogStrix:~/Desktop/Labs_6th sem/OS_Lab$ python3 script.py 
+Committing: Added script.py with initial implementation (2025-03-26 15:13:01)
+Committing: Introduced Activate.ps1 to the project (2025-03-26 15:13:05)
+Committing: Introduced activate to the project (2025-03-26 15:13:08)
+Committing: Introduced activate.csh to the project (2025-03-26 15:13:11)
+Committing: Introduced activate.fish to the project (2025-03-26 15:13:15)
+Committing: Introduced f2py to the project (2025-03-26 15:13:18)
+Committing: Introduced markdown-it to the project (2025-03-26 15:13:21)
+Committing: Introduced normalizer to the project (2025-03-26 15:13:24)
+Committing: Introduced numpy-config to the project (2025-03-26 15:13:28)
+Committing: Introduced pip to the project (2025-03-26 15:13:31)
+Committing: Introduced pip3 to the project (2025-03-26 15:13:34)
+Committing: Introduced pip3.12 to the project (2025-03-26 15:13:38)
+^CTraceback (most recent call last):
+  File "/home/dadi/Desktop/Labs_6th sem/OS_Lab/script.py", line 306, in <module>
+    commit_and_push()
+  File "/home/dadi/Desktop/Labs_6th sem/OS_Lab/script.py", line 301, in commit_and_push
+    time.sleep(2)  # Small delay to mimic manual commits
+    ^^^^^^^^^^^^^
+KeyboardInterrupt
+
+(env) dadi@RogStrix:~/Desktop/Labs_6th sem/OS_Lab$ python3 script.py 
+Committing: Added script.py with initial implementation (2025-03-26 15:15:07)
+All changes committed and pushed successfully!
+(env) dadi@RogStrix:~/Desktop/Labs_6th sem/OS_Lab$
