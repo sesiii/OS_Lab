@@ -533,7 +533,7 @@ def generate_fallback_message(filename, is_deleted=False):
     else:
         return f"Introduced {file_name} to the project ({timestamp})"
 
-def generate_commit_message(filename, is_deleted=False):
+def generate_commit_message(filename, modified_files, is_deleted=False):
     """Generate a commit message, using LLM for modified files or fallback for others"""
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     
@@ -541,7 +541,7 @@ def generate_commit_message(filename, is_deleted=False):
         print(f"Using fallback for deleted file: {filename}")
         return generate_fallback_message(filename, is_deleted=True)
     
-    if filename in get_modified_files():
+    if filename in modified_files:  # Use the original modified_files list
         diff = get_file_diff(filename)
         if diff:
             try:
@@ -552,6 +552,7 @@ def generate_commit_message(filename, is_deleted=False):
                 return f"Updated {os.path.basename(filename)} with recent changes ({timestamp})"
         else:
             print(f"No diff found for modified file: {filename}, using fallback")
+            return f"Updated {os.path.basename(filename)} with minor changes ({timestamp})"
     
     # Fallback for untracked (new) files
     print(f"Using fallback for untracked file: {filename}")
@@ -574,10 +575,10 @@ def commit_and_push():
     for file in all_files:
         if file in deleted_files:
             run_git_command(["git", "rm", file])  # Remove deleted files
-            commit_message = generate_commit_message(file, is_deleted=True)
+            commit_message = generate_commit_message(file, modified_files, is_deleted=True)
         else:
             run_git_command(["git", "add", file])  # Add new/modified files
-            commit_message = generate_commit_message(file)
+            commit_message = generate_commit_message(file, modified_files)
 
         print(f"Committing: {commit_message}")
         run_git_command(["git", "commit", "-m", commit_message])
