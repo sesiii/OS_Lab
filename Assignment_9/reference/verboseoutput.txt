@@ -1,7 +1,9 @@
 gcc -Wall -DVERBOSE -o runsearch demandpaging.c
 ./runsearch
 +++ Simulation data read from file
+
 +++ Kernel data initialized
+
 	Search 1 by Process 0
 	Search 1 by Process 1
 	Search 1 by Process 2
