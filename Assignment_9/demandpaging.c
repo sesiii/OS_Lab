@@ -141,7 +141,7 @@ void perform_swap_in(SystemProcess *proc, ProcessQueue *ready_queue, ProcessQueu
     printf("+++ Swapping in process %3d [%d active processes]\n", proc->process_id, active_process_count);
 }
 
-//main function
+
 int main() {
     FILE *input_file = fopen("search.txt", "r");
     if (!input_file) {
@@ -160,6 +160,7 @@ int main() {
 
     printf("+++ Simulation data read from file\n");
 
+    // Initialize system processes
     for (int i = 0; i < total_processes; i++) {
         fscanf(input_file, "%d", &system_processes[i].array_size);
         system_processes[i].process_id = i;
@@ -182,6 +183,7 @@ int main() {
     min_active_processes = total_processes;
     printf("+++ Kernel data initialized\n");
 
+ // simulation
     while (active_process_queue->queue_size > 0 || swapped_out_queue->queue_size > 0) {
         if (active_process_queue->queue_size == 0 && swapped_out_queue->queue_size > 0) {
             SystemProcess *proc = remove_from_queue(swapped_out_queue);
@@ -193,7 +195,7 @@ int main() {
             }
             continue;
         }
-
+        
         SystemProcess *current_process = remove_from_queue(active_process_queue);
 
         if (current_process->current_search_number >= total_searches) {
