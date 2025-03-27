@@ -1,266 +1,481 @@
+
+
 // // #include <stdio.h>
 // // #include <stdlib.h>
 // // #include <string.h>
+// // #include <limits.h>
 
-// // // Constants from the assignment
-// // #define TOTAL_FRAMES 16384      // 64 MB / 4 KB
-// // #define OS_RESERVED 4096        // 16 MB / 4 KB
-// // #define USER_FRAMES 12288       // 48 MB / 4 KB
+// // #define TOTAL_FRAMES 16384      // Total memory frames (64 MB / 4 KB)
+// // #define USER_FRAMES 12288       // User-available frames (48 MB / 4 KB)
 // // #define ESSENTIAL_PAGES 10      // Essential pages per process
-// // #define PAGE_SIZE 4096          // 4 KB pages
+// // #define PAGE_SIZE 4096          // Page size in bytes
+// // #define INTS_PER_PAGE 1024      // Integers per page (4096 / 4)
 // // #define PAGE_TABLE_SIZE 2048    // Virtual memory pages per process
 // // #define MAX_PROCESSES 500       // Max n
 // // #define MAX_SEARCHES 100        // Max m
 
-// // // Process structure
+// // // Process structure closely mimicking reference implementation
 // // typedef struct {
 // //     int pid;                    // Process ID
-// //     int s;                      // Size of array A (in integers)
-// //     int searches[MAX_SEARCHES]; // Search indices (k0, k1, ...)
-// //     int search_count;           // Number of searches completed
-// //     unsigned short page_table[PAGE_TABLE_SIZE]; // Page table (16-bit entries)
-// //     int essential_frames[ESSENTIAL_PAGES];      // Frames for essential pages
-// //     int active;                 // 1 if active, 0 if swapped out
+// //     int addi_data_seg;          // Number of additional data segment pages loaded
+// //     int cur_search_idx;         // Current search index
+// //     int max_A_size;             // Size of array A in integers
+// //     int searches[MAX_SEARCHES]; // Search keys
+// //     int is_swapped;             // 1 if swapped out, 0 if active
 // // } Process;
 
-// // // Queue structure for FIFO (ready queue, free frames, swapped-out processes)
+// // // Page table structure
 // // typedef struct {
-// //     int *data;
+// //     unsigned short entries[PAGE_TABLE_SIZE]; // 16-bit page table entries
+// // } PageTable;
+
+// // // Global variables
+// // Process *processes;             // Dynamic array of processes
+// // PageTable *page_tables;         // Dynamic array of page tables
+// // int n, m;                       // Number of processes and searches
+// // int tot_page_accs = 0;          // Total page accesses
+// // int tot_page_faults = 0;        // Total page faults
+// // int tot_swaps = 0;              // Total swaps
+// // int available_frames = USER_FRAMES; // Free frames available
+// // int multi_prog = INT_MAX;       // Degree of multiprogramming (initialized to max)
+// // int completed_count = 0;        // Number of completed processes
+
+// // // Custom queue to exactly match reference behavior
+// // typedef struct {
+// //     Process **data;
 // //     int front, rear, size, capacity;
 // // } Queue;
 
+// // // Create a new queue
 // // Queue* create_queue(int capacity) {
 // //     Queue *q = (Queue*)malloc(sizeof(Queue));
-// //     q->data = (int*)malloc(capacity * sizeof(int));
+// //     q->data = (Process**)malloc(capacity * sizeof(Process*));
 // //     q->front = q->rear = -1;
 // //     q->size = 0;
 // //     q->capacity = capacity;
 // //     return q;
 // // }
 
-// // void enqueue(Queue *q, int item) {
+// // // Custom enqueue to match reference implementation's queue behavior
+// // void enqueue(Queue *q, Process *item) {
 // //     if (q->size == q->capacity) return;
+    
 // //     if (q->front == -1) q->front = 0;
 // //     q->rear = (q->rear + 1) % q->capacity;
 // //     q->data[q->rear] = item;
 // //     q->size++;
 // // }
 
-// // int dequeue(Queue *q) {
-// //     if (q->size == 0) return -1;
-// //     int item = q->data[q->front];
-// //     q->front = (q->front + 1) % q->capacity;
+// // // // Custom dequeue to match reference implementation
+// // // Process* dequeue(Queue *q) {
+// // //     if (q->size == 0) return NULL;
+    
+// // //     Process *item = q->data[q->front];
+    
+// // //     if (q->size == 1) {
+// // //         q->front = q->rear = -1;
+// // //     } else {
+// // //         q->front = (q->front + 1) % q->capacity;
+// // //     }
+// // //     q->size--;
+    
+// // //     return item;
+// // // }
+
+// // Process* dequeue(Queue *q) {
+// //     if (q->size == 0) return NULL;
+    
+// //     Process *item = q->data[q->front];
+    
+// //     if (q->size == 1) {
+// //         q->front = q->rear = -1;
+// //     } else {
+// //         q->front = (q->front + 1) % q->capacity;
+// //     }
 // //     q->size--;
-// //     if (q->size == 0) q->front = q->rear = -1;
+    
 // //     return item;
 // // }
 
-// // void free_queue(Queue *q) {
-// //     free(q->data);
-// //     free(q);
-// // }
-
-// // // Global variables
-// // Process processes[MAX_PROCESSES];
-// // int n, m;                   // Number of processes and searches
-// // Queue *ready_queue, *free_frames, *swapped_out;
-// // long page_accesses = 0, page_faults = 0, swaps = 0;
-// // int active_processes = 0;
-// // int min_active_when_full = MAX_PROCESSES;
-
-// // // Helper to set valid bit and frame number in page table entry
-// // unsigned short make_pte(int frame, int valid) {
-// //     return (valid << 15) | (frame & 0x7FFF); // MSB is valid bit, 15 bits for frame
-// // }
-
-// // // Simulate binary search and handle page faults
-// // int simulate_binary_search(Process *p, int search_idx) {
-// //     int k = p->searches[search_idx]; // Target index
-// //     int L = 0, R = p->s - 1;
-// //     while (L < R) {
-// //         int M = (L + R) / 2;
-// //         page_accesses++;
-// //         int page = M * sizeof(int) / PAGE_SIZE; // Page containing A[M]
-// //         unsigned short pte = p->page_table[page];
-// //         int valid = (pte >> 15) & 1;
-// //         int frame = pte & 0x7FFF;
-
-// //         if (!valid) { // Page fault
-// //             page_faults++;
-// //             if (free_frames->size == 0) { // Memory full, swap out
-// //                 swaps++;
-// //                 printf("+++ Swapping out process %3d  [%d active processes]\n", p->pid, active_processes - 1);
-// //                 p->active = 0;
-// //                 active_processes--;
-// //                 for (int i = 0; i < ESSENTIAL_PAGES; i++) {
-// //                     enqueue(free_frames, p->essential_frames[i]);
-// //                 }
-// //                 for (int i = 0; i < PAGE_TABLE_SIZE; i++) {
-// //                     if (p->page_table[i] >> 15) { // If valid
-// //                         enqueue(free_frames, p->page_table[i] & 0x7FFF);
-// //                         p->page_table[i] = 0; // Invalidate
-// //                     }
-// //                 }
-// //                 enqueue(swapped_out, p->pid);
-// //                 return 0; // Search interrupted
-// //             }
-// //             frame = dequeue(free_frames);
-// //             p->page_table[page] = make_pte(frame, 1);
-// //         }
-// //         if (k <= M) R = M;
-// //         else L = M + 1;
+// // // Page table management functions
+// // void page_set(PageTable *page_tables, int process_id, int entry) {
+// //     if (!(page_tables[process_id].entries[entry] & (1 << 15))) {
+// //         page_tables[process_id].entries[entry] |= (1 << 15);
+// //         if (entry >= ESSENTIAL_PAGES) processes[process_id].addi_data_seg++;
+// //         available_frames--;
 // //     }
-// //     return 1; // Search completed
 // // }
 
-// // // Initialize process and load essential pages
-// // void init_process(int pid) {
-// //     processes[pid].pid = pid;
-// //     processes[pid].active = 1;
-// //     processes[pid].search_count = 0;
-// //     memset(processes[pid].page_table, 0, sizeof(processes[pid].page_table));
+// // void page_clear(PageTable *page_tables, int process_id, int entry) {
+// //     if (page_tables[process_id].entries[entry] & (1 << 15)) {
+// //         page_tables[process_id].entries[entry] &= ~(1 << 15);
+// //         if (entry >= ESSENTIAL_PAGES) processes[process_id].addi_data_seg--;
+// //         available_frames++;
+// //     }
+// // }
+
+// // int page_retrieve(PageTable *page_tables, int process_id, int entry) {
+// //     return page_tables[process_id].entries[entry] >> 15;
+// // }
+
+// // // Swap out a process
+// // // void swap_out(Process *proc, Queue *ready_queue, Queue *swapped_out) {
+// // //     proc->is_swapped = 1;
+    
+// // //     // Clear all page table entries
+// // //     for (int i = 0; i < PAGE_TABLE_SIZE; i++) {
+// // //         if (page_retrieve(page_tables, proc->pid, i)) {
+// // //             page_clear(page_tables, proc->pid, i);
+// // //         }
+// // //     }
+// // //     proc->addi_data_seg = 0;
+    
+// // //     // Enqueue to swapped out queue
+// // //     enqueue(swapped_out, proc);
+    
+// // //     // Calculate active processes
+// // //     int swapped_out_count = swapped_out->size;
+// // //     int active = n - swapped_out_count - completed_count;
+    
+// // //     printf("+++ Swapping out process %3d [%d active processes]\n", proc->pid, active);
+    
+// // //     // Update total swaps and minimum multiprogramming degree
+// // //     tot_swaps++;
+// // //     multi_prog = (active < multi_prog) ? active : multi_prog;
+// // // }
+
+// // void swap_out(Process *proc, Queue *ready_queue, Queue *swapped_out) {
+// //     proc->is_swapped = 1;
+    
+// //     // Clear all page table entries
+// //     for (int i = 0; i < PAGE_TABLE_SIZE; i++) {
+// //         if (page_retrieve(page_tables, proc->pid, i)) {
+// //             page_clear(page_tables, proc->pid, i);
+// //         }
+// //     }
+// //     proc->addi_data_seg = 0;
+    
+// //     // Enqueue to swapped out queue
+// //     enqueue(swapped_out, proc);
+    
+// //     // Calculate active processes
+// //     int swapped_out_count = swapped_out->size;
+// //     int active = n - swapped_out_count - completed_count;
+    
+// //     printf("+++ Swapping out process %3d [%d active processes]\n", proc->pid, active);
+    
+// //     // Update total swaps and minimum multiprogramming degree
+// //     tot_swaps++;
+// //     multi_prog = (active < multi_prog) ? active : multi_prog;
+// // }
+
+// // // Swap in a process with priority handling
+// // // void swap_in(Process *proc, Queue *ready_queue) {
+// // //     proc->is_swapped = 0;
+    
+// // //     // Load essential pages
+// // //     for (int i = 0; i < ESSENTIAL_PAGES; i++) {
+// // //         page_set(page_tables, proc->pid, i);
+// // //     }
+    
+// // //     // Recreate queue with current process at front
+// // //     Queue *temp_queue = create_queue(ready_queue->capacity);
+// // //     temp_queue->data[0] = proc;
+// // //     temp_queue->front = 0;
+// // //     temp_queue->rear = 0;
+// // //     temp_queue->size = 1;
+    
+// // //     // Move remaining processes
+// // //     while (ready_queue->size > 0) {
+// // //         Process *temp = dequeue(ready_queue);
+// // //         enqueue(temp_queue, temp);
+// // //     }
+    
+// // //     // Copy back to original queue
+// // //     memcpy(ready_queue->data, temp_queue->data, temp_queue->capacity * sizeof(Process*));
+// // //     ready_queue->front = temp_queue->front;
+// // //     ready_queue->rear = temp_queue->rear;
+// // //     ready_queue->size = temp_queue->size;
+    
+// // //     // Free temporary queue
+// // //     free(temp_queue->data);
+// // //     free(temp_queue);
+    
+// // //     // Calculate active processes
+// // //     int swapped_out_count = 0; // This will be handled by caller
+// // //     int active = n - swapped_out_count - completed_count;
+    
+// // //     printf("+++ Swapping in process %3d [%d active processes]\n", proc->pid, active);
+// // // }
+// // void swap_in(Process *proc, Queue *ready_queue) {
+// //     proc->is_swapped = 0;
+    
+// //     // Load essential pages
 // //     for (int i = 0; i < ESSENTIAL_PAGES; i++) {
-// //         processes[pid].essential_frames[i] = dequeue(free_frames);
+// //         page_set(page_tables, proc->pid, i);
 // //     }
-// //     active_processes++;
-// //     enqueue(ready_queue, pid);
+    
+// //     // Recreate queue with current process at front using a deque-like approach
+// //     Queue *temp_queue = create_queue(ready_queue->capacity);
+    
+// //     // First, add the swapped-in process to the front
+// //     enqueue(temp_queue, proc);
+    
+// //     // Then add all processes from the original queue
+// //     int original_size = ready_queue->size;
+// //     for (int i = 0; i < original_size; i++) {
+// //         Process *temp = dequeue(ready_queue);
+// //         enqueue(temp_queue, temp);
+// //     }
+    
+// //     // Copy back to original queue
+// //     memcpy(ready_queue->data, temp_queue->data, temp_queue->capacity * sizeof(Process*));
+// //     ready_queue->front = 0;
+// //     ready_queue->rear = temp_queue->size - 1;
+// //     ready_queue->size = temp_queue->size;
+    
+// //     // Free temporary queue
+// //     free(temp_queue->data);
+// //     free(temp_queue);
+    
+// //     // Calculate active processes
+// //     int swapped_out_count = 0; // This will be handled by caller
+// //     int active = n - swapped_out_count - completed_count;
+    
+// //     printf("+++ Swapping in process %3d [%d active processes]\n", proc->pid, active);
 // // }
 
-// // // Main simulation
-// // void run_simulation() {
-// //     FILE *fp = fopen("search.txt", "r");
-// //     if (!fp) {
-// //         perror("Failed to open search.txt");
-// //         exit(1);
-// //     }
-// //     fscanf(fp, "%d %d", &n, &m);
-// //     for (int i = 0; i < n; i++) {
-// //         fscanf(fp, "%d", &processes[i].s);
-// //         for (int j = 0; j < m; j++) {
-// //             fscanf(fp, "%d", &processes[i].searches[j]);
-// //         }
-// //     }
-// //     fclose(fp);
-// //     printf("+++ Simulation data read from file\n");
-
-// //     // Initialize kernel data
-// //     ready_queue = create_queue(n);
-// //     free_frames = create_queue(TOTAL_FRAMES);
-// //     swapped_out = create_queue(n);
-// //     for (int i = OS_RESERVED; i < TOTAL_FRAMES; i++) {
-// //         enqueue(free_frames, i);
-// //     }
-// //     for (int i = 0; i < n; i++) {
-// //         init_process(i);
-// //     }
-// //     printf("+++ Kernel data initialized\n");
-
-// //     // Run simulation
-// //     while (ready_queue->size > 0 || swapped_out->size > 0) {
-// //         int pid = dequeue(ready_queue);
-// //         if (pid == -1) break; // Shouldn't happen with proper logic
-
-// //         Process *p = &processes[pid];
-// //         if (!p->active) continue; // Skip if swapped out
-
-// //         int search_idx = p->search_count;
-// //         if (search_idx >= m) continue; // Process done
-
-// // #ifdef VERBOSE
-// //         printf("\tSearch %d by Process %d\n", search_idx + 1, pid);
-// // #endif
-
-// //         if (simulate_binary_search(p, search_idx)) {
-// //             p->search_count++;
-// //             if (p->search_count < m) {
-// //                 enqueue(ready_queue, pid); // Back to ready queue
-// //             } else { // Process terminates
-// //                 active_processes--;
-// //                 for (int i = 0; i < ESSENTIAL_PAGES; i++) {
-// //                     enqueue(free_frames, p->essential_frames[i]);
-// //                 }
-// //                 for (int i = 0; i < PAGE_TABLE_SIZE; i++) {
-// //                     if (p->page_table[i] >> 15) {
-// //                         enqueue(free_frames, p->page_table[i] & 0x7FFF);
-// //                     }
-// //                 }
-// //                 // Swap in a process if possible
-// //                 if (swapped_out->size > 0 && free_frames->size >= ESSENTIAL_PAGES) {
-// //                     int swap_pid = dequeue(swapped_out);
-// //                     init_process(swap_pid);
-// //                     printf("+++ Swapping in process %3d  [%d active processes]\n", swap_pid, active_processes);
-// //                 }
-// //             }
-// //         }
-
-// //         // Update degree of multiprogramming
-// //         if (free_frames->size == 0 && active_processes < min_active_when_full) {
-// //             min_active_when_full = active_processes;
-// //         }
-// //     }
-
-// //     // Final statistics
-// //     printf("+++ Page access summary\n");
-// //     printf("\tTotal number of page accesses  =  %ld\n", page_accesses);
-// //     printf("\tTotal number of page faults    =  %ld\n", page_faults);
-// //     printf("\tTotal number of swaps          =  %ld\n", swaps);
-// //     printf("\tDegree of multiprogramming     =  %d\n", min_active_when_full);
-
-// //     free_queue(ready_queue);
-// //     free_queue(free_frames);
-// //     free_queue(swapped_out);
-// // }
 
 // // int main() {
-// //     run_simulation();
+// //     FILE *fin = fopen("search.txt", "r");
+// //     if (!fin) {
+// //         printf("Error: Could not open search.txt\n");
+// //         return 1;
+// //     }
+
+// //     // Read number of processes and searches
+// //     fscanf(fin, "%d %d", &n, &m);
+    
+// //     // Allocate memory for processes and page tables
+// //     processes = (Process*)malloc(n * sizeof(Process));
+// //     page_tables = (PageTable*)malloc(n * sizeof(PageTable));
+    
+// //     // Create queues
+// //     Queue *ready_queue = create_queue(n);
+// //     Queue *swapped_out = create_queue(n);
+
+// //     printf("+++ Simulation data read from file\n");
+    
+// //     // Initialize processes
+// //     for (int i = 0; i < n; i++) {
+// //         fscanf(fin, "%d", &processes[i].max_A_size);
+        
+// //         processes[i].pid = i;
+// //         processes[i].cur_search_idx = 0;
+// //         processes[i].is_swapped = 0;
+// //         processes[i].addi_data_seg = 0;
+        
+// //         // Load essential pages
+// //         for (int j = 0; j < ESSENTIAL_PAGES; j++) {
+// //             page_set(page_tables, i, j);
+// //         }
+        
+// //         // Read search keys
+// //         for (int j = 0; j < m; j++) {
+// //             fscanf(fin, "%d", &processes[i].searches[j]);
+// //         }
+        
+// //         // Add to ready queue
+// //         enqueue(ready_queue, &processes[i]);
+// //     }
+// //     fclose(fin);
+
+// //     // Set initial multiprogramming to number of processes
+// //     multi_prog = n;
+// //     printf("+++ Kernel data initialized\n");
+
+// //     // Main simulation loop
+// //     // while (ready_queue->size > 0 || swapped_out->size > 0) {
+// //     //     // Handle case when ready queue is empty
+// //     //     if (ready_queue->size == 0 && swapped_out->size > 0) {
+// //     //         Process *proc = dequeue(swapped_out);
+// //     //         if (available_frames >= ESSENTIAL_PAGES) {
+// //     //             swap_in(proc, ready_queue);
+// //     //         } else {
+// //     //             enqueue(swapped_out, proc);
+// //     //             break;
+// //     //         }
+// //     //         continue;
+// //     //     }
+// //     while (ready_queue->size > 0 || swapped_out->size > 0) {
+// //         // Handle case when ready queue is empty
+// //         if (ready_queue->size == 0 && swapped_out->size > 0) {
+// //             Process *proc = dequeue(swapped_out);
+// //             if (available_frames >= ESSENTIAL_PAGES) {
+// //                 swap_in(proc, ready_queue);
+// //             } else {
+// //                 enqueue(swapped_out, proc);
+// //                 break;
+// //             }
+// //             continue;
+// //         }
+// //         // Get next process
+// //         Process *current = dequeue(ready_queue);
+        
+// //         // Check if process has completed all searches
+// //         if (current->cur_search_idx >= m) {
+// //             completed_count++;
+            
+// //             // Clear all page table entries
+// //             for (int i = 0; i < PAGE_TABLE_SIZE; i++) {
+// //                 page_clear(page_tables, current->pid, i);
+// //             }
+// //             current->addi_data_seg = 0;
+            
+// //             // Try to swap in a new process
+// //             if (swapped_out->size > 0 && available_frames >= ESSENTIAL_PAGES) {
+// //                 Process *next = dequeue(swapped_out);
+// //                 swap_in(next, ready_queue);
+// //             }
+// //             continue;
+// //         }
+
+// //         // Perform binary search
+// //         int key = current->searches[current->cur_search_idx];
+// //         int l = 0, r = current->max_A_size - 1;
+// //         int swapped_out_flag = 0;
+
+// //         while (l < r && !swapped_out_flag) {
+// //             int m = (l + r) / 2;
+// //             tot_page_accs++;
+            
+// //             // Determine page for current index
+// //             int page = 10 + (m / 1024);
+            
+// //             // Check page validity
+// //             if (!page_retrieve(page_tables, current->pid, page)) {
+// //                 tot_page_faults++;
+                
+// //                 // Swap out if no frames available
+// //                 if (available_frames <= 0) {
+// //                     swap_out(current, ready_queue, swapped_out);
+// //                     swapped_out_flag = 1;
+// //                     break;
+// //                 }
+                
+// //                 // Load page
+// //                 page_set(page_tables, current->pid, page);
+// //             }
+            
+// //             // Binary search logic
+// //             if (key <= m) r = m;
+// //             else l = m + 1;
+// //         }
+
+// //         // Handle process after binary search
+// //         if (!swapped_out_flag) {
+// //             current->cur_search_idx++;
+            
+// //             if (current->cur_search_idx < m) {
+// //                 // More searches left, add back to queue
+// //                 enqueue(ready_queue, current);
+// //             } else {
+// //                 // Process completed
+// //                 completed_count++;
+                
+// //                 // Clear page table
+// //                 for (int i = 0; i < PAGE_TABLE_SIZE; i++) {
+// //                     page_clear(page_tables, current->pid, i);
+// //                 }
+// //                 current->addi_data_seg = 0;
+                
+// //                 // Try to swap in a new process
+// //                 if (swapped_out->size > 0 && available_frames >= ESSENTIAL_PAGES) {
+// //                     Process *next = dequeue(swapped_out);
+// //                     swap_in(next, ready_queue);
+// //                 }
+// //             }
+// //         }
+// //     }
+
+// //     // Print simulation results
+// //     printf("+++ Page access summary\n");
+// //     printf("Total number of page accesses = %d\n", tot_page_accs);
+// //     printf("Total number of page faults = %d\n", tot_page_faults);
+// //     printf("Total number of swaps = %d\n", tot_swaps);
+// //     printf("Degree of multiprogramming = %d\n", multi_prog);
+
+// //     // Clean up
+// //     free(processes);
+// //     free(page_tables);
+// //     free(ready_queue->data);
+// //     free(ready_queue);
+// //     free(swapped_out->data);
+// //     free(swapped_out);
+
 // //     return 0;
 // // }
+
 
 
 // #include <stdio.h>
 // #include <stdlib.h>
 // #include <string.h>
+// #include <limits.h>
 
-// // Constants from the assignment
-// #define TOTAL_FRAMES 16384      // 64 MB / 4 KB
-// #define OS_RESERVED 4096        // 16 MB / 4 KB
-// #define USER_FRAMES 12288       // 48 MB / 4 KB
+// #define TOTAL_FRAMES 16384      // Total memory frames (64 MB / 4 KB)
+// #define USER_FRAMES 12288       // User-available frames (48 MB / 4 KB)
 // #define ESSENTIAL_PAGES 10      // Essential pages per process
-// #define PAGE_SIZE 4096          // 4 KB pages
+// #define PAGE_SIZE 4096          // Page size in bytes
+// #define INTS_PER_PAGE 1024      // Integers per page (4096 / 4)
 // #define PAGE_TABLE_SIZE 2048    // Virtual memory pages per process
 // #define MAX_PROCESSES 500       // Max n
 // #define MAX_SEARCHES 100        // Max m
-// #define INTS_PER_PAGE 1024      // 4096 / 4 = 1024 ints per page
 
 // // Process structure
 // typedef struct {
 //     int pid;                    // Process ID
-//     int s;                      // Size of array A (in integers)
-//     int searches[MAX_SEARCHES]; // Search indices (k0, k1, ...)
-//     int search_count;           // Number of searches completed
-//     unsigned short page_table[PAGE_TABLE_SIZE]; // Page table (16-bit entries)
-//     int essential_frames[ESSENTIAL_PAGES];      // Frames for essential pages
-//     int active;                 // 1 if active, 0 if swapped out
-//     int L, R;                   // Binary search state for resumption
-//     int in_progress;            // 1 if search was interrupted
+//     int addi_data_seg;          // Number of additional data segment pages loaded
+//     int cur_search_idx;         // Current search index
+//     int max_A_size;             // Size of array A in integers
+//     int searches[MAX_SEARCHES]; // Search keys
+//     int is_swapped;             // 1 if swapped out, 0 if active
 // } Process;
 
-// // Queue structure for FIFO
+// // Page table structure
 // typedef struct {
-//     int *data;
+//     unsigned short entries[PAGE_TABLE_SIZE]; // 16-bit page table entries
+// } PageTable;
+
+// // Global variables
+// Process *processes;             // Dynamic array of processes
+// PageTable *page_tables;         // Dynamic array of page tables
+// int n, m;                       // Number of processes and searches
+// int tot_page_accs = 0;          // Total page accesses
+// int tot_page_faults = 0;        // Total page faults
+// int tot_swaps = 0;              // Total swaps
+// int available_frames = USER_FRAMES; // Free frames available
+// int multi_prog = INT_MAX;       // Degree of multiprogramming
+// int completed_count = 0;        // Number of completed processes
+
+// // Custom queue structure
+// typedef struct {
+//     Process **data;
 //     int front, rear, size, capacity;
 // } Queue;
 
+// // Create a new queue
 // Queue* create_queue(int capacity) {
 //     Queue *q = (Queue*)malloc(sizeof(Queue));
-//     q->data = (int*)malloc(capacity * sizeof(int));
+//     q->data = (Process**)malloc(capacity * sizeof(Process*));
 //     q->front = q->rear = -1;
 //     q->size = 0;
 //     q->capacity = capacity;
 //     return q;
 // }
 
-// void enqueue(Queue *q, int item) {
+// // Enqueue to queue (FIFO)
+// void enqueue(Queue *q, Process *item) {
 //     if (q->size == q->capacity) return;
 //     if (q->front == -1) q->front = 0;
 //     q->rear = (q->rear + 1) % q->capacity;
@@ -268,182 +483,241 @@
 //     q->size++;
 // }
 
-// int dequeue(Queue *q) {
-//     if (q->size == 0) return -1;
-//     int item = q->data[q->front];
-//     q->front = (q->front + 1) % q->capacity;
+// // Dequeue from queue (FIFO)
+// Process* dequeue(Queue *q) {
+//     if (q->size == 0) return NULL;
+//     Process *item = q->data[q->front];
+//     if (q->size == 1) {
+//         q->front = q->rear = -1;
+//     } else {
+//         q->front = (q->front + 1) % q->capacity;
+//     }
 //     q->size--;
-//     if (q->size == 0) q->front = q->rear = -1;
 //     return item;
 // }
 
-// void free_queue(Queue *q) {
-//     free(q->data);
-//     free(q);
-// }
-
-// // Global variables
-// Process processes[MAX_PROCESSES];
-// int n, m;                   // Number of processes and searches
-// Queue *ready_queue, *free_frames, *swapped_out;
-// long page_accesses = 0, page_faults = 0, swaps = 0;
-// int active_processes = 0;
-// int min_active_when_full;
-
-// // Helper to set valid bit and frame number in page table entry
-// unsigned short make_pte(int frame, int valid) {
-//     return (valid << 15) | (frame & 0x7FFF); // MSB is valid bit, 15 bits for frame
-// }
-
-// // Simulate binary search with state preservation
-// int simulate_binary_search(Process *p, int search_idx) {
-//     int k = p->searches[search_idx];
-//     int L = p->in_progress ? p->L : 0;
-//     int R = p->in_progress ? p->R : p->s - 1;
-//     p->in_progress = 0; // Reset unless swapped out again
-
-//     while (L < R) {
-//         int M = (L + R) / 2;
-//         int page = M / INTS_PER_PAGE;
-//         unsigned short pte = p->page_table[page];
-//         int valid = (pte >> 15) & 1;
-
-//         // Only count access/fault if this is a new iteration
-//         if (!p->in_progress || (p->in_progress && M != p->L && M != p->R)) {
-//             page_accesses++;
-//             if (!valid) page_faults++;
-//         }
-
-//         if (!valid) { // Page fault
-//             if (free_frames->size == 0) { // Memory full, swap out
-//                 swaps++;
-//                 printf("+++ Swapping out process %3d  [%d active processes]\n", p->pid, active_processes - 1);
-//                 p->active = 0;
-//                 p->in_progress = 1;
-//                 p->L = L;
-//                 p->R = R;
-//                 active_processes--;
-//                 for (int i = 0; i < ESSENTIAL_PAGES; i++) {
-//                     enqueue(free_frames, p->essential_frames[i]);
-//                 }
-//                 for (int i = 0; i < PAGE_TABLE_SIZE; i++) {
-//                     if (p->page_table[i] >> 15) {
-//                         enqueue(free_frames, p->page_table[i] & 0x7FFF);
-//                         p->page_table[i] = 0; // Invalidate
-//                     }
-//                 }
-//                 enqueue(swapped_out, p->pid);
-//                 if (active_processes < min_active_when_full) {
-//                     min_active_when_full = active_processes;
-//                 }
-//                 return 0; // Search interrupted
-//             }
-//             int frame = dequeue(free_frames);
-//             p->page_table[page] = make_pte(frame, 1);
-//         }
-//         if (k <= M) R = M;
-//         else L = M + 1;
+// // Page table management functions
+// void page_set(PageTable *page_tables, int process_id, int entry) {
+//     if (!(page_tables[process_id].entries[entry] & (1 << 15))) {
+//         page_tables[process_id].entries[entry] |= (1 << 15);
+//         if (entry >= ESSENTIAL_PAGES) processes[process_id].addi_data_seg++;
+//         available_frames--;
 //     }
-//     return 1; // Search completed
 // }
 
-// // Initialize process and load essential pages
-// void init_process(int pid) {
-//     Process *p = &processes[pid];
-//     p->pid = pid;
-//     p->active = 1;
-//     p->search_count = 0;
-//     p->in_progress = 0;
-//     memset(p->page_table, 0, sizeof(p->page_table));
+// void page_clear(PageTable *page_tables, int process_id, int entry) {
+//     if (page_tables[process_id].entries[entry] & (1 << 15)) {
+//         page_tables[process_id].entries[entry] &= ~(1 << 15);
+//         if (entry >= ESSENTIAL_PAGES) processes[process_id].addi_data_seg--;
+//         available_frames++;
+//     }
+// }
+
+// int page_retrieve(PageTable *page_tables, int process_id, int entry) {
+//     return page_tables[process_id].entries[entry] >> 15;
+// }
+
+// // Swap out a process
+// void swap_out(Process *proc, Queue *ready_queue, Queue *swapped_out) {
+//     proc->is_swapped = 1;
+
+//     // Clear all page table entries
+//     for (int i = 0; i < PAGE_TABLE_SIZE; i++) {
+//         if (page_retrieve(page_tables, proc->pid, i)) {
+//             page_clear(page_tables, proc->pid, i);
+//         }
+//     }
+//     proc->addi_data_seg = 0;
+
+//     // Enqueue to swapped out queue
+//     enqueue(swapped_out, proc);
+
+//     // Calculate active processes
+//     int active = n - swapped_out->size - completed_count;
+//     printf("+++ Swapping out process %3d [%d active processes]\n", proc->pid, active);
+
+//     // Update total swaps and minimum multiprogramming degree
+//     tot_swaps++;
+//     if (active < multi_prog) multi_prog = active;
+// }
+
+// // Swap in a process
+// void swap_in(Process *proc, Queue *ready_queue, Queue *swapped_out) {
+//     proc->is_swapped = 0;
+
+//     // Load essential pages
 //     for (int i = 0; i < ESSENTIAL_PAGES; i++) {
-//         p->essential_frames[i] = dequeue(free_frames);
-//     }
-//     active_processes++;
-//     enqueue(ready_queue, pid);
-// }
-
-// // Main simulation
-// void run_simulation() {
-//     FILE *fp = fopen("search.txt", "r");
-//     if (!fp) {
-//         perror("Failed to open search.txt");
-//         exit(1);
-//     }
-//     fscanf(fp, "%d %d", &n, &m);
-//     for (int i = 0; i < n; i++) {
-//         fscanf(fp, "%d", &processes[i].s);
-//         for (int j = 0; j < m; j++) {
-//             fscanf(fp, "%d", &processes[i].searches[j]);
-//         }
-//     }
-//     fclose(fp);
-//     printf("+++ Simulation data read from file\n");
-
-//     // Initialize kernel data
-//     ready_queue = create_queue(n);
-//     free_frames = create_queue(TOTAL_FRAMES);
-//     swapped_out = create_queue(n);
-//     for (int i = OS_RESERVED; i < TOTAL_FRAMES; i++) {
-//         enqueue(free_frames, i);
-//     }
-//     for (int i = 0; i < n; i++) {
-//         init_process(i);
-//     }
-//     min_active_when_full = n; // Initialize to initial active count
-//     printf("+++ Kernel data initialized\n");
-
-//     // Run simulation
-//     while (ready_queue->size > 0 || swapped_out->size > 0) {
-//         int pid = dequeue(ready_queue);
-//         if (pid == -1) break;
-
-//         Process *p = &processes[pid];
-//         if (!p->active) continue;
-
-//         int search_idx = p->search_count;
-//         if (search_idx >= m) continue;
-
-// #ifdef VERBOSE
-//         printf("\tSearch %d by Process %d\n", search_idx + 1, pid);
-// #endif
-
-//         if (simulate_binary_search(p, search_idx)) {
-//             p->search_count++;
-//             if (p->search_count < m) {
-//                 enqueue(ready_queue, pid);
-//             } else { // Process terminates
-//                 active_processes--;
-//                 for (int i = 0; i < ESSENTIAL_PAGES; i++) {
-//                     enqueue(free_frames, p->essential_frames[i]);
-//                 }
-//                 for (int i = 0; i < PAGE_TABLE_SIZE; i++) {
-//                     if (p->page_table[i] >> 15) {
-//                         enqueue(free_frames, p->page_table[i] & 0x7FFF);
-//                     }
-//                 }
-//                 if (swapped_out->size > 0 && free_frames->size >= ESSENTIAL_PAGES) {
-//                     int swap_pid = dequeue(swapped_out);
-//                     init_process(swap_pid);
-//                     printf("+++ Swapping in process %3d  [%d active processes]\n", swap_pid, active_processes);
-//                 }
-//             }
-//         }
+//         page_set(page_tables, proc->pid, i);
 //     }
 
-//     // Final statistics
-//     printf("+++ Page access summary\n");
-//     printf("\tTotal number of page accesses  =  %ld\n", page_accesses);
-//     printf("\tTotal number of page faults    =  %ld\n", page_faults);
-//     printf("\tTotal number of swaps          =  %ld\n", swaps);
-//     printf("\tDegree of multiprogramming     =  %d\n", min_active_when_full);
+//     // Create a temporary queue to rebuild ready_queue with proc at front
+//     Queue *temp_queue = create_queue(ready_queue->capacity);
+//     enqueue(temp_queue, proc); // Swapped-in process goes first
 
-//     free_queue(ready_queue);
-//     free_queue(free_frames);
-//     free_queue(swapped_out);
+//     // Add all existing ready queue processes in their original order
+//     while (ready_queue->size > 0) {
+//         Process *temp = dequeue(ready_queue);
+//         enqueue(temp_queue, temp);
+//     }
+
+//     // Copy back to ready_queue
+//     memcpy(ready_queue->data, temp_queue->data, temp_queue->capacity * sizeof(Process*));
+//     ready_queue->front = 0;
+//     ready_queue->rear = temp_queue->size - 1;
+//     ready_queue->size = temp_queue->size;
+
+//     // Free temporary queue
+//     free(temp_queue->data);
+//     free(temp_queue);
+
+//     // Calculate active processes
+//     int active = n - completed_count - swapped_out->size;
+//     printf("+++ Swapping in process %3d [%d active processes]\n", proc->pid, active);
 // }
 
 // int main() {
-//     run_simulation();
+//     FILE *fin = fopen("search.txt", "r");
+//     if (!fin) {
+//         printf("Error: Could not open search.txt\n");
+//         return 1;
+//     }
+
+//     // Read number of processes and searches
+//     fscanf(fin, "%d %d", &n, &m);
+
+//     // Allocate memory for processes and page tables
+//     processes = (Process*)malloc(n * sizeof(Process));
+//     page_tables = (PageTable*)malloc(n * sizeof(PageTable));
+//     memset(page_tables, 0, n * sizeof(PageTable)); // Initialize page tables to 0
+
+//     // Create queues
+//     Queue *ready_queue = create_queue(n);
+//     Queue *swapped_out = create_queue(n);
+
+//     printf("+++ Simulation data read from file\n");
+
+//     // Initialize processes
+//     for (int i = 0; i < n; i++) {
+//         fscanf(fin, "%d", &processes[i].max_A_size);
+//         processes[i].pid = i;
+//         processes[i].cur_search_idx = 0;
+//         processes[i].is_swapped = 0;
+//         processes[i].addi_data_seg = 0;
+
+//         // Load essential pages
+//         for (int j = 0; j < ESSENTIAL_PAGES; j++) {
+//             page_set(page_tables, i, j);
+//         }
+
+//         // Read search keys
+//         for (int j = 0; j < m; j++) {
+//             fscanf(fin, "%d", &processes[i].searches[j]);
+//         }
+
+//         // Add to ready queue in order (0 to n-1)
+//         enqueue(ready_queue, &processes[i]);
+//     }
+//     fclose(fin);
+
+//     // Set initial multiprogramming to number of processes
+//     multi_prog = n;
+//     printf("+++ Kernel data initialized\n");
+
+//     // Main simulation loop
+//     while (ready_queue->size > 0 || swapped_out->size > 0) {
+//         // If ready queue is empty, try to swap in a process
+//         if (ready_queue->size == 0 && swapped_out->size > 0) {
+//             Process *proc = dequeue(swapped_out);
+//             if (available_frames >= ESSENTIAL_PAGES) {
+//                 swap_in(proc, ready_queue, swapped_out);
+//             } else {
+//                 enqueue(swapped_out, proc); // Put it back if no frames available
+//                 break;
+//             }
+//             continue;
+//         }
+
+//         // Get next process from ready queue (round-robin)
+//         Process *current = dequeue(ready_queue);
+
+//         // Check if process has completed all searches
+//         if (current->cur_search_idx >= m) {
+//             completed_count++;
+//             for (int i = 0; i < PAGE_TABLE_SIZE; i++) {
+//                 page_clear(page_tables, current->pid, i);
+//             }
+//             current->addi_data_seg = 0;
+
+//             // Try to swap in a process if possible
+//             if (swapped_out->size > 0 && available_frames >= ESSENTIAL_PAGES) {
+//                 Process *next = dequeue(swapped_out);
+//                 swap_in(next, ready_queue, swapped_out);
+//             }
+//             continue;
+//         }
+
+//         // Perform binary search
+//         int key = current->searches[current->cur_search_idx];
+//         int l = 0, r = current->max_A_size - 1;
+//         int swapped_out_flag = 0;
+
+//         while (l < r && !swapped_out_flag) {
+//             int m = (l + r) / 2;
+//             tot_page_accs++;
+
+//             // Determine page for current index
+//             int page = 10 + (m / 1024);
+
+//             // Check page validity
+//             if (!page_retrieve(page_tables, current->pid, page)) {
+//                 tot_page_faults++;
+//                 if (available_frames <= 0) {
+//                     swap_out(current, ready_queue, swapped_out);
+//                     swapped_out_flag = 1;
+//                     break;
+//                 }
+//                 page_set(page_tables, current->pid, page);
+//             }
+
+//             // Binary search logic
+//             if (key <= m) r = m;
+//             else l = m + 1;
+//         }
+
+//         // Handle process after binary search
+//         if (!swapped_out_flag) {
+//             current->cur_search_idx++;
+//             if (current->cur_search_idx < m) {
+//                 enqueue(ready_queue, current); // Back to ready queue
+//             } else {
+//                 completed_count++;
+//                 for (int i = 0; i < PAGE_TABLE_SIZE; i++) {
+//                     page_clear(page_tables, current->pid, i);
+//                 }
+//                 current->addi_data_seg = 0;
+//                 if (swapped_out->size > 0 && available_frames >= ESSENTIAL_PAGES) {
+//                     Process *next = dequeue(swapped_out);
+//                     swap_in(next, ready_queue, swapped_out);
+//                 }
+//             }
+//         }
+//     }
+
+//     // Print simulation results
+//     printf("+++ Page access summary\n");
+//     printf("Total number of page accesses = %d\n", tot_page_accs);
+//     printf("Total number of page faults = %d\n", tot_page_faults);
+//     printf("Total number of swaps = %d\n", tot_swaps);
+//     printf("Degree of multiprogramming = %d\n", multi_prog);
+
+//     // Clean up
+//     free(processes);
+//     free(page_tables);
+//     free(ready_queue->data);
+//     free(ready_queue);
+//     free(swapped_out->data);
+//     free(swapped_out);
+
 //     return 0;
 // }
 
@@ -451,49 +725,61 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <limits.h>
 
-// Constants from the assignment
-#define TOTAL_FRAMES 16384      // 64 MB / 4 KB
-#define OS_RESERVED 4096        // 16 MB / 4 KB
-#define USER_FRAMES 12288       // 48 MB / 4 KB
+#define TOTAL_FRAMES 16384      // Total memory frames (64 MB / 4 KB)
+#define USER_FRAMES 12288       // User-available frames (48 MB / 4 KB)
 #define ESSENTIAL_PAGES 10      // Essential pages per process
-#define PAGE_SIZE 4096          // 4 KB pages
+#define PAGE_SIZE 4096          // Page size in bytes
+#define INTS_PER_PAGE 1024      // Integers per page (4096 / 4)
 #define PAGE_TABLE_SIZE 2048    // Virtual memory pages per process
 #define MAX_PROCESSES 500       // Max n
 #define MAX_SEARCHES 100        // Max m
-#define INTS_PER_PAGE 1024      // 4096 / 4 = 1024 ints per page
 
 // Process structure
 typedef struct {
     int pid;                    // Process ID
-    int s;                      // Size of array A (in integers)
-    int searches[MAX_SEARCHES]; // Search indices (k0, k1, ...)
-    int search_count;           // Number of searches completed
-    unsigned short page_table[PAGE_TABLE_SIZE]; // Page table (16-bit entries)
-    int essential_frames[ESSENTIAL_PAGES];      // Frames for essential pages
-    int active;                 // 1 if active, 0 if swapped out
-    int L, R;                   // Binary search state for resumption
-    int in_progress;            // 1 if search was interrupted
-    char pages_accessed[PAGE_TABLE_SIZE]; // Bitmap for pages accessed in current search
-    char pages_faulted[PAGE_TABLE_SIZE];  // Bitmap for pages faulted in current search
+    int addi_data_seg;          // Number of additional data segment pages loaded
+    int cur_search_idx;         // Current search index
+    int max_A_size;             // Size of array A in integers
+    int searches[MAX_SEARCHES]; // Search keys
+    int is_swapped;             // 1 if swapped out, 0 if active
 } Process;
 
-// Queue structure for FIFO
+// Page table structure
 typedef struct {
-    int *data;
+    unsigned short entries[PAGE_TABLE_SIZE]; // 16-bit page table entries
+} PageTable;
+
+// Global variables
+Process *processes;             // Dynamic array of processes
+PageTable *page_tables;         // Dynamic array of page tables
+int n, m;                       // Number of processes and searches
+int tot_page_accs = 0;          // Total page accesses
+int tot_page_faults = 0;        // Total page faults
+int tot_swaps = 0;              // Total swaps
+int available_frames = USER_FRAMES; // Free frames available
+int multi_prog = INT_MAX;       // Degree of multiprogramming
+int completed_count = 0;        // Number of completed processes
+
+// Custom queue structure
+typedef struct {
+    Process **data;
     int front, rear, size, capacity;
 } Queue;
 
+// Create a new queue
 Queue* create_queue(int capacity) {
     Queue *q = (Queue*)malloc(sizeof(Queue));
-    q->data = (int*)malloc(capacity * sizeof(int));
+    q->data = (Process**)malloc(capacity * sizeof(Process*));
     q->front = q->rear = -1;
     q->size = 0;
     q->capacity = capacity;
     return q;
 }
 
-void enqueue(Queue *q, int item) {
+// Enqueue to queue (FIFO)
+void enqueue(Queue *q, Process *item) {
     if (q->size == q->capacity) return;
     if (q->front == -1) q->front = 0;
     q->rear = (q->rear + 1) % q->capacity;
@@ -501,189 +787,244 @@ void enqueue(Queue *q, int item) {
     q->size++;
 }
 
-int dequeue(Queue *q) {
-    if (q->size == 0) return -1;
-    int item = q->data[q->front];
-    q->front = (q->front + 1) % q->capacity;
+// Dequeue from queue (FIFO)
+Process* dequeue(Queue *q) {
+    if (q->size == 0) return NULL;
+    Process *item = q->data[q->front];
+    if (q->size == 1) {
+        q->front = q->rear = -1;
+    } else {
+        q->front = (q->front + 1) % q->capacity;
+    }
     q->size--;
-    if (q->size == 0) q->front = q->rear = -1;
     return item;
 }
 
-void free_queue(Queue *q) {
-    free(q->data);
-    free(q);
-}
-
-// Global variables
-Process processes[MAX_PROCESSES];
-int n, m;                   // Number of processes and searches
-Queue *ready_queue, *free_frames, *swapped_out;
-long page_accesses = 0, page_faults = 0, swaps = 0;
-int active_processes = 0;
-int min_active_when_full;
-
-// Helper to set valid bit and frame number in page table entry
-unsigned short make_pte(int frame, int valid) {
-    return (valid << 15) | (frame & 0x7FFF); // MSB is valid bit, 15 bits for frame
-}
-
-int simulate_binary_search(Process *p, int search_idx) {
-    int k = p->searches[search_idx];
-    int L = p->in_progress ? p->L : 0;
-    int R = p->in_progress ? p->R : p->s - 1;
-    if (!p->in_progress) {
-        memset(p->pages_accessed, 0, PAGE_TABLE_SIZE);
-        memset(p->pages_faulted, 0, PAGE_TABLE_SIZE);
+// Page table management functions
+void page_set(PageTable *page_tables, int process_id, int entry) {
+    if (!(page_tables[process_id].entries[entry] & (1 << 15))) {
+        page_tables[process_id].entries[entry] |= (1 << 15);
+        if (entry >= ESSENTIAL_PAGES) processes[process_id].addi_data_seg++;
+        available_frames--;
     }
-    p->in_progress = 0;
-
-    while (L < R) {
-        int M = (L + R) / 2;
-        int page = M / INTS_PER_PAGE;
-        unsigned short pte = p->page_table[page];
-        int valid = (pte >> 15) & 1;
-
-        if (!p->pages_accessed[page]) {
-            page_accesses++;
-            p->pages_accessed[page] = 1;
-        }
-        if (!valid && !p->pages_faulted[page]) {
-            page_faults++;
-            p->pages_faulted[page] = 1;
-        }
-
-        if (!valid) {
-            if (free_frames->size == 0) {
-                swaps++;
-                printf("+++ Swapping out process %3d  [%d active processes]\n", p->pid, active_processes - 1);
-                p->active = 0;
-                p->in_progress = 1;
-                p->L = L;
-                p->R = R;
-                active_processes--;
-                for (int i = 0; i < ESSENTIAL_PAGES; i++) {
-                    enqueue(free_frames, p->essential_frames[i]);
-                }
-                for (int i = 0; i < PAGE_TABLE_SIZE; i++) {
-                    if (p->page_table[i] >> 15) {
-                        enqueue(free_frames, p->page_table[i] & 0x7FFF);
-                        p->page_table[i] = 0;
-                    }
-                }
-                enqueue(swapped_out, p->pid);
-                if (active_processes < min_active_when_full && active_processes > 0) {
-                    min_active_when_full = active_processes;
-                }
-                return 0;
-            }
-            int frame = dequeue(free_frames);
-            p->page_table[page] = make_pte(frame, 1);
-        }
-        if (k <= M) R = M;
-        else L = M + 1;
-    }
-    return 1;
 }
 
-// Initialize process and load essential pages
-void init_process(int pid) {
-    Process *p = &processes[pid];
-    p->pid = pid;
-    p->active = 1;
-    p->search_count = 0;
-    p->in_progress = 0;
-    memset(p->page_table, 0, sizeof(p->page_table));
-    memset(p->pages_accessed, 0, PAGE_TABLE_SIZE);
-    memset(p->pages_faulted, 0, PAGE_TABLE_SIZE);
+void page_clear(PageTable *page_tables, int process_id, int entry) {
+    if (page_tables[process_id].entries[entry] & (1 << 15)) {
+        page_tables[process_id].entries[entry] &= ~(1 << 15);
+        if (entry >= ESSENTIAL_PAGES) processes[process_id].addi_data_seg--;
+        available_frames++;
+    }
+}
+
+int page_retrieve(PageTable *page_tables, int process_id, int entry) {
+    return page_tables[process_id].entries[entry] >> 15;
+}
+
+// Swap out a process
+void swap_out(Process *proc, Queue *ready_queue, Queue *swapped_out) {
+    proc->is_swapped = 1;
+
+    // Clear all page table entries
+    for (int i = 0; i < PAGE_TABLE_SIZE; i++) {
+        if (page_retrieve(page_tables, proc->pid, i)) {
+            page_clear(page_tables, proc->pid, i);
+        }
+    }
+    proc->addi_data_seg = 0;
+
+    // Enqueue to swapped out queue
+    enqueue(swapped_out, proc);
+
+    // Calculate active processes
+    int active = n - swapped_out->size - completed_count;
+    printf("+++ Swapping out process %3d [%d active processes]\n", proc->pid, active);
+
+    // Update total swaps and minimum multiprogramming degree
+    tot_swaps++;
+    if (active < multi_prog) multi_prog = active;
+}
+
+// Swap in a process
+void swap_in(Process *proc, Queue *ready_queue, Queue *swapped_out) {
+    proc->is_swapped = 0;
+
+    // Load essential pages
     for (int i = 0; i < ESSENTIAL_PAGES; i++) {
-        p->essential_frames[i] = dequeue(free_frames);
-    }
-    active_processes++;
-    enqueue(ready_queue, pid);
-}
-
-// Main simulation
-void run_simulation() {
-    FILE *fp = fopen("search.txt", "r");
-    if (!fp) {
-        perror("Failed to open search.txt");
-        exit(1);
-    }
-    fscanf(fp, "%d %d", &n, &m);
-    for (int i = 0; i < n; i++) {
-        fscanf(fp, "%d", &processes[i].s);
-        for (int j = 0; j < m; j++) {
-            fscanf(fp, "%d", &processes[i].searches[j]);
-        }
-    }
-    fclose(fp);
-    printf("+++ Simulation data read from file\n");
-
-    // Initialize kernel data
-    ready_queue = create_queue(n);
-    free_frames = create_queue(TOTAL_FRAMES);
-    swapped_out = create_queue(n);
-    for (int i = OS_RESERVED; i < TOTAL_FRAMES; i++) {
-        enqueue(free_frames, i);
-    }
-    for (int i = 0; i < n; i++) {
-        init_process(i);
-    }
-    min_active_when_full = n; // Initialize to initial active count
-    printf("+++ Kernel data initialized\n");
-
-    // Run simulation
-    while (ready_queue->size > 0 || swapped_out->size > 0) {
-        int pid = dequeue(ready_queue);
-        if (pid == -1) break;
-
-        Process *p = &processes[pid];
-        if (!p->active) continue;
-
-        int search_idx = p->search_count;
-        if (search_idx >= m) continue;
-
-#ifdef VERBOSE
-        printf("\tSearch %d by Process %d\n", search_idx + 1, pid);
-#endif
-
-        if (simulate_binary_search(p, search_idx)) {
-            p->search_count++;
-            if (p->search_count < m) {
-                enqueue(ready_queue, pid);
-            } else { // Process terminates
-                active_processes--;
-                for (int i = 0; i < ESSENTIAL_PAGES; i++) {
-                    enqueue(free_frames, p->essential_frames[i]);
-                }
-                for (int i = 0; i < PAGE_TABLE_SIZE; i++) {
-                    if (p->page_table[i] >> 15) {
-                        enqueue(free_frames, p->page_table[i] & 0x7FFF);
-                    }
-                }
-                if (swapped_out->size > 0 && free_frames->size >= ESSENTIAL_PAGES) {
-                    int swap_pid = dequeue(swapped_out);
-                    init_process(swap_pid);
-                    printf("+++ Swapping in process %3d  [%d active processes]\n", swap_pid, active_processes);
-                }
-            }
-        }
+        page_set(page_tables, proc->pid, i);
     }
 
-    // Final statistics
-    printf("+++ Page access summary\n");
-    printf("\tTotal number of page accesses  =  %ld\n", page_accesses);
-    printf("\tTotal number of page faults    =  %ld\n", page_faults);
-    printf("\tTotal number of swaps          =  %ld\n", swaps);
-    printf("\tDegree of multiprogramming     =  %d\n", min_active_when_full);
+    // Create a temporary queue to rebuild ready_queue with proc at front
+    Queue *temp_queue = create_queue(ready_queue->capacity);
+    enqueue(temp_queue, proc); // Swapped-in process goes first
 
-    free_queue(ready_queue);
-    free_queue(free_frames);
-    free_queue(swapped_out);
+    // Add all existing ready queue processes in their original order
+    while (ready_queue->size > 0) {
+        Process *temp = dequeue(ready_queue);
+        enqueue(temp_queue, temp);
+    }
+
+    // Copy back to ready_queue
+    memcpy(ready_queue->data, temp_queue->data, temp_queue->capacity * sizeof(Process*));
+    ready_queue->front = 0;
+    ready_queue->rear = temp_queue->size - 1;
+    ready_queue->size = temp_queue->size;
+
+    // Free temporary queue
+    free(temp_queue->data);
+    free(temp_queue);
+
+    // Calculate active processes
+    int active = n - completed_count - swapped_out->size;
+    printf("+++ Swapping in process %3d [%d active processes]\n", proc->pid, active);
 }
 
 int main() {
-    run_simulation();
+    FILE *fin = fopen("search.txt", "r");
+    if (!fin) {
+        printf("088 Error: Could not open search.txt\n");
+        return 1;
+    }
+
+    // Read number of processes and searches
+    fscanf(fin, "%d %d", &n, &m);
+
+    // Allocate memory for processes and page tables
+    processes = (Process*)malloc(n * sizeof(Process));
+    page_tables = (PageTable*)malloc(n * sizeof(PageTable));
+    memset(page_tables, 0, n * sizeof(PageTable)); // Initialize page tables to 0
+
+    // Create queues
+    Queue *ready_queue = create_queue(n);
+    Queue *swapped_out = create_queue(n);
+
+    printf("+++ Simulation data read from file\n");
+
+    // Initialize processes
+    for (int i = 0; i < n; i++) {
+        fscanf(fin, "%d", &processes[i].max_A_size);
+        processes[i].pid = i;
+        processes[i].cur_search_idx = 0;
+        processes[i].is_swapped = 0;
+        processes[i].addi_data_seg = 0;
+
+        // Load essential pages
+        for (int j = 0; j < ESSENTIAL_PAGES; j++) {
+            page_set(page_tables, i, j);
+        }
+
+        // Read search keys
+        for (int j = 0; j < m; j++) {
+            fscanf(fin, "%d", &processes[i].searches[j]);
+        }
+
+        // Add to ready queue in order (0 to n-1)
+        enqueue(ready_queue, &processes[i]);
+    }
+    fclose(fin);
+
+    // Set initial multiprogramming to number of processes
+    multi_prog = n;
+    printf("+++ Kernel data initialized\n");
+
+    // Main simulation loop
+    while (ready_queue->size > 0 || swapped_out->size > 0) {
+        // If ready queue is empty, try to swap in a process
+        if (ready_queue->size == 0 && swapped_out->size > 0) {
+            Process *proc = dequeue(swapped_out);
+            if (available_frames >= ESSENTIAL_PAGES) {
+                swap_in(proc, ready_queue, swapped_out);
+            } else {
+                enqueue(swapped_out, proc); // Put it back if no frames available
+                break;
+            }
+            continue;
+        }
+
+        // Get next process from ready queue (round-robin)
+        Process *current = dequeue(ready_queue);
+
+        // Check if process has completed all searches
+        if (current->cur_search_idx >= m) {
+            completed_count++;
+            for (int i = 0; i < PAGE_TABLE_SIZE; i++) {
+                page_clear(page_tables, current->pid, i);
+            }
+            current->addi_data_seg = 0;
+
+            // Try to swap in a process if possible
+            if (swapped_out->size > 0 && available_frames >= ESSENTIAL_PAGES) {
+                Process *next = dequeue(swapped_out);
+                swap_in(next, ready_queue, swapped_out);
+            }
+            continue;
+        }
+
+        // Perform binary search
+        int key = current->searches[current->cur_search_idx];
+        int l = 0, r = current->max_A_size - 1;
+        int swapped_out_flag = 0;
+
+#ifdef VERBOSE
+        printf("\tSearch %d by Process %d\n", current->cur_search_idx + 1, current->pid);
+#endif
+
+        while (l < r && !swapped_out_flag) {
+            int m = (l + r) / 2;
+            tot_page_accs++;
+
+            // Determine page for current index
+            int page = 10 + (m / 1024);
+
+            // Check page validity
+            if (!page_retrieve(page_tables, current->pid, page)) {
+                tot_page_faults++;
+                if (available_frames <= 0) {
+                    swap_out(current, ready_queue, swapped_out);
+                    swapped_out_flag = 1;
+                    break;
+                }
+                page_set(page_tables, current->pid, page);
+            }
+
+            // Binary search logic
+            if (key <= m) r = m;
+            else l = m + 1;
+        }
+
+        // Handle process after binary search
+        if (!swapped_out_flag) {
+            current->cur_search_idx++;
+            if (current->cur_search_idx < m) {
+                enqueue(ready_queue, current); // Back to ready queue
+            } else {
+                completed_count++;
+                for (int i = 0; i < PAGE_TABLE_SIZE; i++) {
+                    page_clear(page_tables, current->pid, i);
+                }
+                current->addi_data_seg = 0;
+                if (swapped_out->size > 0 && available_frames >= ESSENTIAL_PAGES) {
+                    Process *next = dequeue(swapped_out);
+                    swap_in(next, ready_queue, swapped_out);
+                }
+            }
+        }
+    }
+
+    // Print simulation results
+    printf("+++ Page access summary\n");
+    printf("Total number of page accesses = %d\n", tot_page_accs);
+    printf("Total number of page faults = %d\n", tot_page_faults);
+    printf("Total number of swaps = %d\n", tot_swaps);
+    printf("Degree of multiprogramming = %d\n", multi_prog);
+
+    // Clean up
+    free(processes);
+    free(page_tables);
+    free(ready_queue->data);
+    free(ready_queue);
+    free(swapped_out->data);
+    free(swapped_out);
+
     return 0;
 }
