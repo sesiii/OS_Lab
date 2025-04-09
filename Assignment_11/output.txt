@@ -1,0 +1,1148 @@
+NO    : OWNER      SIZE         NAME
+--      -----      ----         ----
+1     : dadi       20480        /home/dadi/Desktop/Labs_6th sem/Networks_Lab/tcpdump.txt
+2     : dadi       37           /home/dadi/Desktop/Labs_6th sem/Networks_Lab/Assignment_2/DadiSasankKumar_22CS10020/received_file.txt
+3     : dadi       36           /home/dadi/Desktop/Labs_6th sem/Networks_Lab/Assignment_2/DadiSasankKumar_22CS10020/22CS10020_file1.txt
+4     : dadi       3251         /home/dadi/Desktop/Labs_6th sem/Networks_Lab/Assignment_7/sampl.txt
+5     : dadi       35           /home/dadi/Desktop/Labs_6th sem/Networks_Lab/Assignment_7/a.txt
+6     : dadi       7508         /home/dadi/Desktop/Labs_6th sem/Networks_Lab/Assignment_7/code/capture.txt
+7     : dadi       472          /home/dadi/Desktop/Labs_6th sem/Networks_Lab/Assignment_5/task-queue-system/tasks.txt
+8     : dadi       18777        /home/dadi/Desktop/Labs_6th sem/Networks_Lab/Assignment_4/input.txt
+9     : dadi       5731         /home/dadi/Desktop/Labs_6th sem/Networks_Lab/Assignment_4/code/documentation.txt
+10    : dadi       2989         /home/dadi/Desktop/Labs_6th sem/Networks_Lab/Assignment_4/code/input.txt
+11    : dadi       2989         /home/dadi/Desktop/Labs_6th sem/Networks_Lab/Assignment_4/code/output.txt
+12    : dadi       18777        /home/dadi/Desktop/Labs_6th sem/Networks_Lab/Assignment_4/output.txt
+13    : dadi       1687         /home/dadi/Desktop/Labs_6th sem/Networks_Lab/Assignment_3/Submission/sample1.txt
+14    : dadi       53980        /home/dadi/Desktop/Labs_6th sem/Networks_Lab/Assignment_3/Submission/sample2.txt
+15    : dadi       13488        /home/dadi/Desktop/Labs_6th sem/Networks_Lab/Assignment_3/Submission/sample3.txt
+16    : dadi       27           /home/dadi/Desktop/Labs_6th sem/Networks_Lab/Assignment_3/Submission/sample.txt
+17    : dadi       4            /home/dadi/Desktop/Labs_6th sem/Networks_Lab/env/lib/python3.12/site-packages/pillow-11.1.0.dist-info/top_level.txt
+18    : dadi       53           /home/dadi/Desktop/Labs_6th sem/Networks_Lab/env/lib/python3.12/site-packages/pygments-2.19.1.dist-info/entry_points.txt
+19    : dadi       47755        /home/dadi/Desktop/Labs_6th sem/Networks_Lab/env/lib/python3.12/site-packages/numpy-2.2.4.dist-info/LICENSE.txt
+20    : dadi       172          /home/dadi/Desktop/Labs_6th sem/Networks_Lab/env/lib/python3.12/site-packages/numpy-2.2.4.dist-info/entry_points.txt
+21    : dadi       1093         /home/dadi/Desktop/Labs_6th sem/Networks_Lab/env/lib/python3.12/site-packages/urllib3-2.3.0.dist-info/licenses/LICENSE.txt
+22    : dadi       1475         /home/dadi/Desktop/Labs_6th sem/Networks_Lab/env/lib/python3.12/site-packages/click-8.1.8.dist-info/LICENSE.txt
+23    : dadi       10           /home/dadi/Desktop/Labs_6th sem/Networks_Lab/env/lib/python3.12/site-packages/aiosignal-1.3.2.dist-info/top_level.txt
+24    : dadi       58           /home/dadi/Desktop/Labs_6th sem/Networks_Lab/env/lib/python3.12/site-packages/markdown_it_py-3.0.0.dist-info/entry_points.txt
+25    : dadi       5            /home/dadi/Desktop/Labs_6th sem/Networks_Lab/env/lib/python3.12/site-packages/yarl-1.18.3.dist-info/top_level.txt
+26    : dadi       19           /home/dadi/Desktop/Labs_6th sem/Networks_Lab/env/lib/python3.12/site-packages/charset_normalizer-3.4.1.dist-info/top_level.txt
+27    : dadi       65           /home/dadi/Desktop/Labs_6th sem/Networks_Lab/env/lib/python3.12/site-packages/charset_normalizer-3.4.1.dist-info/entry_points.txt
+28    : dadi       9            /home/dadi/Desktop/Labs_6th sem/Networks_Lab/env/lib/python3.12/site-packages/tabulate-0.9.0.dist-info/top_level.txt
+29    : dadi       44           /home/dadi/Desktop/Labs_6th sem/Networks_Lab/env/lib/python3.12/site-packages/tabulate-0.9.0.dist-info/entry_points.txt
+30    : dadi       9            /home/dadi/Desktop/Labs_6th sem/Networks_Lab/env/lib/python3.12/site-packages/requests-2.32.3.dist-info/top_level.txt
+31    : dadi       1066         /home/dadi/Desktop/Labs_6th sem/Networks_Lab/env/lib/python3.12/site-packages/eval_type_backport-0.2.2.dist-info/LICENSE.txt
+32    : dadi       19           /home/dadi/Desktop/Labs_6th sem/Networks_Lab/env/lib/python3.12/site-packages/eval_type_backport-0.2.2.dist-info/top_level.txt
+33    : dadi       11           /home/dadi/Desktop/Labs_6th sem/Networks_Lab/env/lib/python3.12/site-packages/frozenlist-1.5.0.dist-info/top_level.txt
+34    : dadi       8            /home/dadi/Desktop/Labs_6th sem/Networks_Lab/env/lib/python3.12/site-packages/certifi-2025.1.31.dist-info/top_level.txt
+35    : dadi       57           /home/dadi/Desktop/Labs_6th sem/Networks_Lab/env/lib/python3.12/site-packages/typer-0.15.2.dist-info/entry_points.txt
+36    : dadi       967          /home/dadi/Desktop/Labs_6th sem/Networks_Lab/env/lib/python3.12/site-packages/numpy/_core/tests/data/umath-validation-set-README.txt
+37    : dadi       1018         /home/dadi/Desktop/Labs_6th sem/Networks_Lab/env/lib/python3.12/site-packages/numpy/_core/include/numpy/random/LICENSE.txt
+38    : dadi       3405         /home/dadi/Desktop/Labs_6th sem/Networks_Lab/env/lib/python3.12/site-packages/numpy/ma/API_CHANGES.txt
+39    : dadi       588          /home/dadi/Desktop/Labs_6th sem/Networks_Lab/env/lib/python3.12/site-packages/aiohttp-3.11.14.dist-info/LICENSE.txt
+40    : dadi       8            /home/dadi/Desktop/Labs_6th sem/Networks_Lab/env/lib/python3.12/site-packages/aiohttp-3.11.14.dist-info/top_level.txt
+41    : dadi       1093         /home/dadi/Desktop/Labs_6th sem/Networks_Lab/env/lib/python3.12/site-packages/pip-24.0.dist-info/LICENSE.txt
+42    : dadi       10388        /home/dadi/Desktop/Labs_6th sem/Networks_Lab/env/lib/python3.12/site-packages/pip-24.0.dist-info/AUTHORS.txt
+43    : dadi       4            /home/dadi/Desktop/Labs_6th sem/Networks_Lab/env/lib/python3.12/site-packages/pip-24.0.dist-info/top_level.txt
+44    : dadi       125          /home/dadi/Desktop/Labs_6th sem/Networks_Lab/env/lib/python3.12/site-packages/pip-24.0.dist-info/entry_points.txt
+45    : dadi       12           /home/dadi/Desktop/Labs_6th sem/Networks_Lab/env/lib/python3.12/site-packages/shellingham-1.5.4.dist-info/top_level.txt
+46    : dadi       110423       /home/dadi/Desktop/Labs_6th sem/Networks_Lab/env/lib/python3.12/site-packages/pyarrow-19.0.1.dist-info/LICENSE.txt
+47    : dadi       3032         /home/dadi/Desktop/Labs_6th sem/Networks_Lab/env/lib/python3.12/site-packages/pyarrow-19.0.1.dist-info/NOTICE.txt
+48    : dadi       18           /home/dadi/Desktop/Labs_6th sem/Networks_Lab/env/lib/python3.12/site-packages/pyarrow-19.0.1.dist-info/top_level.txt
+49    : dadi       50           /home/dadi/Desktop/Labs_6th sem/Networks_Lab/env/lib/python3.12/site-packages/together-1.5.2.dist-info/entry_points.txt
+50    : dadi       10           /home/dadi/Desktop/Labs_6th sem/Networks_Lab/env/lib/python3.12/site-packages/propcache-0.3.1.dist-info/top_level.txt
+51    : dadi       10           /home/dadi/Desktop/Labs_6th sem/Networks_Lab/env/lib/python3.12/site-packages/multidict-6.2.0.dist-info/top_level.txt
+52    : dadi       855          /home/dadi/Desktop/Labs_6th sem/Networks_Lab/env/lib/python3.12/site-packages/pyarrow/src/arrow/python/CMakeLists.txt
+53    : dadi       837          /home/dadi/Desktop/Labs_6th sem/Networks_Lab/env/lib/python3.12/site-packages/pyarrow/src/arrow/python/vendored/CMakeLists.txt
+54    : dadi       493          /home/dadi/Desktop/Labs_6th sem/Networks_Lab/env/lib/python3.12/site-packages/pip/_vendor/vendor.txt
+55    : dadi       5            /home/dadi/Desktop/Labs_6th sem/Networks_Lab/env/lib/python3.12/site-packages/tqdm-4.67.1.dist-info/top_level.txt
+56    : dadi       39           /home/dadi/Desktop/Labs_6th sem/Networks_Lab/env/lib/python3.12/site-packages/tqdm-4.67.1.dist-info/entry_points.txt
+57    : dadi       4            /home/dadi/Desktop/Labs_6th sem/Networks_Lab/env/lib64/python3.12/site-packages/pillow-11.1.0.dist-info/top_level.txt
+58    : dadi       53           /home/dadi/Desktop/Labs_6th sem/Networks_Lab/env/lib64/python3.12/site-packages/pygments-2.19.1.dist-info/entry_points.txt
+59    : dadi       47755        /home/dadi/Desktop/Labs_6th sem/Networks_Lab/env/lib64/python3.12/site-packages/numpy-2.2.4.dist-info/LICENSE.txt
+60    : dadi       172          /home/dadi/Desktop/Labs_6th sem/Networks_Lab/env/lib64/python3.12/site-packages/numpy-2.2.4.dist-info/entry_points.txt
+61    : dadi       1093         /home/dadi/Desktop/Labs_6th sem/Networks_Lab/env/lib64/python3.12/site-packages/urllib3-2.3.0.dist-info/licenses/LICENSE.txt
+62    : dadi       1475         /home/dadi/Desktop/Labs_6th sem/Networks_Lab/env/lib64/python3.12/site-packages/click-8.1.8.dist-info/LICENSE.txt
+63    : dadi       10           /home/dadi/Desktop/Labs_6th sem/Networks_Lab/env/lib64/python3.12/site-packages/aiosignal-1.3.2.dist-info/top_level.txt
+64    : dadi       58           /home/dadi/Desktop/Labs_6th sem/Networks_Lab/env/lib64/python3.12/site-packages/markdown_it_py-3.0.0.dist-info/entry_points.txt
+65    : dadi       5            /home/dadi/Desktop/Labs_6th sem/Networks_Lab/env/lib64/python3.12/site-packages/yarl-1.18.3.dist-info/top_level.txt
+66    : dadi       19           /home/dadi/Desktop/Labs_6th sem/Networks_Lab/env/lib64/python3.12/site-packages/charset_normalizer-3.4.1.dist-info/top_level.txt
+67    : dadi       65           /home/dadi/Desktop/Labs_6th sem/Networks_Lab/env/lib64/python3.12/site-packages/charset_normalizer-3.4.1.dist-info/entry_points.txt
+68    : dadi       9            /home/dadi/Desktop/Labs_6th sem/Networks_Lab/env/lib64/python3.12/site-packages/tabulate-0.9.0.dist-info/top_level.txt
+69    : dadi       44           /home/dadi/Desktop/Labs_6th sem/Networks_Lab/env/lib64/python3.12/site-packages/tabulate-0.9.0.dist-info/entry_points.txt
+70    : dadi       9            /home/dadi/Desktop/Labs_6th sem/Networks_Lab/env/lib64/python3.12/site-packages/requests-2.32.3.dist-info/top_level.txt
+71    : dadi       1066         /home/dadi/Desktop/Labs_6th sem/Networks_Lab/env/lib64/python3.12/site-packages/eval_type_backport-0.2.2.dist-info/LICENSE.txt
+72    : dadi       19           /home/dadi/Desktop/Labs_6th sem/Networks_Lab/env/lib64/python3.12/site-packages/eval_type_backport-0.2.2.dist-info/top_level.txt
+73    : dadi       11           /home/dadi/Desktop/Labs_6th sem/Networks_Lab/env/lib64/python3.12/site-packages/frozenlist-1.5.0.dist-info/top_level.txt
+74    : dadi       8            /home/dadi/Desktop/Labs_6th sem/Networks_Lab/env/lib64/python3.12/site-packages/certifi-2025.1.31.dist-info/top_level.txt
+75    : dadi       57           /home/dadi/Desktop/Labs_6th sem/Networks_Lab/env/lib64/python3.12/site-packages/typer-0.15.2.dist-info/entry_points.txt
+76    : dadi       967          /home/dadi/Desktop/Labs_6th sem/Networks_Lab/env/lib64/python3.12/site-packages/numpy/_core/tests/data/umath-validation-set-README.txt
+77    : dadi       1018         /home/dadi/Desktop/Labs_6th sem/Networks_Lab/env/lib64/python3.12/site-packages/numpy/_core/include/numpy/random/LICENSE.txt
+78    : dadi       3405         /home/dadi/Desktop/Labs_6th sem/Networks_Lab/env/lib64/python3.12/site-packages/numpy/ma/API_CHANGES.txt
+79    : dadi       588          /home/dadi/Desktop/Labs_6th sem/Networks_Lab/env/lib64/python3.12/site-packages/aiohttp-3.11.14.dist-info/LICENSE.txt
+80    : dadi       8            /home/dadi/Desktop/Labs_6th sem/Networks_Lab/env/lib64/python3.12/site-packages/aiohttp-3.11.14.dist-info/top_level.txt
+81    : dadi       1093         /home/dadi/Desktop/Labs_6th sem/Networks_Lab/env/lib64/python3.12/site-packages/pip-24.0.dist-info/LICENSE.txt
+82    : dadi       10388        /home/dadi/Desktop/Labs_6th sem/Networks_Lab/env/lib64/python3.12/site-packages/pip-24.0.dist-info/AUTHORS.txt
+83    : dadi       4            /home/dadi/Desktop/Labs_6th sem/Networks_Lab/env/lib64/python3.12/site-packages/pip-24.0.dist-info/top_level.txt
+84    : dadi       125          /home/dadi/Desktop/Labs_6th sem/Networks_Lab/env/lib64/python3.12/site-packages/pip-24.0.dist-info/entry_points.txt
+85    : dadi       12           /home/dadi/Desktop/Labs_6th sem/Networks_Lab/env/lib64/python3.12/site-packages/shellingham-1.5.4.dist-info/top_level.txt
+86    : dadi       110423       /home/dadi/Desktop/Labs_6th sem/Networks_Lab/env/lib64/python3.12/site-packages/pyarrow-19.0.1.dist-info/LICENSE.txt
+87    : dadi       3032         /home/dadi/Desktop/Labs_6th sem/Networks_Lab/env/lib64/python3.12/site-packages/pyarrow-19.0.1.dist-info/NOTICE.txt
+88    : dadi       18           /home/dadi/Desktop/Labs_6th sem/Networks_Lab/env/lib64/python3.12/site-packages/pyarrow-19.0.1.dist-info/top_level.txt
+89    : dadi       50           /home/dadi/Desktop/Labs_6th sem/Networks_Lab/env/lib64/python3.12/site-packages/together-1.5.2.dist-info/entry_points.txt
+90    : dadi       10           /home/dadi/Desktop/Labs_6th sem/Networks_Lab/env/lib64/python3.12/site-packages/propcache-0.3.1.dist-info/top_level.txt
+91    : dadi       10           /home/dadi/Desktop/Labs_6th sem/Networks_Lab/env/lib64/python3.12/site-packages/multidict-6.2.0.dist-info/top_level.txt
+92    : dadi       855          /home/dadi/Desktop/Labs_6th sem/Networks_Lab/env/lib64/python3.12/site-packages/pyarrow/src/arrow/python/CMakeLists.txt
+93    : dadi       837          /home/dadi/Desktop/Labs_6th sem/Networks_Lab/env/lib64/python3.12/site-packages/pyarrow/src/arrow/python/vendored/CMakeLists.txt
+94    : dadi       493          /home/dadi/Desktop/Labs_6th sem/Networks_Lab/env/lib64/python3.12/site-packages/pip/_vendor/vendor.txt
+95    : dadi       5            /home/dadi/Desktop/Labs_6th sem/Networks_Lab/env/lib64/python3.12/site-packages/tqdm-4.67.1.dist-info/top_level.txt
+96    : dadi       39           /home/dadi/Desktop/Labs_6th sem/Networks_Lab/env/lib64/python3.12/site-packages/tqdm-4.67.1.dist-info/entry_points.txt
+97    : dadi       50           /home/dadi/Desktop/Labs_6th sem/Networks_Lab/sample.txt
+98    : dadi       879          /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_6/exp.txt
+99    : dadi       6120         /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_6/data/transcript2_waiter.txt
+100   : dadi       534          /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_6/data/customers.txt
+101   : dadi       6765         /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_6/data/transcript1_cook.txt
+102   : dadi       23482        /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_6/data/transcript_all.txt
+103   : dadi       10597        /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_6/data/transcript3_customer.txt
+104   : dadi       533          /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_6/code/customers.txt
+105   : dadi       533          /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_6/code/temp/customers.txt
+106   : dadi       400          /home/dadi/Desktop/Labs_6th sem/OS_Lab/sleeping_barber.txt
+107   : dadi       1563         /home/dadi/Desktop/Labs_6th sem/OS_Lab/dining_philosopher.txt
+108   : dadi       5699948      /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_10/sample/verboseoutput.txt
+109   : dadi       15119        /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_10/sample/output.txt
+110   : dadi       66951        /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_10/sample/search.txt
+111   : dadi       5401545      /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_10/a/verboseoutput.txt
+112   : dadi       0            /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_10/a/verbose_output.txt
+113   : dadi       13970        /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_10/a/output.txt
+114   : dadi       66951        /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_10/a/search.txt
+115   : dadi       5710483      /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_10/verbose_output.txt
+116   : dadi       15036        /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_10/output.txt
+117   : dadi       66951        /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_10/search.txt
+118   : dadi       108          /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_2/childpid.txt
+119   : dadi       7            /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_2/dummycpid.txt
+120   : dadi       315          /home/dadi/Desktop/Labs_6th sem/OS_Lab/producer_consumer.txt
+121   : dadi       2018         /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_7/question.txt
+122   : dadi       519          /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_7/exp.txt
+123   : dadi       58           /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_7/temp.txt
+124   : dadi       0            /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_7/output.txt
+125   : dadi       420          /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_8/input/thread01.txt
+126   : dadi       282          /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_8/input/thread14.txt
+127   : dadi       512          /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_8/input/thread19.txt
+128   : dadi       466          /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_8/input/thread04.txt
+129   : dadi       374          /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_8/input/thread15.txt
+130   : dadi       328          /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_8/input/thread12.txt
+131   : dadi       466          /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_8/input/thread08.txt
+132   : dadi       420          /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_8/input/thread02.txt
+133   : dadi       282          /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_8/input/thread17.txt
+134   : dadi       374          /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_8/input/thread10.txt
+135   : dadi       282          /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_8/input/thread05.txt
+136   : dadi       466          /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_8/input/thread06.txt
+137   : dadi       328          /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_8/input/thread18.txt
+138   : dadi       374          /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_8/input/thread09.txt
+139   : dadi       374          /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_8/input/thread11.txt
+140   : dadi       466          /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_8/input/thread16.txt
+141   : dadi       282          /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_8/input/thread00.txt
+142   : dadi       512          /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_8/input/thread07.txt
+143   : dadi       420          /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_8/input/thread13.txt
+144   : dadi       512          /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_8/input/thread03.txt
+145   : dadi       36           /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_8/input/system.txt
+146   : dadi       420          /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_8/kasyap/input/thread01.txt
+147   : dadi       282          /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_8/kasyap/input/thread14.txt
+148   : dadi       512          /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_8/kasyap/input/thread19.txt
+149   : dadi       466          /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_8/kasyap/input/thread04.txt
+150   : dadi       374          /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_8/kasyap/input/thread15.txt
+151   : dadi       328          /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_8/kasyap/input/thread12.txt
+152   : dadi       466          /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_8/kasyap/input/thread08.txt
+153   : dadi       420          /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_8/kasyap/input/thread02.txt
+154   : dadi       282          /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_8/kasyap/input/thread17.txt
+155   : dadi       374          /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_8/kasyap/input/thread10.txt
+156   : dadi       282          /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_8/kasyap/input/thread05.txt
+157   : dadi       466          /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_8/kasyap/input/thread06.txt
+158   : dadi       328          /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_8/kasyap/input/thread18.txt
+159   : dadi       374          /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_8/kasyap/input/thread09.txt
+160   : dadi       374          /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_8/kasyap/input/thread11.txt
+161   : dadi       466          /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_8/kasyap/input/thread16.txt
+162   : dadi       282          /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_8/kasyap/input/thread00.txt
+163   : dadi       512          /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_8/kasyap/input/thread07.txt
+164   : dadi       420          /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_8/kasyap/input/thread13.txt
+165   : dadi       512          /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_8/kasyap/input/thread03.txt
+166   : dadi       36           /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_8/kasyap/input/system.txt
+167   : dadi       137126       /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_8/sample/output1_allow.txt
+168   : dadi       145495       /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_8/sample/output2_avoid.txt
+169   : dadi       374          /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_8/sample/input2/thread01.txt
+170   : dadi       466          /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_8/sample/input2/thread14.txt
+171   : dadi       512          /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_8/sample/input2/thread19.txt
+172   : dadi       374          /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_8/sample/input2/thread04.txt
+173   : dadi       374          /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_8/sample/input2/thread15.txt
+174   : dadi       374          /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_8/sample/input2/thread12.txt
+175   : dadi       466          /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_8/sample/input2/thread08.txt
+176   : dadi       328          /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_8/sample/input2/thread02.txt
+177   : dadi       420          /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_8/sample/input2/thread17.txt
+178   : dadi       374          /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_8/sample/input2/thread10.txt
+179   : dadi       282          /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_8/sample/input2/thread05.txt
+180   : dadi       328          /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_8/sample/input2/thread06.txt
+181   : dadi       282          /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_8/sample/input2/thread18.txt
+182   : dadi       466          /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_8/sample/input2/thread09.txt
+183   : dadi       328          /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_8/sample/input2/thread11.txt
+184   : dadi       466          /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_8/sample/input2/thread16.txt
+185   : dadi       420          /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_8/sample/input2/thread00.txt
+186   : dadi       420          /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_8/sample/input2/thread07.txt
+187   : dadi       466          /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_8/sample/input2/thread13.txt
+188   : dadi       374          /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_8/sample/input2/thread03.txt
+189   : dadi       36           /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_8/sample/input2/system.txt
+190   : dadi       100896       /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_8/sample/output2_allow.txt
+191   : dadi       135528       /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_8/sample/output1_avoid.txt
+192   : dadi       137463       /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_8/stages/allow.txt
+193   : dadi       226          /home/dadi/Desktop/Labs_6th sem/OS_Lab/petersons_solutions/peterson.txt
+194   : dadi       219          /home/dadi/Desktop/Labs_6th sem/OS_Lab/safety_algorithm.txt
+195   : dadi       216151       /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_9/verbose_output.txt
+196   : dadi       9137         /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_9/output.txt
+197   : dadi       66951        /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_9/KASYAP/search.txt
+198   : dadi       66951        /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_9/search.txt
+199   : dadi       216678       /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_9/reference/verboseoutput.txt
+200   : dadi       9652         /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_9/reference/output.txt
+201   : dadi       66951        /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_9/reference/search.txt
+202   : dadi       334          /home/dadi/Desktop/Labs_6th sem/OS_Lab/semaphore_producer-consumer.txt
+203   : dadi       48           /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_1/foodep.txt
+204   : dadi       24576        /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_11/output.txt
+205   : dadi       789767       /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_3/Submission/verbose_output.txt
+206   : dadi       22830        /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_3/Submission/output.txt
+207   : dadi       7733         /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_3/Submission/proc.txt
+208   : dadi       5253         /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_3/reference_output.txt
+209   : dadi       160118       /home/dadi/Desktop/Labs_6th sem/OS_Lab/Assignment_3/reference_verbose_output.txt
+210   : dadi       4            /home/dadi/Desktop/Labs_6th sem/OS_Lab/env/lib/python3.12/site-packages/pillow-11.1.0.dist-info/top_level.txt
+211   : dadi       53           /home/dadi/Desktop/Labs_6th sem/OS_Lab/env/lib/python3.12/site-packages/pygments-2.19.1.dist-info/entry_points.txt
+212   : dadi       47755        /home/dadi/Desktop/Labs_6th sem/OS_Lab/env/lib/python3.12/site-packages/numpy-2.2.4.dist-info/LICENSE.txt
+213   : dadi       172          /home/dadi/Desktop/Labs_6th sem/OS_Lab/env/lib/python3.12/site-packages/numpy-2.2.4.dist-info/entry_points.txt
+214   : dadi       1093         /home/dadi/Desktop/Labs_6th sem/OS_Lab/env/lib/python3.12/site-packages/urllib3-2.3.0.dist-info/licenses/LICENSE.txt
+215   : dadi       1475         /home/dadi/Desktop/Labs_6th sem/OS_Lab/env/lib/python3.12/site-packages/click-8.1.8.dist-info/LICENSE.txt
+216   : dadi       10           /home/dadi/Desktop/Labs_6th sem/OS_Lab/env/lib/python3.12/site-packages/aiosignal-1.3.2.dist-info/top_level.txt
+217   : dadi       58           /home/dadi/Desktop/Labs_6th sem/OS_Lab/env/lib/python3.12/site-packages/markdown_it_py-3.0.0.dist-info/entry_points.txt
+218   : dadi       5            /home/dadi/Desktop/Labs_6th sem/OS_Lab/env/lib/python3.12/site-packages/yarl-1.18.3.dist-info/top_level.txt
+219   : dadi       19           /home/dadi/Desktop/Labs_6th sem/OS_Lab/env/lib/python3.12/site-packages/charset_normalizer-3.4.1.dist-info/top_level.txt
+220   : dadi       65           /home/dadi/Desktop/Labs_6th sem/OS_Lab/env/lib/python3.12/site-packages/charset_normalizer-3.4.1.dist-info/entry_points.txt
+221   : dadi       9            /home/dadi/Desktop/Labs_6th sem/OS_Lab/env/lib/python3.12/site-packages/tabulate-0.9.0.dist-info/top_level.txt
+222   : dadi       44           /home/dadi/Desktop/Labs_6th sem/OS_Lab/env/lib/python3.12/site-packages/tabulate-0.9.0.dist-info/entry_points.txt
+223   : dadi       9            /home/dadi/Desktop/Labs_6th sem/OS_Lab/env/lib/python3.12/site-packages/requests-2.32.3.dist-info/top_level.txt
+224   : dadi       1066         /home/dadi/Desktop/Labs_6th sem/OS_Lab/env/lib/python3.12/site-packages/eval_type_backport-0.2.2.dist-info/LICENSE.txt
+225   : dadi       19           /home/dadi/Desktop/Labs_6th sem/OS_Lab/env/lib/python3.12/site-packages/eval_type_backport-0.2.2.dist-info/top_level.txt
+226   : dadi       11           /home/dadi/Desktop/Labs_6th sem/OS_Lab/env/lib/python3.12/site-packages/frozenlist-1.5.0.dist-info/top_level.txt
+227   : dadi       8            /home/dadi/Desktop/Labs_6th sem/OS_Lab/env/lib/python3.12/site-packages/certifi-2025.1.31.dist-info/top_level.txt
+228   : dadi       57           /home/dadi/Desktop/Labs_6th sem/OS_Lab/env/lib/python3.12/site-packages/typer-0.15.2.dist-info/entry_points.txt
+229   : dadi       967          /home/dadi/Desktop/Labs_6th sem/OS_Lab/env/lib/python3.12/site-packages/numpy/_core/tests/data/umath-validation-set-README.txt
+230   : dadi       1018         /home/dadi/Desktop/Labs_6th sem/OS_Lab/env/lib/python3.12/site-packages/numpy/_core/include/numpy/random/LICENSE.txt
+231   : dadi       3405         /home/dadi/Desktop/Labs_6th sem/OS_Lab/env/lib/python3.12/site-packages/numpy/ma/API_CHANGES.txt
+232   : dadi       588          /home/dadi/Desktop/Labs_6th sem/OS_Lab/env/lib/python3.12/site-packages/aiohttp-3.11.14.dist-info/LICENSE.txt
+233   : dadi       8            /home/dadi/Desktop/Labs_6th sem/OS_Lab/env/lib/python3.12/site-packages/aiohttp-3.11.14.dist-info/top_level.txt
+234   : dadi       1093         /home/dadi/Desktop/Labs_6th sem/OS_Lab/env/lib/python3.12/site-packages/pip-24.0.dist-info/LICENSE.txt
+235   : dadi       10388        /home/dadi/Desktop/Labs_6th sem/OS_Lab/env/lib/python3.12/site-packages/pip-24.0.dist-info/AUTHORS.txt
+236   : dadi       4            /home/dadi/Desktop/Labs_6th sem/OS_Lab/env/lib/python3.12/site-packages/pip-24.0.dist-info/top_level.txt
+237   : dadi       125          /home/dadi/Desktop/Labs_6th sem/OS_Lab/env/lib/python3.12/site-packages/pip-24.0.dist-info/entry_points.txt
+238   : dadi       12           /home/dadi/Desktop/Labs_6th sem/OS_Lab/env/lib/python3.12/site-packages/shellingham-1.5.4.dist-info/top_level.txt
+239   : dadi       110423       /home/dadi/Desktop/Labs_6th sem/OS_Lab/env/lib/python3.12/site-packages/pyarrow-19.0.1.dist-info/LICENSE.txt
+240   : dadi       3032         /home/dadi/Desktop/Labs_6th sem/OS_Lab/env/lib/python3.12/site-packages/pyarrow-19.0.1.dist-info/NOTICE.txt
+241   : dadi       18           /home/dadi/Desktop/Labs_6th sem/OS_Lab/env/lib/python3.12/site-packages/pyarrow-19.0.1.dist-info/top_level.txt
+242   : dadi       50           /home/dadi/Desktop/Labs_6th sem/OS_Lab/env/lib/python3.12/site-packages/together-1.5.2.dist-info/entry_points.txt
+243   : dadi       10           /home/dadi/Desktop/Labs_6th sem/OS_Lab/env/lib/python3.12/site-packages/propcache-0.3.1.dist-info/top_level.txt
+244   : dadi       10           /home/dadi/Desktop/Labs_6th sem/OS_Lab/env/lib/python3.12/site-packages/multidict-6.2.0.dist-info/top_level.txt
+245   : dadi       855          /home/dadi/Desktop/Labs_6th sem/OS_Lab/env/lib/python3.12/site-packages/pyarrow/src/arrow/python/CMakeLists.txt
+246   : dadi       837          /home/dadi/Desktop/Labs_6th sem/OS_Lab/env/lib/python3.12/site-packages/pyarrow/src/arrow/python/vendored/CMakeLists.txt
+247   : dadi       493          /home/dadi/Desktop/Labs_6th sem/OS_Lab/env/lib/python3.12/site-packages/pip/_vendor/vendor.txt
+248   : dadi       5            /home/dadi/Desktop/Labs_6th sem/OS_Lab/env/lib/python3.12/site-packages/tqdm-4.67.1.dist-info/top_level.txt
+249   : dadi       39           /home/dadi/Desktop/Labs_6th sem/OS_Lab/env/lib/python3.12/site-packages/tqdm-4.67.1.dist-info/entry_points.txt
+250   : dadi       4            /home/dadi/Desktop/Labs_6th sem/OS_Lab/env/lib64/python3.12/site-packages/pillow-11.1.0.dist-info/top_level.txt
+251   : dadi       53           /home/dadi/Desktop/Labs_6th sem/OS_Lab/env/lib64/python3.12/site-packages/pygments-2.19.1.dist-info/entry_points.txt
+252   : dadi       47755        /home/dadi/Desktop/Labs_6th sem/OS_Lab/env/lib64/python3.12/site-packages/numpy-2.2.4.dist-info/LICENSE.txt
+253   : dadi       172          /home/dadi/Desktop/Labs_6th sem/OS_Lab/env/lib64/python3.12/site-packages/numpy-2.2.4.dist-info/entry_points.txt
+254   : dadi       1093         /home/dadi/Desktop/Labs_6th sem/OS_Lab/env/lib64/python3.12/site-packages/urllib3-2.3.0.dist-info/licenses/LICENSE.txt
+255   : dadi       1475         /home/dadi/Desktop/Labs_6th sem/OS_Lab/env/lib64/python3.12/site-packages/click-8.1.8.dist-info/LICENSE.txt
+256   : dadi       10           /home/dadi/Desktop/Labs_6th sem/OS_Lab/env/lib64/python3.12/site-packages/aiosignal-1.3.2.dist-info/top_level.txt
+257   : dadi       58           /home/dadi/Desktop/Labs_6th sem/OS_Lab/env/lib64/python3.12/site-packages/markdown_it_py-3.0.0.dist-info/entry_points.txt
+258   : dadi       5            /home/dadi/Desktop/Labs_6th sem/OS_Lab/env/lib64/python3.12/site-packages/yarl-1.18.3.dist-info/top_level.txt
+259   : dadi       19           /home/dadi/Desktop/Labs_6th sem/OS_Lab/env/lib64/python3.12/site-packages/charset_normalizer-3.4.1.dist-info/top_level.txt
+260   : dadi       65           /home/dadi/Desktop/Labs_6th sem/OS_Lab/env/lib64/python3.12/site-packages/charset_normalizer-3.4.1.dist-info/entry_points.txt
+261   : dadi       9            /home/dadi/Desktop/Labs_6th sem/OS_Lab/env/lib64/python3.12/site-packages/tabulate-0.9.0.dist-info/top_level.txt
+262   : dadi       44           /home/dadi/Desktop/Labs_6th sem/OS_Lab/env/lib64/python3.12/site-packages/tabulate-0.9.0.dist-info/entry_points.txt
+263   : dadi       9            /home/dadi/Desktop/Labs_6th sem/OS_Lab/env/lib64/python3.12/site-packages/requests-2.32.3.dist-info/top_level.txt
+264   : dadi       1066         /home/dadi/Desktop/Labs_6th sem/OS_Lab/env/lib64/python3.12/site-packages/eval_type_backport-0.2.2.dist-info/LICENSE.txt
+265   : dadi       19           /home/dadi/Desktop/Labs_6th sem/OS_Lab/env/lib64/python3.12/site-packages/eval_type_backport-0.2.2.dist-info/top_level.txt
+266   : dadi       11           /home/dadi/Desktop/Labs_6th sem/OS_Lab/env/lib64/python3.12/site-packages/frozenlist-1.5.0.dist-info/top_level.txt
+267   : dadi       8            /home/dadi/Desktop/Labs_6th sem/OS_Lab/env/lib64/python3.12/site-packages/certifi-2025.1.31.dist-info/top_level.txt
+268   : dadi       57           /home/dadi/Desktop/Labs_6th sem/OS_Lab/env/lib64/python3.12/site-packages/typer-0.15.2.dist-info/entry_points.txt
+269   : dadi       967          /home/dadi/Desktop/Labs_6th sem/OS_Lab/env/lib64/python3.12/site-packages/numpy/_core/tests/data/umath-validation-set-README.txt
+270   : dadi       1018         /home/dadi/Desktop/Labs_6th sem/OS_Lab/env/lib64/python3.12/site-packages/numpy/_core/include/numpy/random/LICENSE.txt
+271   : dadi       3405         /home/dadi/Desktop/Labs_6th sem/OS_Lab/env/lib64/python3.12/site-packages/numpy/ma/API_CHANGES.txt
+272   : dadi       588          /home/dadi/Desktop/Labs_6th sem/OS_Lab/env/lib64/python3.12/site-packages/aiohttp-3.11.14.dist-info/LICENSE.txt
+273   : dadi       8            /home/dadi/Desktop/Labs_6th sem/OS_Lab/env/lib64/python3.12/site-packages/aiohttp-3.11.14.dist-info/top_level.txt
+274   : dadi       1093         /home/dadi/Desktop/Labs_6th sem/OS_Lab/env/lib64/python3.12/site-packages/pip-24.0.dist-info/LICENSE.txt
+275   : dadi       10388        /home/dadi/Desktop/Labs_6th sem/OS_Lab/env/lib64/python3.12/site-packages/pip-24.0.dist-info/AUTHORS.txt
+276   : dadi       4            /home/dadi/Desktop/Labs_6th sem/OS_Lab/env/lib64/python3.12/site-packages/pip-24.0.dist-info/top_level.txt
+277   : dadi       125          /home/dadi/Desktop/Labs_6th sem/OS_Lab/env/lib64/python3.12/site-packages/pip-24.0.dist-info/entry_points.txt
+278   : dadi       12           /home/dadi/Desktop/Labs_6th sem/OS_Lab/env/lib64/python3.12/site-packages/shellingham-1.5.4.dist-info/top_level.txt
+279   : dadi       110423       /home/dadi/Desktop/Labs_6th sem/OS_Lab/env/lib64/python3.12/site-packages/pyarrow-19.0.1.dist-info/LICENSE.txt
+280   : dadi       3032         /home/dadi/Desktop/Labs_6th sem/OS_Lab/env/lib64/python3.12/site-packages/pyarrow-19.0.1.dist-info/NOTICE.txt
+281   : dadi       18           /home/dadi/Desktop/Labs_6th sem/OS_Lab/env/lib64/python3.12/site-packages/pyarrow-19.0.1.dist-info/top_level.txt
+282   : dadi       50           /home/dadi/Desktop/Labs_6th sem/OS_Lab/env/lib64/python3.12/site-packages/together-1.5.2.dist-info/entry_points.txt
+283   : dadi       10           /home/dadi/Desktop/Labs_6th sem/OS_Lab/env/lib64/python3.12/site-packages/propcache-0.3.1.dist-info/top_level.txt
+284   : dadi       10           /home/dadi/Desktop/Labs_6th sem/OS_Lab/env/lib64/python3.12/site-packages/multidict-6.2.0.dist-info/top_level.txt
+285   : dadi       855          /home/dadi/Desktop/Labs_6th sem/OS_Lab/env/lib64/python3.12/site-packages/pyarrow/src/arrow/python/CMakeLists.txt
+286   : dadi       837          /home/dadi/Desktop/Labs_6th sem/OS_Lab/env/lib64/python3.12/site-packages/pyarrow/src/arrow/python/vendored/CMakeLists.txt
+287   : dadi       493          /home/dadi/Desktop/Labs_6th sem/OS_Lab/env/lib64/python3.12/site-packages/pip/_vendor/vendor.txt
+288   : dadi       5            /home/dadi/Desktop/Labs_6th sem/OS_Lab/env/lib64/python3.12/site-packages/tqdm-4.67.1.dist-info/top_level.txt
+289   : dadi       39           /home/dadi/Desktop/Labs_6th sem/OS_Lab/env/lib64/python3.12/site-packages/tqdm-4.67.1.dist-info/entry_points.txt
+290   : dadi       1308         /home/dadi/Desktop/Labs_6th sem/OS_Lab/reader_writer.txt
+291   : dadi       411          /home/dadi/Desktop/Labs_6th sem/OS_Lab/classical_problems.zip/sleeping_barber.txt
+292   : dadi       143          /home/dadi/Desktop/Labs_6th sem/OS_Lab/classical_problems.zip/TSL/TestAndSet.txt
+293   : dadi       172          /home/dadi/Desktop/Labs_6th sem/OS_Lab/classical_problems.zip/TSL/ASM_TSL.txt
+294   : dadi       207          /home/dadi/Desktop/Labs_6th sem/OS_Lab/classical_problems.zip/TSL/CompareAndSwap.txt
+295   : dadi       497          /home/dadi/Desktop/Labs_6th sem/OS_Lab/classical_problems.zip/producer_consumer.txt
+296   : dadi       442          /home/dadi/Desktop/Labs_6th sem/OS_Lab/classical_problems.zip/producer_consumer_semaphore.txt
+297   : dadi       902          /home/dadi/Desktop/Labs_6th sem/OS_Lab/classical_problems.zip/writer_priorityreader_writer.txt
+298   : dadi       288          /home/dadi/Desktop/Labs_6th sem/OS_Lab/classical_problems.zip/reader_writer.txt
+299   : dadi       389          /home/dadi/Desktop/Labs_6th sem/OS_Lab/classical_problems.zip/peterson_solution.txt
+300   : dadi       2111         /home/dadi/Desktop/Labs_6th sem/OS_Lab/problems_classical.txt
+301   : dadi       1015         /home/dadi/Desktop/Labs_6th sem/ComputationalBiophysics/A2_22CS10020/A2_22CS10020/Score.txt
+302   : dadi       341          /home/dadi/Desktop/Labs_6th sem/ComputationalBiophysics/A2_22CS10020/Score.txt
+303   : dadi       11           /home/dadi/Desktop/Labs_6th sem/ComputationalBiophysics/A2_22CS10020/env/lib/python3.12/site-packages/biopython-1.85.dist-info/top_level.txt
+304   : dadi       47755        /home/dadi/Desktop/Labs_6th sem/ComputationalBiophysics/A2_22CS10020/env/lib/python3.12/site-packages/numpy-2.2.4.dist-info/LICENSE.txt
+305   : dadi       172          /home/dadi/Desktop/Labs_6th sem/ComputationalBiophysics/A2_22CS10020/env/lib/python3.12/site-packages/numpy-2.2.4.dist-info/entry_points.txt
+306   : dadi       1093         /home/dadi/Desktop/Labs_6th sem/ComputationalBiophysics/A2_22CS10020/env/lib/python3.12/site-packages/urllib3-2.3.0.dist-info/licenses/LICENSE.txt
+307   : dadi       19           /home/dadi/Desktop/Labs_6th sem/ComputationalBiophysics/A2_22CS10020/env/lib/python3.12/site-packages/charset_normalizer-3.4.1.dist-info/top_level.txt
+308   : dadi       65           /home/dadi/Desktop/Labs_6th sem/ComputationalBiophysics/A2_22CS10020/env/lib/python3.12/site-packages/charset_normalizer-3.4.1.dist-info/entry_points.txt
+309   : dadi       9            /home/dadi/Desktop/Labs_6th sem/ComputationalBiophysics/A2_22CS10020/env/lib/python3.12/site-packages/requests-2.32.3.dist-info/top_level.txt
+310   : dadi       8            /home/dadi/Desktop/Labs_6th sem/ComputationalBiophysics/A2_22CS10020/env/lib/python3.12/site-packages/certifi-2025.1.31.dist-info/top_level.txt
+311   : dadi       967          /home/dadi/Desktop/Labs_6th sem/ComputationalBiophysics/A2_22CS10020/env/lib/python3.12/site-packages/numpy/_core/tests/data/umath-validation-set-README.txt
+312   : dadi       1018         /home/dadi/Desktop/Labs_6th sem/ComputationalBiophysics/A2_22CS10020/env/lib/python3.12/site-packages/numpy/_core/include/numpy/random/LICENSE.txt
+313   : dadi       3405         /home/dadi/Desktop/Labs_6th sem/ComputationalBiophysics/A2_22CS10020/env/lib/python3.12/site-packages/numpy/ma/API_CHANGES.txt
+314   : dadi       1093         /home/dadi/Desktop/Labs_6th sem/ComputationalBiophysics/A2_22CS10020/env/lib/python3.12/site-packages/pip-24.0.dist-info/LICENSE.txt
+315   : dadi       10388        /home/dadi/Desktop/Labs_6th sem/ComputationalBiophysics/A2_22CS10020/env/lib/python3.12/site-packages/pip-24.0.dist-info/AUTHORS.txt
+316   : dadi       4            /home/dadi/Desktop/Labs_6th sem/ComputationalBiophysics/A2_22CS10020/env/lib/python3.12/site-packages/pip-24.0.dist-info/top_level.txt
+317   : dadi       125          /home/dadi/Desktop/Labs_6th sem/ComputationalBiophysics/A2_22CS10020/env/lib/python3.12/site-packages/pip-24.0.dist-info/entry_points.txt
+318   : dadi       493          /home/dadi/Desktop/Labs_6th sem/ComputationalBiophysics/A2_22CS10020/env/lib/python3.12/site-packages/pip/_vendor/vendor.txt
+319   : dadi       11           /home/dadi/Desktop/Labs_6th sem/ComputationalBiophysics/A2_22CS10020/env/lib64/python3.12/site-packages/biopython-1.85.dist-info/top_level.txt
+320   : dadi       47755        /home/dadi/Desktop/Labs_6th sem/ComputationalBiophysics/A2_22CS10020/env/lib64/python3.12/site-packages/numpy-2.2.4.dist-info/LICENSE.txt
+321   : dadi       172          /home/dadi/Desktop/Labs_6th sem/ComputationalBiophysics/A2_22CS10020/env/lib64/python3.12/site-packages/numpy-2.2.4.dist-info/entry_points.txt
+322   : dadi       1093         /home/dadi/Desktop/Labs_6th sem/ComputationalBiophysics/A2_22CS10020/env/lib64/python3.12/site-packages/urllib3-2.3.0.dist-info/licenses/LICENSE.txt
+323   : dadi       19           /home/dadi/Desktop/Labs_6th sem/ComputationalBiophysics/A2_22CS10020/env/lib64/python3.12/site-packages/charset_normalizer-3.4.1.dist-info/top_level.txt
+324   : dadi       65           /home/dadi/Desktop/Labs_6th sem/ComputationalBiophysics/A2_22CS10020/env/lib64/python3.12/site-packages/charset_normalizer-3.4.1.dist-info/entry_points.txt
+325   : dadi       9            /home/dadi/Desktop/Labs_6th sem/ComputationalBiophysics/A2_22CS10020/env/lib64/python3.12/site-packages/requests-2.32.3.dist-info/top_level.txt
+326   : dadi       8            /home/dadi/Desktop/Labs_6th sem/ComputationalBiophysics/A2_22CS10020/env/lib64/python3.12/site-packages/certifi-2025.1.31.dist-info/top_level.txt
+327   : dadi       967          /home/dadi/Desktop/Labs_6th sem/ComputationalBiophysics/A2_22CS10020/env/lib64/python3.12/site-packages/numpy/_core/tests/data/umath-validation-set-README.txt
+328   : dadi       1018         /home/dadi/Desktop/Labs_6th sem/ComputationalBiophysics/A2_22CS10020/env/lib64/python3.12/site-packages/numpy/_core/include/numpy/random/LICENSE.txt
+329   : dadi       3405         /home/dadi/Desktop/Labs_6th sem/ComputationalBiophysics/A2_22CS10020/env/lib64/python3.12/site-packages/numpy/ma/API_CHANGES.txt
+330   : dadi       1093         /home/dadi/Desktop/Labs_6th sem/ComputationalBiophysics/A2_22CS10020/env/lib64/python3.12/site-packages/pip-24.0.dist-info/LICENSE.txt
+331   : dadi       10388        /home/dadi/Desktop/Labs_6th sem/ComputationalBiophysics/A2_22CS10020/env/lib64/python3.12/site-packages/pip-24.0.dist-info/AUTHORS.txt
+332   : dadi       4            /home/dadi/Desktop/Labs_6th sem/ComputationalBiophysics/A2_22CS10020/env/lib64/python3.12/site-packages/pip-24.0.dist-info/top_level.txt
+333   : dadi       125          /home/dadi/Desktop/Labs_6th sem/ComputationalBiophysics/A2_22CS10020/env/lib64/python3.12/site-packages/pip-24.0.dist-info/entry_points.txt
+334   : dadi       493          /home/dadi/Desktop/Labs_6th sem/ComputationalBiophysics/A2_22CS10020/env/lib64/python3.12/site-packages/pip/_vendor/vendor.txt
+335   : dadi       506          /home/dadi/Desktop/Labs_6th sem/ComputationalBiophysics/A1_22CS10020/A1_2UV0.txt
+336   : dadi       660          /home/dadi/Desktop/Labs_6th sem/ComputationalBiophysics/A1_22CS10020/README.txt
+337   : dadi       6978         /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_2/data.txt
+338   : dadi       1060         /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_2/venv/lib/python3.12/site-packages/Faker-35.0.0.dist-info/LICENSE.txt
+339   : dadi       6            /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_2/venv/lib/python3.12/site-packages/Faker-35.0.0.dist-info/top_level.txt
+340   : dadi       110          /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_2/venv/lib/python3.12/site-packages/Faker-35.0.0.dist-info/entry_points.txt
+341   : dadi       4            /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_2/venv/lib/python3.12/site-packages/six-1.17.0.dist-info/top_level.txt
+342   : dadi       9            /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_2/venv/lib/python3.12/site-packages/python_dateutil-2.9.0.post0.dist-info/top_level.txt
+343   : dadi       1093         /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_2/venv/lib/python3.12/site-packages/pip-24.0.dist-info/LICENSE.txt
+344   : dadi       10388        /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_2/venv/lib/python3.12/site-packages/pip-24.0.dist-info/AUTHORS.txt
+345   : dadi       4            /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_2/venv/lib/python3.12/site-packages/pip-24.0.dist-info/top_level.txt
+346   : dadi       125          /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_2/venv/lib/python3.12/site-packages/pip-24.0.dist-info/entry_points.txt
+347   : dadi       493          /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_2/venv/lib/python3.12/site-packages/pip/_vendor/vendor.txt
+348   : dadi       1060         /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_2/venv/lib64/python3.12/site-packages/Faker-35.0.0.dist-info/LICENSE.txt
+349   : dadi       6            /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_2/venv/lib64/python3.12/site-packages/Faker-35.0.0.dist-info/top_level.txt
+350   : dadi       110          /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_2/venv/lib64/python3.12/site-packages/Faker-35.0.0.dist-info/entry_points.txt
+351   : dadi       4            /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_2/venv/lib64/python3.12/site-packages/six-1.17.0.dist-info/top_level.txt
+352   : dadi       9            /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_2/venv/lib64/python3.12/site-packages/python_dateutil-2.9.0.post0.dist-info/top_level.txt
+353   : dadi       1093         /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_2/venv/lib64/python3.12/site-packages/pip-24.0.dist-info/LICENSE.txt
+354   : dadi       10388        /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_2/venv/lib64/python3.12/site-packages/pip-24.0.dist-info/AUTHORS.txt
+355   : dadi       4            /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_2/venv/lib64/python3.12/site-packages/pip-24.0.dist-info/top_level.txt
+356   : dadi       125          /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_2/venv/lib64/python3.12/site-packages/pip-24.0.dist-info/entry_points.txt
+357   : dadi       493          /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_2/venv/lib64/python3.12/site-packages/pip/_vendor/vendor.txt
+358   : dadi       170          /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_4/instructions.txt
+359   : dadi       402          /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_4/requirements.txt
+360   : dadi       1475         /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_4/env/lib/python3.12/site-packages/jinja2-3.1.5.dist-info/LICENSE.txt
+361   : dadi       58           /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_4/env/lib/python3.12/site-packages/jinja2-3.1.5.dist-info/entry_points.txt
+362   : dadi       11           /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_4/env/lib/python3.12/site-packages/SQLAlchemy-2.0.38.dist-info/top_level.txt
+363   : dadi       1475         /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_4/env/lib/python3.12/site-packages/flask-3.1.0.dist-info/LICENSE.txt
+364   : dadi       40           /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_4/env/lib/python3.12/site-packages/flask-3.1.0.dist-info/entry_points.txt
+365   : dadi       12           /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_4/env/lib/python3.12/site-packages/Flask_Login-0.6.3.dist-info/top_level.txt
+366   : dadi       9            /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_4/env/lib/python3.12/site-packages/psycopg2-2.9.10.dist-info/top_level.txt
+367   : dadi       1475         /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_4/env/lib/python3.12/site-packages/MarkupSafe-3.0.2.dist-info/LICENSE.txt
+368   : dadi       11           /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_4/env/lib/python3.12/site-packages/MarkupSafe-3.0.2.dist-info/top_level.txt
+369   : dadi       1093         /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_4/env/lib/python3.12/site-packages/urllib3-2.3.0.dist-info/licenses/LICENSE.txt
+370   : dadi       1054         /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_4/env/lib/python3.12/site-packages/blinker-1.9.0.dist-info/LICENSE.txt
+371   : dadi       1475         /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_4/env/lib/python3.12/site-packages/click-8.1.8.dist-info/LICENSE.txt
+372   : dadi       9            /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_4/env/lib/python3.12/site-packages/gunicorn-23.0.0.dist-info/top_level.txt
+373   : dadi       113          /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_4/env/lib/python3.12/site-packages/gunicorn-23.0.0.dist-info/entry_points.txt
+374   : dadi       19           /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_4/env/lib/python3.12/site-packages/charset_normalizer-3.4.1.dist-info/top_level.txt
+375   : dadi       65           /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_4/env/lib/python3.12/site-packages/charset_normalizer-3.4.1.dist-info/entry_points.txt
+376   : dadi       9            /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_4/env/lib/python3.12/site-packages/requests-2.32.3.dist-info/top_level.txt
+377   : dadi       8            /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_4/env/lib/python3.12/site-packages/certifi-2025.1.31.dist-info/top_level.txt
+378   : dadi       1475         /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_4/env/lib/python3.12/site-packages/itsdangerous-2.2.0.dist-info/LICENSE.txt
+379   : dadi       1475         /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_4/env/lib/python3.12/site-packages/werkzeug-3.1.3.dist-info/LICENSE.txt
+380   : dadi       8            /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_4/env/lib/python3.12/site-packages/mysqlclient-2.2.7.dist-info/top_level.txt
+381   : dadi       1093         /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_4/env/lib/python3.12/site-packages/pip-24.0.dist-info/LICENSE.txt
+382   : dadi       10388        /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_4/env/lib/python3.12/site-packages/pip-24.0.dist-info/AUTHORS.txt
+383   : dadi       4            /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_4/env/lib/python3.12/site-packages/pip-24.0.dist-info/top_level.txt
+384   : dadi       125          /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_4/env/lib/python3.12/site-packages/pip-24.0.dist-info/entry_points.txt
+385   : dadi       9            /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_4/env/lib/python3.12/site-packages/greenlet-3.1.1.dist-info/top_level.txt
+386   : dadi       493          /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_4/env/lib/python3.12/site-packages/pip/_vendor/vendor.txt
+387   : dadi       8239         /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_4/env/lib/python3.12/site-packages/sqlalchemy/dialects/type_migration_guidelines.txt
+388   : dadi       1475         /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_4/env/lib64/python3.12/site-packages/jinja2-3.1.5.dist-info/LICENSE.txt
+389   : dadi       58           /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_4/env/lib64/python3.12/site-packages/jinja2-3.1.5.dist-info/entry_points.txt
+390   : dadi       11           /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_4/env/lib64/python3.12/site-packages/SQLAlchemy-2.0.38.dist-info/top_level.txt
+391   : dadi       1475         /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_4/env/lib64/python3.12/site-packages/flask-3.1.0.dist-info/LICENSE.txt
+392   : dadi       40           /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_4/env/lib64/python3.12/site-packages/flask-3.1.0.dist-info/entry_points.txt
+393   : dadi       12           /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_4/env/lib64/python3.12/site-packages/Flask_Login-0.6.3.dist-info/top_level.txt
+394   : dadi       9            /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_4/env/lib64/python3.12/site-packages/psycopg2-2.9.10.dist-info/top_level.txt
+395   : dadi       1475         /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_4/env/lib64/python3.12/site-packages/MarkupSafe-3.0.2.dist-info/LICENSE.txt
+396   : dadi       11           /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_4/env/lib64/python3.12/site-packages/MarkupSafe-3.0.2.dist-info/top_level.txt
+397   : dadi       1093         /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_4/env/lib64/python3.12/site-packages/urllib3-2.3.0.dist-info/licenses/LICENSE.txt
+398   : dadi       1054         /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_4/env/lib64/python3.12/site-packages/blinker-1.9.0.dist-info/LICENSE.txt
+399   : dadi       1475         /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_4/env/lib64/python3.12/site-packages/click-8.1.8.dist-info/LICENSE.txt
+400   : dadi       9            /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_4/env/lib64/python3.12/site-packages/gunicorn-23.0.0.dist-info/top_level.txt
+401   : dadi       113          /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_4/env/lib64/python3.12/site-packages/gunicorn-23.0.0.dist-info/entry_points.txt
+402   : dadi       19           /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_4/env/lib64/python3.12/site-packages/charset_normalizer-3.4.1.dist-info/top_level.txt
+403   : dadi       65           /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_4/env/lib64/python3.12/site-packages/charset_normalizer-3.4.1.dist-info/entry_points.txt
+404   : dadi       9            /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_4/env/lib64/python3.12/site-packages/requests-2.32.3.dist-info/top_level.txt
+405   : dadi       8            /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_4/env/lib64/python3.12/site-packages/certifi-2025.1.31.dist-info/top_level.txt
+406   : dadi       1475         /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_4/env/lib64/python3.12/site-packages/itsdangerous-2.2.0.dist-info/LICENSE.txt
+407   : dadi       1475         /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_4/env/lib64/python3.12/site-packages/werkzeug-3.1.3.dist-info/LICENSE.txt
+408   : dadi       8            /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_4/env/lib64/python3.12/site-packages/mysqlclient-2.2.7.dist-info/top_level.txt
+409   : dadi       1093         /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_4/env/lib64/python3.12/site-packages/pip-24.0.dist-info/LICENSE.txt
+410   : dadi       10388        /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_4/env/lib64/python3.12/site-packages/pip-24.0.dist-info/AUTHORS.txt
+411   : dadi       4            /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_4/env/lib64/python3.12/site-packages/pip-24.0.dist-info/top_level.txt
+412   : dadi       125          /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_4/env/lib64/python3.12/site-packages/pip-24.0.dist-info/entry_points.txt
+413   : dadi       9            /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_4/env/lib64/python3.12/site-packages/greenlet-3.1.1.dist-info/top_level.txt
+414   : dadi       493          /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_4/env/lib64/python3.12/site-packages/pip/_vendor/vendor.txt
+415   : dadi       8239         /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_4/env/lib64/python3.12/site-packages/sqlalchemy/dialects/type_migration_guidelines.txt
+416   : dadi       9            /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_3/Submission/myenv/lib/python3.12/site-packages/tabulate-0.9.0.dist-info/top_level.txt
+417   : dadi       44           /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_3/Submission/myenv/lib/python3.12/site-packages/tabulate-0.9.0.dist-info/entry_points.txt
+418   : dadi       9            /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_3/Submission/myenv/lib/python3.12/site-packages/psycopg2_binary-2.9.10.dist-info/top_level.txt
+419   : dadi       1093         /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_3/Submission/myenv/lib/python3.12/site-packages/pip-24.0.dist-info/LICENSE.txt
+420   : dadi       10388        /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_3/Submission/myenv/lib/python3.12/site-packages/pip-24.0.dist-info/AUTHORS.txt
+421   : dadi       4            /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_3/Submission/myenv/lib/python3.12/site-packages/pip-24.0.dist-info/top_level.txt
+422   : dadi       125          /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_3/Submission/myenv/lib/python3.12/site-packages/pip-24.0.dist-info/entry_points.txt
+423   : dadi       493          /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_3/Submission/myenv/lib/python3.12/site-packages/pip/_vendor/vendor.txt
+424   : dadi       9            /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_3/Submission/myenv/lib64/python3.12/site-packages/tabulate-0.9.0.dist-info/top_level.txt
+425   : dadi       44           /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_3/Submission/myenv/lib64/python3.12/site-packages/tabulate-0.9.0.dist-info/entry_points.txt
+426   : dadi       9            /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_3/Submission/myenv/lib64/python3.12/site-packages/psycopg2_binary-2.9.10.dist-info/top_level.txt
+427   : dadi       1093         /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_3/Submission/myenv/lib64/python3.12/site-packages/pip-24.0.dist-info/LICENSE.txt
+428   : dadi       10388        /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_3/Submission/myenv/lib64/python3.12/site-packages/pip-24.0.dist-info/AUTHORS.txt
+429   : dadi       4            /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_3/Submission/myenv/lib64/python3.12/site-packages/pip-24.0.dist-info/top_level.txt
+430   : dadi       125          /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_3/Submission/myenv/lib64/python3.12/site-packages/pip-24.0.dist-info/entry_points.txt
+431   : dadi       493          /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_3/Submission/myenv/lib64/python3.12/site-packages/pip/_vendor/vendor.txt
+432   : dadi       9            /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_3/myenv/lib/python3.12/site-packages/tabulate-0.9.0.dist-info/top_level.txt
+433   : dadi       44           /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_3/myenv/lib/python3.12/site-packages/tabulate-0.9.0.dist-info/entry_points.txt
+434   : dadi       9            /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_3/myenv/lib/python3.12/site-packages/psycopg2_binary-2.9.10.dist-info/top_level.txt
+435   : dadi       1093         /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_3/myenv/lib/python3.12/site-packages/pip-24.0.dist-info/LICENSE.txt
+436   : dadi       10388        /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_3/myenv/lib/python3.12/site-packages/pip-24.0.dist-info/AUTHORS.txt
+437   : dadi       4            /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_3/myenv/lib/python3.12/site-packages/pip-24.0.dist-info/top_level.txt
+438   : dadi       125          /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_3/myenv/lib/python3.12/site-packages/pip-24.0.dist-info/entry_points.txt
+439   : dadi       493          /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_3/myenv/lib/python3.12/site-packages/pip/_vendor/vendor.txt
+440   : dadi       9            /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_3/myenv/lib64/python3.12/site-packages/tabulate-0.9.0.dist-info/top_level.txt
+441   : dadi       44           /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_3/myenv/lib64/python3.12/site-packages/tabulate-0.9.0.dist-info/entry_points.txt
+442   : dadi       9            /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_3/myenv/lib64/python3.12/site-packages/psycopg2_binary-2.9.10.dist-info/top_level.txt
+443   : dadi       1093         /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_3/myenv/lib64/python3.12/site-packages/pip-24.0.dist-info/LICENSE.txt
+444   : dadi       10388        /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_3/myenv/lib64/python3.12/site-packages/pip-24.0.dist-info/AUTHORS.txt
+445   : dadi       4            /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_3/myenv/lib64/python3.12/site-packages/pip-24.0.dist-info/top_level.txt
+446   : dadi       125          /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_3/myenv/lib64/python3.12/site-packages/pip-24.0.dist-info/entry_points.txt
+447   : dadi       493          /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/Assignment_3/myenv/lib64/python3.12/site-packages/pip/_vendor/vendor.txt
+448   : dadi       4            /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/env/lib/python3.12/site-packages/pillow-11.1.0.dist-info/top_level.txt
+449   : dadi       53           /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/env/lib/python3.12/site-packages/pygments-2.19.1.dist-info/entry_points.txt
+450   : dadi       47755        /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/env/lib/python3.12/site-packages/numpy-2.2.4.dist-info/LICENSE.txt
+451   : dadi       172          /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/env/lib/python3.12/site-packages/numpy-2.2.4.dist-info/entry_points.txt
+452   : dadi       1093         /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/env/lib/python3.12/site-packages/urllib3-2.3.0.dist-info/licenses/LICENSE.txt
+453   : dadi       1475         /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/env/lib/python3.12/site-packages/click-8.1.8.dist-info/LICENSE.txt
+454   : dadi       10           /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/env/lib/python3.12/site-packages/aiosignal-1.3.2.dist-info/top_level.txt
+455   : dadi       58           /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/env/lib/python3.12/site-packages/markdown_it_py-3.0.0.dist-info/entry_points.txt
+456   : dadi       5            /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/env/lib/python3.12/site-packages/yarl-1.18.3.dist-info/top_level.txt
+457   : dadi       19           /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/env/lib/python3.12/site-packages/charset_normalizer-3.4.1.dist-info/top_level.txt
+458   : dadi       65           /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/env/lib/python3.12/site-packages/charset_normalizer-3.4.1.dist-info/entry_points.txt
+459   : dadi       9            /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/env/lib/python3.12/site-packages/tabulate-0.9.0.dist-info/top_level.txt
+460   : dadi       44           /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/env/lib/python3.12/site-packages/tabulate-0.9.0.dist-info/entry_points.txt
+461   : dadi       9            /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/env/lib/python3.12/site-packages/requests-2.32.3.dist-info/top_level.txt
+462   : dadi       1066         /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/env/lib/python3.12/site-packages/eval_type_backport-0.2.2.dist-info/LICENSE.txt
+463   : dadi       19           /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/env/lib/python3.12/site-packages/eval_type_backport-0.2.2.dist-info/top_level.txt
+464   : dadi       11           /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/env/lib/python3.12/site-packages/frozenlist-1.5.0.dist-info/top_level.txt
+465   : dadi       8            /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/env/lib/python3.12/site-packages/certifi-2025.1.31.dist-info/top_level.txt
+466   : dadi       57           /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/env/lib/python3.12/site-packages/typer-0.15.2.dist-info/entry_points.txt
+467   : dadi       967          /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/env/lib/python3.12/site-packages/numpy/_core/tests/data/umath-validation-set-README.txt
+468   : dadi       1018         /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/env/lib/python3.12/site-packages/numpy/_core/include/numpy/random/LICENSE.txt
+469   : dadi       3405         /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/env/lib/python3.12/site-packages/numpy/ma/API_CHANGES.txt
+470   : dadi       588          /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/env/lib/python3.12/site-packages/aiohttp-3.11.14.dist-info/LICENSE.txt
+471   : dadi       8            /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/env/lib/python3.12/site-packages/aiohttp-3.11.14.dist-info/top_level.txt
+472   : dadi       1093         /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/env/lib/python3.12/site-packages/pip-24.0.dist-info/LICENSE.txt
+473   : dadi       10388        /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/env/lib/python3.12/site-packages/pip-24.0.dist-info/AUTHORS.txt
+474   : dadi       4            /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/env/lib/python3.12/site-packages/pip-24.0.dist-info/top_level.txt
+475   : dadi       125          /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/env/lib/python3.12/site-packages/pip-24.0.dist-info/entry_points.txt
+476   : dadi       12           /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/env/lib/python3.12/site-packages/shellingham-1.5.4.dist-info/top_level.txt
+477   : dadi       110423       /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/env/lib/python3.12/site-packages/pyarrow-19.0.1.dist-info/LICENSE.txt
+478   : dadi       3032         /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/env/lib/python3.12/site-packages/pyarrow-19.0.1.dist-info/NOTICE.txt
+479   : dadi       18           /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/env/lib/python3.12/site-packages/pyarrow-19.0.1.dist-info/top_level.txt
+480   : dadi       50           /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/env/lib/python3.12/site-packages/together-1.5.2.dist-info/entry_points.txt
+481   : dadi       10           /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/env/lib/python3.12/site-packages/propcache-0.3.1.dist-info/top_level.txt
+482   : dadi       10           /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/env/lib/python3.12/site-packages/multidict-6.2.0.dist-info/top_level.txt
+483   : dadi       855          /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/env/lib/python3.12/site-packages/pyarrow/src/arrow/python/CMakeLists.txt
+484   : dadi       837          /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/env/lib/python3.12/site-packages/pyarrow/src/arrow/python/vendored/CMakeLists.txt
+485   : dadi       493          /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/env/lib/python3.12/site-packages/pip/_vendor/vendor.txt
+486   : dadi       5            /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/env/lib/python3.12/site-packages/tqdm-4.67.1.dist-info/top_level.txt
+487   : dadi       39           /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/env/lib/python3.12/site-packages/tqdm-4.67.1.dist-info/entry_points.txt
+488   : dadi       4            /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/env/lib64/python3.12/site-packages/pillow-11.1.0.dist-info/top_level.txt
+489   : dadi       53           /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/env/lib64/python3.12/site-packages/pygments-2.19.1.dist-info/entry_points.txt
+490   : dadi       47755        /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/env/lib64/python3.12/site-packages/numpy-2.2.4.dist-info/LICENSE.txt
+491   : dadi       172          /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/env/lib64/python3.12/site-packages/numpy-2.2.4.dist-info/entry_points.txt
+492   : dadi       1093         /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/env/lib64/python3.12/site-packages/urllib3-2.3.0.dist-info/licenses/LICENSE.txt
+493   : dadi       1475         /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/env/lib64/python3.12/site-packages/click-8.1.8.dist-info/LICENSE.txt
+494   : dadi       10           /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/env/lib64/python3.12/site-packages/aiosignal-1.3.2.dist-info/top_level.txt
+495   : dadi       58           /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/env/lib64/python3.12/site-packages/markdown_it_py-3.0.0.dist-info/entry_points.txt
+496   : dadi       5            /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/env/lib64/python3.12/site-packages/yarl-1.18.3.dist-info/top_level.txt
+497   : dadi       19           /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/env/lib64/python3.12/site-packages/charset_normalizer-3.4.1.dist-info/top_level.txt
+498   : dadi       65           /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/env/lib64/python3.12/site-packages/charset_normalizer-3.4.1.dist-info/entry_points.txt
+499   : dadi       9            /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/env/lib64/python3.12/site-packages/tabulate-0.9.0.dist-info/top_level.txt
+500   : dadi       44           /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/env/lib64/python3.12/site-packages/tabulate-0.9.0.dist-info/entry_points.txt
+501   : dadi       9            /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/env/lib64/python3.12/site-packages/requests-2.32.3.dist-info/top_level.txt
+502   : dadi       1066         /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/env/lib64/python3.12/site-packages/eval_type_backport-0.2.2.dist-info/LICENSE.txt
+503   : dadi       19           /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/env/lib64/python3.12/site-packages/eval_type_backport-0.2.2.dist-info/top_level.txt
+504   : dadi       11           /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/env/lib64/python3.12/site-packages/frozenlist-1.5.0.dist-info/top_level.txt
+505   : dadi       8            /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/env/lib64/python3.12/site-packages/certifi-2025.1.31.dist-info/top_level.txt
+506   : dadi       57           /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/env/lib64/python3.12/site-packages/typer-0.15.2.dist-info/entry_points.txt
+507   : dadi       967          /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/env/lib64/python3.12/site-packages/numpy/_core/tests/data/umath-validation-set-README.txt
+508   : dadi       1018         /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/env/lib64/python3.12/site-packages/numpy/_core/include/numpy/random/LICENSE.txt
+509   : dadi       3405         /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/env/lib64/python3.12/site-packages/numpy/ma/API_CHANGES.txt
+510   : dadi       588          /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/env/lib64/python3.12/site-packages/aiohttp-3.11.14.dist-info/LICENSE.txt
+511   : dadi       8            /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/env/lib64/python3.12/site-packages/aiohttp-3.11.14.dist-info/top_level.txt
+512   : dadi       1093         /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/env/lib64/python3.12/site-packages/pip-24.0.dist-info/LICENSE.txt
+513   : dadi       10388        /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/env/lib64/python3.12/site-packages/pip-24.0.dist-info/AUTHORS.txt
+514   : dadi       4            /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/env/lib64/python3.12/site-packages/pip-24.0.dist-info/top_level.txt
+515   : dadi       125          /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/env/lib64/python3.12/site-packages/pip-24.0.dist-info/entry_points.txt
+516   : dadi       12           /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/env/lib64/python3.12/site-packages/shellingham-1.5.4.dist-info/top_level.txt
+517   : dadi       110423       /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/env/lib64/python3.12/site-packages/pyarrow-19.0.1.dist-info/LICENSE.txt
+518   : dadi       3032         /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/env/lib64/python3.12/site-packages/pyarrow-19.0.1.dist-info/NOTICE.txt
+519   : dadi       18           /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/env/lib64/python3.12/site-packages/pyarrow-19.0.1.dist-info/top_level.txt
+520   : dadi       50           /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/env/lib64/python3.12/site-packages/together-1.5.2.dist-info/entry_points.txt
+521   : dadi       10           /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/env/lib64/python3.12/site-packages/propcache-0.3.1.dist-info/top_level.txt
+522   : dadi       10           /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/env/lib64/python3.12/site-packages/multidict-6.2.0.dist-info/top_level.txt
+523   : dadi       855          /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/env/lib64/python3.12/site-packages/pyarrow/src/arrow/python/CMakeLists.txt
+524   : dadi       837          /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/env/lib64/python3.12/site-packages/pyarrow/src/arrow/python/vendored/CMakeLists.txt
+525   : dadi       493          /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/env/lib64/python3.12/site-packages/pip/_vendor/vendor.txt
+526   : dadi       5            /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/env/lib64/python3.12/site-packages/tqdm-4.67.1.dist-info/top_level.txt
+527   : dadi       39           /home/dadi/Desktop/Labs_6th sem/DBMS_Lab/env/lib64/python3.12/site-packages/tqdm-4.67.1.dist-info/entry_points.txt
+528   : dadi       5543         /home/dadi/Desktop/networks/grok/documentation.txt
+529   : dadi       18777        /home/dadi/Desktop/networks/grok/input.txt
+530   : dadi       16384        /home/dadi/Desktop/networks/grok/output.txt
+531   : dadi       33           /home/dadi/Desktop/Placement_Preparation/schedule.txt
+532   : dadi       47931        /home/dadi/Desktop/Project/names.txt
+533   : dadi       47491        /home/dadi/Desktop/Project/names2.txt
+534   : dadi       1492         /home/dadi/Desktop/Project/prank.txt
+535   : dadi       47931        /home/dadi/Desktop/Project/names1.txt
+536   : dadi       47931        /home/dadi/Desktop/Project/names3.txt
+537   : dadi       36334        /home/dadi/Desktop/Project/names_v1.txt
+538   : dadi       28315        /home/dadi/Desktop/Project/names_v2.txt
+539   : dadi       4            /home/dadi/Desktop/Project/venv/lib/python3.12/site-packages/pillow-11.2.0.dist-info/top_level.txt
+540   : dadi       10           /home/dadi/Desktop/Project/venv/lib/python3.12/site-packages/multidict-6.3.0.dist-info/top_level.txt
+541   : dadi       53           /home/dadi/Desktop/Project/venv/lib/python3.12/site-packages/pygments-2.19.1.dist-info/entry_points.txt
+542   : dadi       8            /home/dadi/Desktop/Project/venv/lib/python3.12/site-packages/aiohttp-3.11.15.dist-info/top_level.txt
+543   : dadi       588          /home/dadi/Desktop/Project/venv/lib/python3.12/site-packages/aiohttp-3.11.15.dist-info/licenses/LICENSE.txt
+544   : dadi       47755        /home/dadi/Desktop/Project/venv/lib/python3.12/site-packages/numpy-2.2.4.dist-info/LICENSE.txt
+545   : dadi       172          /home/dadi/Desktop/Project/venv/lib/python3.12/site-packages/numpy-2.2.4.dist-info/entry_points.txt
+546   : dadi       1093         /home/dadi/Desktop/Project/venv/lib/python3.12/site-packages/urllib3-2.3.0.dist-info/licenses/LICENSE.txt
+547   : dadi       1475         /home/dadi/Desktop/Project/venv/lib/python3.12/site-packages/click-8.1.8.dist-info/LICENSE.txt
+548   : dadi       10           /home/dadi/Desktop/Project/venv/lib/python3.12/site-packages/aiosignal-1.3.2.dist-info/top_level.txt
+549   : dadi       58           /home/dadi/Desktop/Project/venv/lib/python3.12/site-packages/markdown_it_py-3.0.0.dist-info/entry_points.txt
+550   : dadi       5            /home/dadi/Desktop/Project/venv/lib/python3.12/site-packages/yarl-1.18.3.dist-info/top_level.txt
+551   : dadi       19           /home/dadi/Desktop/Project/venv/lib/python3.12/site-packages/charset_normalizer-3.4.1.dist-info/top_level.txt
+552   : dadi       65           /home/dadi/Desktop/Project/venv/lib/python3.12/site-packages/charset_normalizer-3.4.1.dist-info/entry_points.txt
+553   : dadi       9            /home/dadi/Desktop/Project/venv/lib/python3.12/site-packages/tabulate-0.9.0.dist-info/top_level.txt
+554   : dadi       44           /home/dadi/Desktop/Project/venv/lib/python3.12/site-packages/tabulate-0.9.0.dist-info/entry_points.txt
+555   : dadi       9            /home/dadi/Desktop/Project/venv/lib/python3.12/site-packages/requests-2.32.3.dist-info/top_level.txt
+556   : dadi       1066         /home/dadi/Desktop/Project/venv/lib/python3.12/site-packages/eval_type_backport-0.2.2.dist-info/LICENSE.txt
+557   : dadi       19           /home/dadi/Desktop/Project/venv/lib/python3.12/site-packages/eval_type_backport-0.2.2.dist-info/top_level.txt
+558   : dadi       11           /home/dadi/Desktop/Project/venv/lib/python3.12/site-packages/frozenlist-1.5.0.dist-info/top_level.txt
+559   : dadi       8            /home/dadi/Desktop/Project/venv/lib/python3.12/site-packages/certifi-2025.1.31.dist-info/top_level.txt
+560   : dadi       57           /home/dadi/Desktop/Project/venv/lib/python3.12/site-packages/typer-0.15.2.dist-info/entry_points.txt
+561   : dadi       967          /home/dadi/Desktop/Project/venv/lib/python3.12/site-packages/numpy/_core/tests/data/umath-validation-set-README.txt
+562   : dadi       1018         /home/dadi/Desktop/Project/venv/lib/python3.12/site-packages/numpy/_core/include/numpy/random/LICENSE.txt
+563   : dadi       3405         /home/dadi/Desktop/Project/venv/lib/python3.12/site-packages/numpy/ma/API_CHANGES.txt
+564   : dadi       50           /home/dadi/Desktop/Project/venv/lib/python3.12/site-packages/together-1.5.4.dist-info/entry_points.txt
+565   : dadi       1093         /home/dadi/Desktop/Project/venv/lib/python3.12/site-packages/pip-24.0.dist-info/LICENSE.txt
+566   : dadi       10388        /home/dadi/Desktop/Project/venv/lib/python3.12/site-packages/pip-24.0.dist-info/AUTHORS.txt
+567   : dadi       4            /home/dadi/Desktop/Project/venv/lib/python3.12/site-packages/pip-24.0.dist-info/top_level.txt
+568   : dadi       125          /home/dadi/Desktop/Project/venv/lib/python3.12/site-packages/pip-24.0.dist-info/entry_points.txt
+569   : dadi       12           /home/dadi/Desktop/Project/venv/lib/python3.12/site-packages/shellingham-1.5.4.dist-info/top_level.txt
+570   : dadi       110423       /home/dadi/Desktop/Project/venv/lib/python3.12/site-packages/pyarrow-19.0.1.dist-info/LICENSE.txt
+571   : dadi       3032         /home/dadi/Desktop/Project/venv/lib/python3.12/site-packages/pyarrow-19.0.1.dist-info/NOTICE.txt
+572   : dadi       18           /home/dadi/Desktop/Project/venv/lib/python3.12/site-packages/pyarrow-19.0.1.dist-info/top_level.txt
+573   : dadi       10           /home/dadi/Desktop/Project/venv/lib/python3.12/site-packages/propcache-0.3.1.dist-info/top_level.txt
+574   : dadi       855          /home/dadi/Desktop/Project/venv/lib/python3.12/site-packages/pyarrow/src/arrow/python/CMakeLists.txt
+575   : dadi       837          /home/dadi/Desktop/Project/venv/lib/python3.12/site-packages/pyarrow/src/arrow/python/vendored/CMakeLists.txt
+576   : dadi       493          /home/dadi/Desktop/Project/venv/lib/python3.12/site-packages/pip/_vendor/vendor.txt
+577   : dadi       5            /home/dadi/Desktop/Project/venv/lib/python3.12/site-packages/tqdm-4.67.1.dist-info/top_level.txt
+578   : dadi       39           /home/dadi/Desktop/Project/venv/lib/python3.12/site-packages/tqdm-4.67.1.dist-info/entry_points.txt
+579   : dadi       4            /home/dadi/Desktop/Project/venv/lib64/python3.12/site-packages/pillow-11.2.0.dist-info/top_level.txt
+580   : dadi       10           /home/dadi/Desktop/Project/venv/lib64/python3.12/site-packages/multidict-6.3.0.dist-info/top_level.txt
+581   : dadi       53           /home/dadi/Desktop/Project/venv/lib64/python3.12/site-packages/pygments-2.19.1.dist-info/entry_points.txt
+582   : dadi       8            /home/dadi/Desktop/Project/venv/lib64/python3.12/site-packages/aiohttp-3.11.15.dist-info/top_level.txt
+583   : dadi       588          /home/dadi/Desktop/Project/venv/lib64/python3.12/site-packages/aiohttp-3.11.15.dist-info/licenses/LICENSE.txt
+584   : dadi       47755        /home/dadi/Desktop/Project/venv/lib64/python3.12/site-packages/numpy-2.2.4.dist-info/LICENSE.txt
+585   : dadi       172          /home/dadi/Desktop/Project/venv/lib64/python3.12/site-packages/numpy-2.2.4.dist-info/entry_points.txt
+586   : dadi       1093         /home/dadi/Desktop/Project/venv/lib64/python3.12/site-packages/urllib3-2.3.0.dist-info/licenses/LICENSE.txt
+587   : dadi       1475         /home/dadi/Desktop/Project/venv/lib64/python3.12/site-packages/click-8.1.8.dist-info/LICENSE.txt
+588   : dadi       10           /home/dadi/Desktop/Project/venv/lib64/python3.12/site-packages/aiosignal-1.3.2.dist-info/top_level.txt
+589   : dadi       58           /home/dadi/Desktop/Project/venv/lib64/python3.12/site-packages/markdown_it_py-3.0.0.dist-info/entry_points.txt
+590   : dadi       5            /home/dadi/Desktop/Project/venv/lib64/python3.12/site-packages/yarl-1.18.3.dist-info/top_level.txt
+591   : dadi       19           /home/dadi/Desktop/Project/venv/lib64/python3.12/site-packages/charset_normalizer-3.4.1.dist-info/top_level.txt
+592   : dadi       65           /home/dadi/Desktop/Project/venv/lib64/python3.12/site-packages/charset_normalizer-3.4.1.dist-info/entry_points.txt
+593   : dadi       9            /home/dadi/Desktop/Project/venv/lib64/python3.12/site-packages/tabulate-0.9.0.dist-info/top_level.txt
+594   : dadi       44           /home/dadi/Desktop/Project/venv/lib64/python3.12/site-packages/tabulate-0.9.0.dist-info/entry_points.txt
+595   : dadi       9            /home/dadi/Desktop/Project/venv/lib64/python3.12/site-packages/requests-2.32.3.dist-info/top_level.txt
+596   : dadi       1066         /home/dadi/Desktop/Project/venv/lib64/python3.12/site-packages/eval_type_backport-0.2.2.dist-info/LICENSE.txt
+597   : dadi       19           /home/dadi/Desktop/Project/venv/lib64/python3.12/site-packages/eval_type_backport-0.2.2.dist-info/top_level.txt
+598   : dadi       11           /home/dadi/Desktop/Project/venv/lib64/python3.12/site-packages/frozenlist-1.5.0.dist-info/top_level.txt
+599   : dadi       8            /home/dadi/Desktop/Project/venv/lib64/python3.12/site-packages/certifi-2025.1.31.dist-info/top_level.txt
+600   : dadi       57           /home/dadi/Desktop/Project/venv/lib64/python3.12/site-packages/typer-0.15.2.dist-info/entry_points.txt
+601   : dadi       967          /home/dadi/Desktop/Project/venv/lib64/python3.12/site-packages/numpy/_core/tests/data/umath-validation-set-README.txt
+602   : dadi       1018         /home/dadi/Desktop/Project/venv/lib64/python3.12/site-packages/numpy/_core/include/numpy/random/LICENSE.txt
+603   : dadi       3405         /home/dadi/Desktop/Project/venv/lib64/python3.12/site-packages/numpy/ma/API_CHANGES.txt
+604   : dadi       50           /home/dadi/Desktop/Project/venv/lib64/python3.12/site-packages/together-1.5.4.dist-info/entry_points.txt
+605   : dadi       1093         /home/dadi/Desktop/Project/venv/lib64/python3.12/site-packages/pip-24.0.dist-info/LICENSE.txt
+606   : dadi       10388        /home/dadi/Desktop/Project/venv/lib64/python3.12/site-packages/pip-24.0.dist-info/AUTHORS.txt
+607   : dadi       4            /home/dadi/Desktop/Project/venv/lib64/python3.12/site-packages/pip-24.0.dist-info/top_level.txt
+608   : dadi       125          /home/dadi/Desktop/Project/venv/lib64/python3.12/site-packages/pip-24.0.dist-info/entry_points.txt
+609   : dadi       12           /home/dadi/Desktop/Project/venv/lib64/python3.12/site-packages/shellingham-1.5.4.dist-info/top_level.txt
+610   : dadi       110423       /home/dadi/Desktop/Project/venv/lib64/python3.12/site-packages/pyarrow-19.0.1.dist-info/LICENSE.txt
+611   : dadi       3032         /home/dadi/Desktop/Project/venv/lib64/python3.12/site-packages/pyarrow-19.0.1.dist-info/NOTICE.txt
+612   : dadi       18           /home/dadi/Desktop/Project/venv/lib64/python3.12/site-packages/pyarrow-19.0.1.dist-info/top_level.txt
+613   : dadi       10           /home/dadi/Desktop/Project/venv/lib64/python3.12/site-packages/propcache-0.3.1.dist-info/top_level.txt
+614   : dadi       855          /home/dadi/Desktop/Project/venv/lib64/python3.12/site-packages/pyarrow/src/arrow/python/CMakeLists.txt
+615   : dadi       837          /home/dadi/Desktop/Project/venv/lib64/python3.12/site-packages/pyarrow/src/arrow/python/vendored/CMakeLists.txt
+616   : dadi       493          /home/dadi/Desktop/Project/venv/lib64/python3.12/site-packages/pip/_vendor/vendor.txt
+617   : dadi       5            /home/dadi/Desktop/Project/venv/lib64/python3.12/site-packages/tqdm-4.67.1.dist-info/top_level.txt
+618   : dadi       39           /home/dadi/Desktop/Project/venv/lib64/python3.12/site-packages/tqdm-4.67.1.dist-info/entry_points.txt
+619   : dadi       26444        /home/dadi/Desktop/Project/names_v3.txt
+620   : dadi       1015         /home/dadi/Desktop/assignment/A2_22CS10020/Score.txt
+621   : dadi       506          /home/dadi/Desktop/assignment/A1_22CS10020/A1_2UV0.txt
+622   : dadi       660          /home/dadi/Desktop/assignment/A1_22CS10020/README.txt
+623   : dadi       2048         /home/dadi/Desktop/Projects_Demo/flick/adjectives.txt
+624   : dadi       4045         /home/dadi/Desktop/Projects_Demo/NGO_Management_system/requirements.txt
+625   : dadi       14           /home/dadi/Desktop/Projects_Demo/NGO_Management_system/env/lib/python3.12/site-packages/Flask_Migrate-4.1.0.dist-info/top_level.txt
+626   : dadi       1475         /home/dadi/Desktop/Projects_Demo/NGO_Management_system/env/lib/python3.12/site-packages/jinja2-3.1.5.dist-info/LICENSE.txt
+627   : dadi       58           /home/dadi/Desktop/Projects_Demo/NGO_Management_system/env/lib/python3.12/site-packages/jinja2-3.1.5.dist-info/entry_points.txt
+628   : dadi       11           /home/dadi/Desktop/Projects_Demo/NGO_Management_system/env/lib/python3.12/site-packages/SQLAlchemy-2.0.38.dist-info/top_level.txt
+629   : dadi       1475         /home/dadi/Desktop/Projects_Demo/NGO_Management_system/env/lib/python3.12/site-packages/flask-3.1.0.dist-info/LICENSE.txt
+630   : dadi       40           /home/dadi/Desktop/Projects_Demo/NGO_Management_system/env/lib/python3.12/site-packages/flask-3.1.0.dist-info/entry_points.txt
+631   : dadi       12           /home/dadi/Desktop/Projects_Demo/NGO_Management_system/env/lib/python3.12/site-packages/Flask_Login-0.6.3.dist-info/top_level.txt
+632   : dadi       7            /home/dadi/Desktop/Projects_Demo/NGO_Management_system/env/lib/python3.12/site-packages/tzdata-2025.1.dist-info/top_level.txt
+633   : dadi       1475         /home/dadi/Desktop/Projects_Demo/NGO_Management_system/env/lib/python3.12/site-packages/MarkupSafe-3.0.2.dist-info/LICENSE.txt
+634   : dadi       11           /home/dadi/Desktop/Projects_Demo/NGO_Management_system/env/lib/python3.12/site-packages/MarkupSafe-3.0.2.dist-info/top_level.txt
+635   : dadi       1093         /home/dadi/Desktop/Projects_Demo/NGO_Management_system/env/lib/python3.12/site-packages/urllib3-2.3.0.dist-info/licenses/LICENSE.txt
+636   : dadi       5            /home/dadi/Desktop/Projects_Demo/NGO_Management_system/env/lib/python3.12/site-packages/Mako-1.3.9.dist-info/top_level.txt
+637   : dadi       512          /home/dadi/Desktop/Projects_Demo/NGO_Management_system/env/lib/python3.12/site-packages/Mako-1.3.9.dist-info/entry_points.txt
+638   : dadi       1054         /home/dadi/Desktop/Projects_Demo/NGO_Management_system/env/lib/python3.12/site-packages/blinker-1.9.0.dist-info/LICENSE.txt
+639   : dadi       1475         /home/dadi/Desktop/Projects_Demo/NGO_Management_system/env/lib/python3.12/site-packages/click-8.1.8.dist-info/LICENSE.txt
+640   : dadi       1493         /home/dadi/Desktop/Projects_Demo/NGO_Management_system/env/lib/python3.12/site-packages/flask_mail-0.10.0.dist-info/LICENSE.txt
+641   : dadi       19           /home/dadi/Desktop/Projects_Demo/NGO_Management_system/env/lib/python3.12/site-packages/charset_normalizer-3.4.1.dist-info/top_level.txt
+642   : dadi       65           /home/dadi/Desktop/Projects_Demo/NGO_Management_system/env/lib/python3.12/site-packages/charset_normalizer-3.4.1.dist-info/entry_points.txt
+643   : dadi       1060         /home/dadi/Desktop/Projects_Demo/NGO_Management_system/env/lib/python3.12/site-packages/Faker-36.1.1.dist-info/LICENSE.txt
+644   : dadi       6            /home/dadi/Desktop/Projects_Demo/NGO_Management_system/env/lib/python3.12/site-packages/Faker-36.1.1.dist-info/top_level.txt
+645   : dadi       110          /home/dadi/Desktop/Projects_Demo/NGO_Management_system/env/lib/python3.12/site-packages/Faker-36.1.1.dist-info/entry_points.txt
+646   : dadi       9            /home/dadi/Desktop/Projects_Demo/NGO_Management_system/env/lib/python3.12/site-packages/requests-2.32.3.dist-info/top_level.txt
+647   : dadi       6            /home/dadi/Desktop/Projects_Demo/NGO_Management_system/env/lib/python3.12/site-packages/pyotp-2.9.0.dist-info/top_level.txt
+648   : dadi       8            /home/dadi/Desktop/Projects_Demo/NGO_Management_system/env/lib/python3.12/site-packages/certifi-2025.1.31.dist-info/top_level.txt
+649   : dadi       8            /home/dadi/Desktop/Projects_Demo/NGO_Management_system/env/lib/python3.12/site-packages/alembic-1.14.1.dist-info/top_level.txt
+650   : dadi       48           /home/dadi/Desktop/Projects_Demo/NGO_Management_system/env/lib/python3.12/site-packages/alembic-1.14.1.dist-info/entry_points.txt
+651   : dadi       1475         /home/dadi/Desktop/Projects_Demo/NGO_Management_system/env/lib/python3.12/site-packages/itsdangerous-2.2.0.dist-info/LICENSE.txt
+652   : dadi       1475         /home/dadi/Desktop/Projects_Demo/NGO_Management_system/env/lib/python3.12/site-packages/werkzeug-3.1.3.dist-info/LICENSE.txt
+653   : dadi       8            /home/dadi/Desktop/Projects_Demo/NGO_Management_system/env/lib/python3.12/site-packages/mysqlclient-2.2.7.dist-info/top_level.txt
+654   : dadi       1093         /home/dadi/Desktop/Projects_Demo/NGO_Management_system/env/lib/python3.12/site-packages/pip-24.0.dist-info/LICENSE.txt
+655   : dadi       10388        /home/dadi/Desktop/Projects_Demo/NGO_Management_system/env/lib/python3.12/site-packages/pip-24.0.dist-info/AUTHORS.txt
+656   : dadi       4            /home/dadi/Desktop/Projects_Demo/NGO_Management_system/env/lib/python3.12/site-packages/pip-24.0.dist-info/top_level.txt
+657   : dadi       125          /home/dadi/Desktop/Projects_Demo/NGO_Management_system/env/lib/python3.12/site-packages/pip-24.0.dist-info/entry_points.txt
+658   : dadi       9            /home/dadi/Desktop/Projects_Demo/NGO_Management_system/env/lib/python3.12/site-packages/greenlet-3.1.1.dist-info/top_level.txt
+659   : dadi       493          /home/dadi/Desktop/Projects_Demo/NGO_Management_system/env/lib/python3.12/site-packages/pip/_vendor/vendor.txt
+660   : dadi       8239         /home/dadi/Desktop/Projects_Demo/NGO_Management_system/env/lib/python3.12/site-packages/sqlalchemy/dialects/type_migration_guidelines.txt
+661   : dadi       14           /home/dadi/Desktop/Projects_Demo/NGO_Management_system/env/lib64/python3.12/site-packages/Flask_Migrate-4.1.0.dist-info/top_level.txt
+662   : dadi       1475         /home/dadi/Desktop/Projects_Demo/NGO_Management_system/env/lib64/python3.12/site-packages/jinja2-3.1.5.dist-info/LICENSE.txt
+663   : dadi       58           /home/dadi/Desktop/Projects_Demo/NGO_Management_system/env/lib64/python3.12/site-packages/jinja2-3.1.5.dist-info/entry_points.txt
+664   : dadi       11           /home/dadi/Desktop/Projects_Demo/NGO_Management_system/env/lib64/python3.12/site-packages/SQLAlchemy-2.0.38.dist-info/top_level.txt
+665   : dadi       1475         /home/dadi/Desktop/Projects_Demo/NGO_Management_system/env/lib64/python3.12/site-packages/flask-3.1.0.dist-info/LICENSE.txt
+666   : dadi       40           /home/dadi/Desktop/Projects_Demo/NGO_Management_system/env/lib64/python3.12/site-packages/flask-3.1.0.dist-info/entry_points.txt
+667   : dadi       12           /home/dadi/Desktop/Projects_Demo/NGO_Management_system/env/lib64/python3.12/site-packages/Flask_Login-0.6.3.dist-info/top_level.txt
+668   : dadi       7            /home/dadi/Desktop/Projects_Demo/NGO_Management_system/env/lib64/python3.12/site-packages/tzdata-2025.1.dist-info/top_level.txt
+669   : dadi       1475         /home/dadi/Desktop/Projects_Demo/NGO_Management_system/env/lib64/python3.12/site-packages/MarkupSafe-3.0.2.dist-info/LICENSE.txt
+670   : dadi       11           /home/dadi/Desktop/Projects_Demo/NGO_Management_system/env/lib64/python3.12/site-packages/MarkupSafe-3.0.2.dist-info/top_level.txt
+671   : dadi       1093         /home/dadi/Desktop/Projects_Demo/NGO_Management_system/env/lib64/python3.12/site-packages/urllib3-2.3.0.dist-info/licenses/LICENSE.txt
+672   : dadi       5            /home/dadi/Desktop/Projects_Demo/NGO_Management_system/env/lib64/python3.12/site-packages/Mako-1.3.9.dist-info/top_level.txt
+673   : dadi       512          /home/dadi/Desktop/Projects_Demo/NGO_Management_system/env/lib64/python3.12/site-packages/Mako-1.3.9.dist-info/entry_points.txt
+674   : dadi       1054         /home/dadi/Desktop/Projects_Demo/NGO_Management_system/env/lib64/python3.12/site-packages/blinker-1.9.0.dist-info/LICENSE.txt
+675   : dadi       1475         /home/dadi/Desktop/Projects_Demo/NGO_Management_system/env/lib64/python3.12/site-packages/click-8.1.8.dist-info/LICENSE.txt
+676   : dadi       1493         /home/dadi/Desktop/Projects_Demo/NGO_Management_system/env/lib64/python3.12/site-packages/flask_mail-0.10.0.dist-info/LICENSE.txt
+677   : dadi       19           /home/dadi/Desktop/Projects_Demo/NGO_Management_system/env/lib64/python3.12/site-packages/charset_normalizer-3.4.1.dist-info/top_level.txt
+678   : dadi       65           /home/dadi/Desktop/Projects_Demo/NGO_Management_system/env/lib64/python3.12/site-packages/charset_normalizer-3.4.1.dist-info/entry_points.txt
+679   : dadi       1060         /home/dadi/Desktop/Projects_Demo/NGO_Management_system/env/lib64/python3.12/site-packages/Faker-36.1.1.dist-info/LICENSE.txt
+680   : dadi       6            /home/dadi/Desktop/Projects_Demo/NGO_Management_system/env/lib64/python3.12/site-packages/Faker-36.1.1.dist-info/top_level.txt
+681   : dadi       110          /home/dadi/Desktop/Projects_Demo/NGO_Management_system/env/lib64/python3.12/site-packages/Faker-36.1.1.dist-info/entry_points.txt
+682   : dadi       9            /home/dadi/Desktop/Projects_Demo/NGO_Management_system/env/lib64/python3.12/site-packages/requests-2.32.3.dist-info/top_level.txt
+683   : dadi       6            /home/dadi/Desktop/Projects_Demo/NGO_Management_system/env/lib64/python3.12/site-packages/pyotp-2.9.0.dist-info/top_level.txt
+684   : dadi       8            /home/dadi/Desktop/Projects_Demo/NGO_Management_system/env/lib64/python3.12/site-packages/certifi-2025.1.31.dist-info/top_level.txt
+685   : dadi       8            /home/dadi/Desktop/Projects_Demo/NGO_Management_system/env/lib64/python3.12/site-packages/alembic-1.14.1.dist-info/top_level.txt
+686   : dadi       48           /home/dadi/Desktop/Projects_Demo/NGO_Management_system/env/lib64/python3.12/site-packages/alembic-1.14.1.dist-info/entry_points.txt
+687   : dadi       1475         /home/dadi/Desktop/Projects_Demo/NGO_Management_system/env/lib64/python3.12/site-packages/itsdangerous-2.2.0.dist-info/LICENSE.txt
+688   : dadi       1475         /home/dadi/Desktop/Projects_Demo/NGO_Management_system/env/lib64/python3.12/site-packages/werkzeug-3.1.3.dist-info/LICENSE.txt
+689   : dadi       8            /home/dadi/Desktop/Projects_Demo/NGO_Management_system/env/lib64/python3.12/site-packages/mysqlclient-2.2.7.dist-info/top_level.txt
+690   : dadi       1093         /home/dadi/Desktop/Projects_Demo/NGO_Management_system/env/lib64/python3.12/site-packages/pip-24.0.dist-info/LICENSE.txt
+691   : dadi       10388        /home/dadi/Desktop/Projects_Demo/NGO_Management_system/env/lib64/python3.12/site-packages/pip-24.0.dist-info/AUTHORS.txt
+692   : dadi       4            /home/dadi/Desktop/Projects_Demo/NGO_Management_system/env/lib64/python3.12/site-packages/pip-24.0.dist-info/top_level.txt
+693   : dadi       125          /home/dadi/Desktop/Projects_Demo/NGO_Management_system/env/lib64/python3.12/site-packages/pip-24.0.dist-info/entry_points.txt
+694   : dadi       9            /home/dadi/Desktop/Projects_Demo/NGO_Management_system/env/lib64/python3.12/site-packages/greenlet-3.1.1.dist-info/top_level.txt
+695   : dadi       493          /home/dadi/Desktop/Projects_Demo/NGO_Management_system/env/lib64/python3.12/site-packages/pip/_vendor/vendor.txt
+696   : dadi       8239         /home/dadi/Desktop/Projects_Demo/NGO_Management_system/env/lib64/python3.12/site-packages/sqlalchemy/dialects/type_migration_guidelines.txt
+697   : dadi       18           /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/matplotlib_inline-0.1.7.dist-info/top_level.txt
+698   : dadi       63           /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/matplotlib_inline-0.1.7.dist-info/entry_points.txt
+699   : dadi       8            /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/pexpect-4.9.0.dist-info/top_level.txt
+700   : dadi       57           /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/typer-0.13.1.dist-info/entry_points.txt
+701   : dadi       1309         /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/EasyProcess-1.1.dist-info/LICENSE.txt
+702   : dadi       12           /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/EasyProcess-1.1.dist-info/top_level.txt
+703   : dadi       1475         /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/flask-3.1.0.dist-info/LICENSE.txt
+704   : dadi       40           /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/flask-3.1.0.dist-info/entry_points.txt
+705   : dadi       12           /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/Flask_Login-0.6.3.dist-info/top_level.txt
+706   : dadi       8            /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/certifi-2024.8.30.dist-info/top_level.txt
+707   : dadi       7511         /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/parso/python/grammar313.txt
+708   : dadi       7511         /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/parso/python/grammar311.txt
+709   : dadi       7591         /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/parso/python/grammar38.txt
+710   : dadi       7511         /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/parso/python/grammar312.txt
+711   : dadi       6948         /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/parso/python/grammar36.txt
+712   : dadi       7499         /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/parso/python/grammar39.txt
+713   : dadi       6804         /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/parso/python/grammar37.txt
+714   : dadi       7511         /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/parso/python/grammar310.txt
+715   : dadi       8            /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/ipython-8.30.0.dist-info/top_level.txt
+716   : dadi       244          /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/ipython-8.30.0.dist-info/entry_points.txt
+717   : dadi       15           /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/prompt_toolkit-3.0.48.dist-info/top_level.txt
+718   : dadi       4            /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/pillow-10.4.0.dist-info/top_level.txt
+719   : dadi       1475         /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/MarkupSafe-3.0.2.dist-info/LICENSE.txt
+720   : dadi       11           /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/MarkupSafe-3.0.2.dist-info/top_level.txt
+721   : dadi       1475         /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/jinja2-3.1.4.dist-info/LICENSE.txt
+722   : dadi       58           /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/jinja2-3.1.4.dist-info/entry_points.txt
+723   : dadi       10           /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/multidict-6.1.0.dist-info/top_level.txt
+724   : dadi       8            /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/alembic-1.14.0.dist-info/top_level.txt
+725   : dadi       48           /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/alembic-1.14.0.dist-info/entry_points.txt
+726   : dadi       1054         /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/blinker-1.9.0.dist-info/LICENSE.txt
+727   : dadi       8            /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/wcwidth-0.2.13.dist-info/top_level.txt
+728   : dadi       1075         /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/jedi/third_party/django-stubs/LICENSE.txt
+729   : dadi       10           /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/propcache-0.2.1.dist-info/top_level.txt
+730   : dadi       58           /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/markdown_it_py-3.0.0.dist-info/entry_points.txt
+731   : dadi       1493         /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/flask_mail-0.10.0.dist-info/LICENSE.txt
+732   : dadi       5            /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/yarl-1.18.3.dist-info/top_level.txt
+733   : dadi       9            /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/python_dateutil-2.9.0.post0.dist-info/top_level.txt
+734   : dadi       14           /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/Flask_Migrate-4.0.7.dist-info/top_level.txt
+735   : dadi       4            /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/six-1.16.0.dist-info/top_level.txt
+736   : dadi       19           /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/charset_normalizer-3.4.0.dist-info/top_level.txt
+737   : dadi       65           /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/charset_normalizer-3.4.0.dist-info/entry_points.txt
+738   : dadi       1060         /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/Faker-33.1.0.dist-info/LICENSE.txt
+739   : dadi       6            /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/Faker-33.1.0.dist-info/top_level.txt
+740   : dadi       110          /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/Faker-33.1.0.dist-info/entry_points.txt
+741   : dadi       9            /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/tabulate-0.9.0.dist-info/top_level.txt
+742   : dadi       44           /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/tabulate-0.9.0.dist-info/entry_points.txt
+743   : dadi       9            /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/requests-2.32.3.dist-info/top_level.txt
+744   : dadi       6            /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/pyotp-2.9.0.dist-info/top_level.txt
+745   : dadi       11           /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/frozenlist-1.5.0.dist-info/top_level.txt
+746   : dadi       967          /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/numpy/_core/tests/data/umath-validation-set-README.txt
+747   : dadi       1018         /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/numpy/_core/include/numpy/random/LICENSE.txt
+748   : dadi       3405         /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/numpy/ma/API_CHANGES.txt
+749   : dadi       1066         /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/eval_type_backport-0.2.0.dist-info/LICENSE.txt
+750   : dadi       19           /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/eval_type_backport-0.2.0.dist-info/top_level.txt
+751   : dadi       10           /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/aiosignal-1.3.1.dist-info/top_level.txt
+752   : dadi       5            /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/Mako-1.3.6.dist-info/top_level.txt
+753   : dadi       512          /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/Mako-1.3.6.dist-info/entry_points.txt
+754   : dadi       53           /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/pygments-2.18.0.dist-info/entry_points.txt
+755   : dadi       1475         /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/itsdangerous-2.2.0.dist-info/LICENSE.txt
+756   : dadi       1475         /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/werkzeug-3.1.3.dist-info/LICENSE.txt
+757   : dadi       47755        /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/numpy-2.1.3.dist-info/LICENSE.txt
+758   : dadi       172          /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/numpy-2.1.3.dist-info/entry_points.txt
+759   : dadi       110423       /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/pyarrow-18.1.0.dist-info/LICENSE.txt
+760   : dadi       3032         /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/pyarrow-18.1.0.dist-info/NOTICE.txt
+761   : dadi       18           /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/pyarrow-18.1.0.dist-info/top_level.txt
+762   : dadi       1088         /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/pytz-2024.2.dist-info/LICENSE.txt
+763   : dadi       5            /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/pytz-2024.2.dist-info/top_level.txt
+764   : dadi       11           /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/SQLAlchemy-2.0.36.dist-info/top_level.txt
+765   : dadi       1093         /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/urllib3-2.2.3.dist-info/licenses/LICENSE.txt
+766   : dadi       1093         /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/pip-24.0.dist-info/LICENSE.txt
+767   : dadi       10388        /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/pip-24.0.dist-info/AUTHORS.txt
+768   : dadi       4            /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/pip-24.0.dist-info/top_level.txt
+769   : dadi       125          /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/pip-24.0.dist-info/entry_points.txt
+770   : dadi       1309         /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/decorator-5.1.1.dist-info/LICENSE.txt
+771   : dadi       10           /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/decorator-5.1.1.dist-info/top_level.txt
+772   : dadi       814          /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/IPython/testing/plugin/test_exampleip.txt
+773   : dadi       1043         /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/IPython/testing/plugin/README.txt
+774   : dadi       923          /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/IPython/testing/plugin/test_combo.txt
+775   : dadi       730          /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/IPython/testing/plugin/test_example.txt
+776   : dadi       1066         /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/executing-2.1.0.dist-info/LICENSE.txt
+777   : dadi       10           /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/executing-2.1.0.dist-info/top_level.txt
+778   : dadi       12           /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/shellingham-1.5.4.dist-info/top_level.txt
+779   : dadi       10           /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/asttokens-3.0.0.dist-info/top_level.txt
+780   : dadi       50           /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/together-1.3.5.dist-info/entry_points.txt
+781   : dadi       9            /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/greenlet-3.1.1.dist-info/top_level.txt
+782   : dadi       6            /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/click-8.1.7.dist-info/top_level.txt
+783   : dadi       588          /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/aiohttp-3.11.9.dist-info/LICENSE.txt
+784   : dadi       8            /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/aiohttp-3.11.9.dist-info/top_level.txt
+785   : dadi       1241         /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/jedi-0.19.2.dist-info/LICENSE.txt
+786   : dadi       2661         /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/jedi-0.19.2.dist-info/AUTHORS.txt
+787   : dadi       5            /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/jedi-0.19.2.dist-info/top_level.txt
+788   : dadi       855          /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/pyarrow/src/arrow/python/CMakeLists.txt
+789   : dadi       837          /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/pyarrow/src/arrow/python/vendored/CMakeLists.txt
+790   : dadi       4176         /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/parso-0.8.4.dist-info/LICENSE.txt
+791   : dadi       2029         /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/parso-0.8.4.dist-info/AUTHORS.txt
+792   : dadi       6            /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/parso-0.8.4.dist-info/top_level.txt
+793   : dadi       493          /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/pip/_vendor/vendor.txt
+794   : dadi       1066         /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/pure_eval-0.2.3.dist-info/LICENSE.txt
+795   : dadi       10           /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/pure_eval-0.2.3.dist-info/top_level.txt
+796   : dadi       8            /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/mysqlclient-2.2.6.dist-info/top_level.txt
+797   : dadi       8239         /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/sqlalchemy/dialects/type_migration_guidelines.txt
+798   : dadi       1066         /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/stack_data-0.6.3.dist-info/LICENSE.txt
+799   : dadi       11           /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/stack_data-0.6.3.dist-info/top_level.txt
+800   : dadi       5            /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/tqdm-4.67.1.dist-info/top_level.txt
+801   : dadi       39           /home/dadi/Desktop/Projects_Demo/venv/lib/python3.12/site-packages/tqdm-4.67.1.dist-info/entry_points.txt
+802   : dadi       18           /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/matplotlib_inline-0.1.7.dist-info/top_level.txt
+803   : dadi       63           /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/matplotlib_inline-0.1.7.dist-info/entry_points.txt
+804   : dadi       8            /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/pexpect-4.9.0.dist-info/top_level.txt
+805   : dadi       57           /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/typer-0.13.1.dist-info/entry_points.txt
+806   : dadi       1309         /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/EasyProcess-1.1.dist-info/LICENSE.txt
+807   : dadi       12           /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/EasyProcess-1.1.dist-info/top_level.txt
+808   : dadi       1475         /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/flask-3.1.0.dist-info/LICENSE.txt
+809   : dadi       40           /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/flask-3.1.0.dist-info/entry_points.txt
+810   : dadi       12           /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/Flask_Login-0.6.3.dist-info/top_level.txt
+811   : dadi       8            /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/certifi-2024.8.30.dist-info/top_level.txt
+812   : dadi       7511         /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/parso/python/grammar313.txt
+813   : dadi       7511         /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/parso/python/grammar311.txt
+814   : dadi       7591         /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/parso/python/grammar38.txt
+815   : dadi       7511         /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/parso/python/grammar312.txt
+816   : dadi       6948         /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/parso/python/grammar36.txt
+817   : dadi       7499         /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/parso/python/grammar39.txt
+818   : dadi       6804         /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/parso/python/grammar37.txt
+819   : dadi       7511         /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/parso/python/grammar310.txt
+820   : dadi       8            /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/ipython-8.30.0.dist-info/top_level.txt
+821   : dadi       244          /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/ipython-8.30.0.dist-info/entry_points.txt
+822   : dadi       15           /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/prompt_toolkit-3.0.48.dist-info/top_level.txt
+823   : dadi       4            /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/pillow-10.4.0.dist-info/top_level.txt
+824   : dadi       1475         /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/MarkupSafe-3.0.2.dist-info/LICENSE.txt
+825   : dadi       11           /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/MarkupSafe-3.0.2.dist-info/top_level.txt
+826   : dadi       1475         /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/jinja2-3.1.4.dist-info/LICENSE.txt
+827   : dadi       58           /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/jinja2-3.1.4.dist-info/entry_points.txt
+828   : dadi       10           /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/multidict-6.1.0.dist-info/top_level.txt
+829   : dadi       8            /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/alembic-1.14.0.dist-info/top_level.txt
+830   : dadi       48           /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/alembic-1.14.0.dist-info/entry_points.txt
+831   : dadi       1054         /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/blinker-1.9.0.dist-info/LICENSE.txt
+832   : dadi       8            /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/wcwidth-0.2.13.dist-info/top_level.txt
+833   : dadi       1075         /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/jedi/third_party/django-stubs/LICENSE.txt
+834   : dadi       10           /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/propcache-0.2.1.dist-info/top_level.txt
+835   : dadi       58           /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/markdown_it_py-3.0.0.dist-info/entry_points.txt
+836   : dadi       1493         /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/flask_mail-0.10.0.dist-info/LICENSE.txt
+837   : dadi       5            /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/yarl-1.18.3.dist-info/top_level.txt
+838   : dadi       9            /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/python_dateutil-2.9.0.post0.dist-info/top_level.txt
+839   : dadi       14           /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/Flask_Migrate-4.0.7.dist-info/top_level.txt
+840   : dadi       4            /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/six-1.16.0.dist-info/top_level.txt
+841   : dadi       19           /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/charset_normalizer-3.4.0.dist-info/top_level.txt
+842   : dadi       65           /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/charset_normalizer-3.4.0.dist-info/entry_points.txt
+843   : dadi       1060         /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/Faker-33.1.0.dist-info/LICENSE.txt
+844   : dadi       6            /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/Faker-33.1.0.dist-info/top_level.txt
+845   : dadi       110          /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/Faker-33.1.0.dist-info/entry_points.txt
+846   : dadi       9            /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/tabulate-0.9.0.dist-info/top_level.txt
+847   : dadi       44           /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/tabulate-0.9.0.dist-info/entry_points.txt
+848   : dadi       9            /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/requests-2.32.3.dist-info/top_level.txt
+849   : dadi       6            /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/pyotp-2.9.0.dist-info/top_level.txt
+850   : dadi       11           /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/frozenlist-1.5.0.dist-info/top_level.txt
+851   : dadi       967          /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/numpy/_core/tests/data/umath-validation-set-README.txt
+852   : dadi       1018         /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/numpy/_core/include/numpy/random/LICENSE.txt
+853   : dadi       3405         /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/numpy/ma/API_CHANGES.txt
+854   : dadi       1066         /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/eval_type_backport-0.2.0.dist-info/LICENSE.txt
+855   : dadi       19           /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/eval_type_backport-0.2.0.dist-info/top_level.txt
+856   : dadi       10           /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/aiosignal-1.3.1.dist-info/top_level.txt
+857   : dadi       5            /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/Mako-1.3.6.dist-info/top_level.txt
+858   : dadi       512          /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/Mako-1.3.6.dist-info/entry_points.txt
+859   : dadi       53           /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/pygments-2.18.0.dist-info/entry_points.txt
+860   : dadi       1475         /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/itsdangerous-2.2.0.dist-info/LICENSE.txt
+861   : dadi       1475         /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/werkzeug-3.1.3.dist-info/LICENSE.txt
+862   : dadi       47755        /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/numpy-2.1.3.dist-info/LICENSE.txt
+863   : dadi       172          /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/numpy-2.1.3.dist-info/entry_points.txt
+864   : dadi       110423       /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/pyarrow-18.1.0.dist-info/LICENSE.txt
+865   : dadi       3032         /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/pyarrow-18.1.0.dist-info/NOTICE.txt
+866   : dadi       18           /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/pyarrow-18.1.0.dist-info/top_level.txt
+867   : dadi       1088         /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/pytz-2024.2.dist-info/LICENSE.txt
+868   : dadi       5            /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/pytz-2024.2.dist-info/top_level.txt
+869   : dadi       11           /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/SQLAlchemy-2.0.36.dist-info/top_level.txt
+870   : dadi       1093         /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/urllib3-2.2.3.dist-info/licenses/LICENSE.txt
+871   : dadi       1093         /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/pip-24.0.dist-info/LICENSE.txt
+872   : dadi       10388        /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/pip-24.0.dist-info/AUTHORS.txt
+873   : dadi       4            /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/pip-24.0.dist-info/top_level.txt
+874   : dadi       125          /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/pip-24.0.dist-info/entry_points.txt
+875   : dadi       1309         /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/decorator-5.1.1.dist-info/LICENSE.txt
+876   : dadi       10           /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/decorator-5.1.1.dist-info/top_level.txt
+877   : dadi       814          /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/IPython/testing/plugin/test_exampleip.txt
+878   : dadi       1043         /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/IPython/testing/plugin/README.txt
+879   : dadi       923          /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/IPython/testing/plugin/test_combo.txt
+880   : dadi       730          /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/IPython/testing/plugin/test_example.txt
+881   : dadi       1066         /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/executing-2.1.0.dist-info/LICENSE.txt
+882   : dadi       10           /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/executing-2.1.0.dist-info/top_level.txt
+883   : dadi       12           /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/shellingham-1.5.4.dist-info/top_level.txt
+884   : dadi       10           /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/asttokens-3.0.0.dist-info/top_level.txt
+885   : dadi       50           /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/together-1.3.5.dist-info/entry_points.txt
+886   : dadi       9            /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/greenlet-3.1.1.dist-info/top_level.txt
+887   : dadi       6            /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/click-8.1.7.dist-info/top_level.txt
+888   : dadi       588          /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/aiohttp-3.11.9.dist-info/LICENSE.txt
+889   : dadi       8            /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/aiohttp-3.11.9.dist-info/top_level.txt
+890   : dadi       1241         /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/jedi-0.19.2.dist-info/LICENSE.txt
+891   : dadi       2661         /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/jedi-0.19.2.dist-info/AUTHORS.txt
+892   : dadi       5            /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/jedi-0.19.2.dist-info/top_level.txt
+893   : dadi       855          /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/pyarrow/src/arrow/python/CMakeLists.txt
+894   : dadi       837          /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/pyarrow/src/arrow/python/vendored/CMakeLists.txt
+895   : dadi       4176         /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/parso-0.8.4.dist-info/LICENSE.txt
+896   : dadi       2029         /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/parso-0.8.4.dist-info/AUTHORS.txt
+897   : dadi       6            /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/parso-0.8.4.dist-info/top_level.txt
+898   : dadi       493          /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/pip/_vendor/vendor.txt
+899   : dadi       1066         /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/pure_eval-0.2.3.dist-info/LICENSE.txt
+900   : dadi       10           /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/pure_eval-0.2.3.dist-info/top_level.txt
+901   : dadi       8            /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/mysqlclient-2.2.6.dist-info/top_level.txt
+902   : dadi       8239         /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/sqlalchemy/dialects/type_migration_guidelines.txt
+903   : dadi       1066         /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/stack_data-0.6.3.dist-info/LICENSE.txt
+904   : dadi       11           /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/stack_data-0.6.3.dist-info/top_level.txt
+905   : dadi       5            /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/tqdm-4.67.1.dist-info/top_level.txt
+906   : dadi       39           /home/dadi/Desktop/Projects_Demo/venv/lib64/python3.12/site-packages/tqdm-4.67.1.dist-info/entry_points.txt
+907   : dadi       288          /home/dadi/Desktop/Projects_Demo/Mailer/details.txt
+908   : dadi       1475         /home/dadi/Desktop/Projects_Demo/Mailer/bulk_email_sender/flask_backend/venv/lib/python3.12/site-packages/flask-3.1.0.dist-info/LICENSE.txt
+909   : dadi       40           /home/dadi/Desktop/Projects_Demo/Mailer/bulk_email_sender/flask_backend/venv/lib/python3.12/site-packages/flask-3.1.0.dist-info/entry_points.txt
+910   : dadi       1475         /home/dadi/Desktop/Projects_Demo/Mailer/bulk_email_sender/flask_backend/venv/lib/python3.12/site-packages/MarkupSafe-3.0.2.dist-info/LICENSE.txt
+911   : dadi       11           /home/dadi/Desktop/Projects_Demo/Mailer/bulk_email_sender/flask_backend/venv/lib/python3.12/site-packages/MarkupSafe-3.0.2.dist-info/top_level.txt
+912   : dadi       1475         /home/dadi/Desktop/Projects_Demo/Mailer/bulk_email_sender/flask_backend/venv/lib/python3.12/site-packages/jinja2-3.1.4.dist-info/LICENSE.txt
+913   : dadi       58           /home/dadi/Desktop/Projects_Demo/Mailer/bulk_email_sender/flask_backend/venv/lib/python3.12/site-packages/jinja2-3.1.4.dist-info/entry_points.txt
+914   : dadi       1054         /home/dadi/Desktop/Projects_Demo/Mailer/bulk_email_sender/flask_backend/venv/lib/python3.12/site-packages/blinker-1.9.0.dist-info/LICENSE.txt
+915   : dadi       1493         /home/dadi/Desktop/Projects_Demo/Mailer/bulk_email_sender/flask_backend/venv/lib/python3.12/site-packages/flask_mail-0.10.0.dist-info/LICENSE.txt
+916   : dadi       1475         /home/dadi/Desktop/Projects_Demo/Mailer/bulk_email_sender/flask_backend/venv/lib/python3.12/site-packages/itsdangerous-2.2.0.dist-info/LICENSE.txt
+917   : dadi       1475         /home/dadi/Desktop/Projects_Demo/Mailer/bulk_email_sender/flask_backend/venv/lib/python3.12/site-packages/werkzeug-3.1.3.dist-info/LICENSE.txt
+918   : dadi       1093         /home/dadi/Desktop/Projects_Demo/Mailer/bulk_email_sender/flask_backend/venv/lib/python3.12/site-packages/pip-24.0.dist-info/LICENSE.txt
+919   : dadi       10388        /home/dadi/Desktop/Projects_Demo/Mailer/bulk_email_sender/flask_backend/venv/lib/python3.12/site-packages/pip-24.0.dist-info/AUTHORS.txt
+920   : dadi       4            /home/dadi/Desktop/Projects_Demo/Mailer/bulk_email_sender/flask_backend/venv/lib/python3.12/site-packages/pip-24.0.dist-info/top_level.txt
+921   : dadi       125          /home/dadi/Desktop/Projects_Demo/Mailer/bulk_email_sender/flask_backend/venv/lib/python3.12/site-packages/pip-24.0.dist-info/entry_points.txt
+922   : dadi       6            /home/dadi/Desktop/Projects_Demo/Mailer/bulk_email_sender/flask_backend/venv/lib/python3.12/site-packages/click-8.1.7.dist-info/top_level.txt
+923   : dadi       493          /home/dadi/Desktop/Projects_Demo/Mailer/bulk_email_sender/flask_backend/venv/lib/python3.12/site-packages/pip/_vendor/vendor.txt
+924   : dadi       1475         /home/dadi/Desktop/Projects_Demo/Mailer/bulk_email_sender/flask_backend/venv/lib64/python3.12/site-packages/flask-3.1.0.dist-info/LICENSE.txt
+925   : dadi       40           /home/dadi/Desktop/Projects_Demo/Mailer/bulk_email_sender/flask_backend/venv/lib64/python3.12/site-packages/flask-3.1.0.dist-info/entry_points.txt
+926   : dadi       1475         /home/dadi/Desktop/Projects_Demo/Mailer/bulk_email_sender/flask_backend/venv/lib64/python3.12/site-packages/MarkupSafe-3.0.2.dist-info/LICENSE.txt
+927   : dadi       11           /home/dadi/Desktop/Projects_Demo/Mailer/bulk_email_sender/flask_backend/venv/lib64/python3.12/site-packages/MarkupSafe-3.0.2.dist-info/top_level.txt
+928   : dadi       1475         /home/dadi/Desktop/Projects_Demo/Mailer/bulk_email_sender/flask_backend/venv/lib64/python3.12/site-packages/jinja2-3.1.4.dist-info/LICENSE.txt
+929   : dadi       58           /home/dadi/Desktop/Projects_Demo/Mailer/bulk_email_sender/flask_backend/venv/lib64/python3.12/site-packages/jinja2-3.1.4.dist-info/entry_points.txt
+930   : dadi       1054         /home/dadi/Desktop/Projects_Demo/Mailer/bulk_email_sender/flask_backend/venv/lib64/python3.12/site-packages/blinker-1.9.0.dist-info/LICENSE.txt
+931   : dadi       1493         /home/dadi/Desktop/Projects_Demo/Mailer/bulk_email_sender/flask_backend/venv/lib64/python3.12/site-packages/flask_mail-0.10.0.dist-info/LICENSE.txt
+932   : dadi       1475         /home/dadi/Desktop/Projects_Demo/Mailer/bulk_email_sender/flask_backend/venv/lib64/python3.12/site-packages/itsdangerous-2.2.0.dist-info/LICENSE.txt
+933   : dadi       1475         /home/dadi/Desktop/Projects_Demo/Mailer/bulk_email_sender/flask_backend/venv/lib64/python3.12/site-packages/werkzeug-3.1.3.dist-info/LICENSE.txt
+934   : dadi       1093         /home/dadi/Desktop/Projects_Demo/Mailer/bulk_email_sender/flask_backend/venv/lib64/python3.12/site-packages/pip-24.0.dist-info/LICENSE.txt
+935   : dadi       10388        /home/dadi/Desktop/Projects_Demo/Mailer/bulk_email_sender/flask_backend/venv/lib64/python3.12/site-packages/pip-24.0.dist-info/AUTHORS.txt
+936   : dadi       4            /home/dadi/Desktop/Projects_Demo/Mailer/bulk_email_sender/flask_backend/venv/lib64/python3.12/site-packages/pip-24.0.dist-info/top_level.txt
+937   : dadi       125          /home/dadi/Desktop/Projects_Demo/Mailer/bulk_email_sender/flask_backend/venv/lib64/python3.12/site-packages/pip-24.0.dist-info/entry_points.txt
+938   : dadi       6            /home/dadi/Desktop/Projects_Demo/Mailer/bulk_email_sender/flask_backend/venv/lib64/python3.12/site-packages/click-8.1.7.dist-info/top_level.txt
+939   : dadi       493          /home/dadi/Desktop/Projects_Demo/Mailer/bulk_email_sender/flask_backend/venv/lib64/python3.12/site-packages/pip/_vendor/vendor.txt
+940   : dadi       128          /home/dadi/Desktop/Projects_Demo/Mailer/bulk_email_sender/flask_backend/requirements.txt
+941   : dadi       1475         /home/dadi/Desktop/Projects_Demo/Mailer/venv/lib/python3.12/site-packages/flask-3.1.0.dist-info/LICENSE.txt
+942   : dadi       40           /home/dadi/Desktop/Projects_Demo/Mailer/venv/lib/python3.12/site-packages/flask-3.1.0.dist-info/entry_points.txt
+943   : dadi       1475         /home/dadi/Desktop/Projects_Demo/Mailer/venv/lib/python3.12/site-packages/MarkupSafe-3.0.2.dist-info/LICENSE.txt
+944   : dadi       11           /home/dadi/Desktop/Projects_Demo/Mailer/venv/lib/python3.12/site-packages/MarkupSafe-3.0.2.dist-info/top_level.txt
+945   : dadi       1475         /home/dadi/Desktop/Projects_Demo/Mailer/venv/lib/python3.12/site-packages/jinja2-3.1.4.dist-info/LICENSE.txt
+946   : dadi       58           /home/dadi/Desktop/Projects_Demo/Mailer/venv/lib/python3.12/site-packages/jinja2-3.1.4.dist-info/entry_points.txt
+947   : dadi       1054         /home/dadi/Desktop/Projects_Demo/Mailer/venv/lib/python3.12/site-packages/blinker-1.9.0.dist-info/LICENSE.txt
+948   : dadi       1493         /home/dadi/Desktop/Projects_Demo/Mailer/venv/lib/python3.12/site-packages/flask_mail-0.10.0.dist-info/LICENSE.txt
+949   : dadi       1475         /home/dadi/Desktop/Projects_Demo/Mailer/venv/lib/python3.12/site-packages/itsdangerous-2.2.0.dist-info/LICENSE.txt
+950   : dadi       1475         /home/dadi/Desktop/Projects_Demo/Mailer/venv/lib/python3.12/site-packages/werkzeug-3.1.3.dist-info/LICENSE.txt
+951   : dadi       1093         /home/dadi/Desktop/Projects_Demo/Mailer/venv/lib/python3.12/site-packages/pip-24.0.dist-info/LICENSE.txt
+952   : dadi       10388        /home/dadi/Desktop/Projects_Demo/Mailer/venv/lib/python3.12/site-packages/pip-24.0.dist-info/AUTHORS.txt
+953   : dadi       4            /home/dadi/Desktop/Projects_Demo/Mailer/venv/lib/python3.12/site-packages/pip-24.0.dist-info/top_level.txt
+954   : dadi       125          /home/dadi/Desktop/Projects_Demo/Mailer/venv/lib/python3.12/site-packages/pip-24.0.dist-info/entry_points.txt
+955   : dadi       6            /home/dadi/Desktop/Projects_Demo/Mailer/venv/lib/python3.12/site-packages/click-8.1.7.dist-info/top_level.txt
+956   : dadi       493          /home/dadi/Desktop/Projects_Demo/Mailer/venv/lib/python3.12/site-packages/pip/_vendor/vendor.txt
+957   : dadi       5            /home/dadi/Desktop/Projects_Demo/Mailer/venv/lib/python3.12/site-packages/tqdm-4.67.1.dist-info/top_level.txt
+958   : dadi       39           /home/dadi/Desktop/Projects_Demo/Mailer/venv/lib/python3.12/site-packages/tqdm-4.67.1.dist-info/entry_points.txt
+959   : dadi       1475         /home/dadi/Desktop/Projects_Demo/Mailer/venv/lib64/python3.12/site-packages/flask-3.1.0.dist-info/LICENSE.txt
+960   : dadi       40           /home/dadi/Desktop/Projects_Demo/Mailer/venv/lib64/python3.12/site-packages/flask-3.1.0.dist-info/entry_points.txt
+961   : dadi       1475         /home/dadi/Desktop/Projects_Demo/Mailer/venv/lib64/python3.12/site-packages/MarkupSafe-3.0.2.dist-info/LICENSE.txt
+962   : dadi       11           /home/dadi/Desktop/Projects_Demo/Mailer/venv/lib64/python3.12/site-packages/MarkupSafe-3.0.2.dist-info/top_level.txt
+963   : dadi       1475         /home/dadi/Desktop/Projects_Demo/Mailer/venv/lib64/python3.12/site-packages/jinja2-3.1.4.dist-info/LICENSE.txt
+964   : dadi       58           /home/dadi/Desktop/Projects_Demo/Mailer/venv/lib64/python3.12/site-packages/jinja2-3.1.4.dist-info/entry_points.txt
+965   : dadi       1054         /home/dadi/Desktop/Projects_Demo/Mailer/venv/lib64/python3.12/site-packages/blinker-1.9.0.dist-info/LICENSE.txt
+966   : dadi       1493         /home/dadi/Desktop/Projects_Demo/Mailer/venv/lib64/python3.12/site-packages/flask_mail-0.10.0.dist-info/LICENSE.txt
+967   : dadi       1475         /home/dadi/Desktop/Projects_Demo/Mailer/venv/lib64/python3.12/site-packages/itsdangerous-2.2.0.dist-info/LICENSE.txt
+968   : dadi       1475         /home/dadi/Desktop/Projects_Demo/Mailer/venv/lib64/python3.12/site-packages/werkzeug-3.1.3.dist-info/LICENSE.txt
+969   : dadi       1093         /home/dadi/Desktop/Projects_Demo/Mailer/venv/lib64/python3.12/site-packages/pip-24.0.dist-info/LICENSE.txt
+970   : dadi       10388        /home/dadi/Desktop/Projects_Demo/Mailer/venv/lib64/python3.12/site-packages/pip-24.0.dist-info/AUTHORS.txt
+971   : dadi       4            /home/dadi/Desktop/Projects_Demo/Mailer/venv/lib64/python3.12/site-packages/pip-24.0.dist-info/top_level.txt
+972   : dadi       125          /home/dadi/Desktop/Projects_Demo/Mailer/venv/lib64/python3.12/site-packages/pip-24.0.dist-info/entry_points.txt
+973   : dadi       6            /home/dadi/Desktop/Projects_Demo/Mailer/venv/lib64/python3.12/site-packages/click-8.1.7.dist-info/top_level.txt
+974   : dadi       493          /home/dadi/Desktop/Projects_Demo/Mailer/venv/lib64/python3.12/site-packages/pip/_vendor/vendor.txt
+975   : dadi       5            /home/dadi/Desktop/Projects_Demo/Mailer/venv/lib64/python3.12/site-packages/tqdm-4.67.1.dist-info/top_level.txt
+976   : dadi       39           /home/dadi/Desktop/Projects_Demo/Mailer/venv/lib64/python3.12/site-packages/tqdm-4.67.1.dist-info/entry_points.txt
+977   : dadi       161          /home/dadi/Desktop/empty 1.txt
+978   : dadi       4            /home/dadi/Desktop/Query_Processor_Optimizer/a/lib/python3.12/site-packages/pillow-11.1.0.dist-info/top_level.txt
+979   : dadi       53           /home/dadi/Desktop/Query_Processor_Optimizer/a/lib/python3.12/site-packages/pygments-2.19.1.dist-info/entry_points.txt
+980   : dadi       8            /home/dadi/Desktop/Query_Processor_Optimizer/a/lib/python3.12/site-packages/aiohttp-3.11.16.dist-info/top_level.txt
+981   : dadi       588          /home/dadi/Desktop/Query_Processor_Optimizer/a/lib/python3.12/site-packages/aiohttp-3.11.16.dist-info/licenses/LICENSE.txt
+982   : dadi       47755        /home/dadi/Desktop/Query_Processor_Optimizer/a/lib/python3.12/site-packages/numpy-2.2.4.dist-info/LICENSE.txt
+983   : dadi       172          /home/dadi/Desktop/Query_Processor_Optimizer/a/lib/python3.12/site-packages/numpy-2.2.4.dist-info/entry_points.txt
+984   : dadi       1093         /home/dadi/Desktop/Query_Processor_Optimizer/a/lib/python3.12/site-packages/urllib3-2.3.0.dist-info/licenses/LICENSE.txt
+985   : dadi       1475         /home/dadi/Desktop/Query_Processor_Optimizer/a/lib/python3.12/site-packages/click-8.1.8.dist-info/LICENSE.txt
+986   : dadi       10           /home/dadi/Desktop/Query_Processor_Optimizer/a/lib/python3.12/site-packages/aiosignal-1.3.2.dist-info/top_level.txt
+987   : dadi       58           /home/dadi/Desktop/Query_Processor_Optimizer/a/lib/python3.12/site-packages/markdown_it_py-3.0.0.dist-info/entry_points.txt
+988   : dadi       5            /home/dadi/Desktop/Query_Processor_Optimizer/a/lib/python3.12/site-packages/yarl-1.18.3.dist-info/top_level.txt
+989   : dadi       19           /home/dadi/Desktop/Query_Processor_Optimizer/a/lib/python3.12/site-packages/charset_normalizer-3.4.1.dist-info/top_level.txt
+990   : dadi       65           /home/dadi/Desktop/Query_Processor_Optimizer/a/lib/python3.12/site-packages/charset_normalizer-3.4.1.dist-info/entry_points.txt
+991   : dadi       9            /home/dadi/Desktop/Query_Processor_Optimizer/a/lib/python3.12/site-packages/tabulate-0.9.0.dist-info/top_level.txt
+992   : dadi       44           /home/dadi/Desktop/Query_Processor_Optimizer/a/lib/python3.12/site-packages/tabulate-0.9.0.dist-info/entry_points.txt
+993   : dadi       9            /home/dadi/Desktop/Query_Processor_Optimizer/a/lib/python3.12/site-packages/requests-2.32.3.dist-info/top_level.txt
+994   : dadi       1066         /home/dadi/Desktop/Query_Processor_Optimizer/a/lib/python3.12/site-packages/eval_type_backport-0.2.2.dist-info/LICENSE.txt
+995   : dadi       19           /home/dadi/Desktop/Query_Processor_Optimizer/a/lib/python3.12/site-packages/eval_type_backport-0.2.2.dist-info/top_level.txt
+996   : dadi       10           /home/dadi/Desktop/Query_Processor_Optimizer/a/lib/python3.12/site-packages/multidict-6.3.1.dist-info/top_level.txt
+997   : dadi       11           /home/dadi/Desktop/Query_Processor_Optimizer/a/lib/python3.12/site-packages/frozenlist-1.5.0.dist-info/top_level.txt
+998   : dadi       8            /home/dadi/Desktop/Query_Processor_Optimizer/a/lib/python3.12/site-packages/certifi-2025.1.31.dist-info/top_level.txt
+999   : dadi       57           /home/dadi/Desktop/Query_Processor_Optimizer/a/lib/python3.12/site-packages/typer-0.15.2.dist-info/entry_points.txt
+1000  : dadi       967          /home/dadi/Desktop/Query_Processor_Optimizer/a/lib/python3.12/site-packages/numpy/_core/tests/data/umath-validation-set-README.txt
+1001  : dadi       1018         /home/dadi/Desktop/Query_Processor_Optimizer/a/lib/python3.12/site-packages/numpy/_core/include/numpy/random/LICENSE.txt
+1002  : dadi       3405         /home/dadi/Desktop/Query_Processor_Optimizer/a/lib/python3.12/site-packages/numpy/ma/API_CHANGES.txt
+1003  : dadi       50           /home/dadi/Desktop/Query_Processor_Optimizer/a/lib/python3.12/site-packages/together-1.5.4.dist-info/entry_points.txt
+1004  : dadi       1093         /home/dadi/Desktop/Query_Processor_Optimizer/a/lib/python3.12/site-packages/pip-24.0.dist-info/LICENSE.txt
+1005  : dadi       10388        /home/dadi/Desktop/Query_Processor_Optimizer/a/lib/python3.12/site-packages/pip-24.0.dist-info/AUTHORS.txt
+1006  : dadi       4            /home/dadi/Desktop/Query_Processor_Optimizer/a/lib/python3.12/site-packages/pip-24.0.dist-info/top_level.txt
+1007  : dadi       125          /home/dadi/Desktop/Query_Processor_Optimizer/a/lib/python3.12/site-packages/pip-24.0.dist-info/entry_points.txt
+1008  : dadi       12           /home/dadi/Desktop/Query_Processor_Optimizer/a/lib/python3.12/site-packages/shellingham-1.5.4.dist-info/top_level.txt
+1009  : dadi       110423       /home/dadi/Desktop/Query_Processor_Optimizer/a/lib/python3.12/site-packages/pyarrow-19.0.1.dist-info/LICENSE.txt
+1010  : dadi       3032         /home/dadi/Desktop/Query_Processor_Optimizer/a/lib/python3.12/site-packages/pyarrow-19.0.1.dist-info/NOTICE.txt
+1011  : dadi       18           /home/dadi/Desktop/Query_Processor_Optimizer/a/lib/python3.12/site-packages/pyarrow-19.0.1.dist-info/top_level.txt
+1012  : dadi       10           /home/dadi/Desktop/Query_Processor_Optimizer/a/lib/python3.12/site-packages/propcache-0.3.1.dist-info/top_level.txt
+1013  : dadi       855          /home/dadi/Desktop/Query_Processor_Optimizer/a/lib/python3.12/site-packages/pyarrow/src/arrow/python/CMakeLists.txt
+1014  : dadi       837          /home/dadi/Desktop/Query_Processor_Optimizer/a/lib/python3.12/site-packages/pyarrow/src/arrow/python/vendored/CMakeLists.txt
+1015  : dadi       493          /home/dadi/Desktop/Query_Processor_Optimizer/a/lib/python3.12/site-packages/pip/_vendor/vendor.txt
+1016  : dadi       5            /home/dadi/Desktop/Query_Processor_Optimizer/a/lib/python3.12/site-packages/tqdm-4.67.1.dist-info/top_level.txt
+1017  : dadi       39           /home/dadi/Desktop/Query_Processor_Optimizer/a/lib/python3.12/site-packages/tqdm-4.67.1.dist-info/entry_points.txt
+1018  : dadi       4            /home/dadi/Desktop/Query_Processor_Optimizer/a/lib64/python3.12/site-packages/pillow-11.1.0.dist-info/top_level.txt
+1019  : dadi       53           /home/dadi/Desktop/Query_Processor_Optimizer/a/lib64/python3.12/site-packages/pygments-2.19.1.dist-info/entry_points.txt
+1020  : dadi       8            /home/dadi/Desktop/Query_Processor_Optimizer/a/lib64/python3.12/site-packages/aiohttp-3.11.16.dist-info/top_level.txt
+1021  : dadi       588          /home/dadi/Desktop/Query_Processor_Optimizer/a/lib64/python3.12/site-packages/aiohttp-3.11.16.dist-info/licenses/LICENSE.txt
+1022  : dadi       47755        /home/dadi/Desktop/Query_Processor_Optimizer/a/lib64/python3.12/site-packages/numpy-2.2.4.dist-info/LICENSE.txt
+1023  : dadi       172          /home/dadi/Desktop/Query_Processor_Optimizer/a/lib64/python3.12/site-packages/numpy-2.2.4.dist-info/entry_points.txt
+1024  : dadi       1093         /home/dadi/Desktop/Query_Processor_Optimizer/a/lib64/python3.12/site-packages/urllib3-2.3.0.dist-info/licenses/LICENSE.txt
+1025  : dadi       1475         /home/dadi/Desktop/Query_Processor_Optimizer/a/lib64/python3.12/site-packages/click-8.1.8.dist-info/LICENSE.txt
+1026  : dadi       10           /home/dadi/Desktop/Query_Processor_Optimizer/a/lib64/python3.12/site-packages/aiosignal-1.3.2.dist-info/top_level.txt
+1027  : dadi       58           /home/dadi/Desktop/Query_Processor_Optimizer/a/lib64/python3.12/site-packages/markdown_it_py-3.0.0.dist-info/entry_points.txt
+1028  : dadi       5            /home/dadi/Desktop/Query_Processor_Optimizer/a/lib64/python3.12/site-packages/yarl-1.18.3.dist-info/top_level.txt
+1029  : dadi       19           /home/dadi/Desktop/Query_Processor_Optimizer/a/lib64/python3.12/site-packages/charset_normalizer-3.4.1.dist-info/top_level.txt
+1030  : dadi       65           /home/dadi/Desktop/Query_Processor_Optimizer/a/lib64/python3.12/site-packages/charset_normalizer-3.4.1.dist-info/entry_points.txt
+1031  : dadi       9            /home/dadi/Desktop/Query_Processor_Optimizer/a/lib64/python3.12/site-packages/tabulate-0.9.0.dist-info/top_level.txt
+1032  : dadi       44           /home/dadi/Desktop/Query_Processor_Optimizer/a/lib64/python3.12/site-packages/tabulate-0.9.0.dist-info/entry_points.txt
+1033  : dadi       9            /home/dadi/Desktop/Query_Processor_Optimizer/a/lib64/python3.12/site-packages/requests-2.32.3.dist-info/top_level.txt
+1034  : dadi       1066         /home/dadi/Desktop/Query_Processor_Optimizer/a/lib64/python3.12/site-packages/eval_type_backport-0.2.2.dist-info/LICENSE.txt
+1035  : dadi       19           /home/dadi/Desktop/Query_Processor_Optimizer/a/lib64/python3.12/site-packages/eval_type_backport-0.2.2.dist-info/top_level.txt
+1036  : dadi       10           /home/dadi/Desktop/Query_Processor_Optimizer/a/lib64/python3.12/site-packages/multidict-6.3.1.dist-info/top_level.txt
+1037  : dadi       11           /home/dadi/Desktop/Query_Processor_Optimizer/a/lib64/python3.12/site-packages/frozenlist-1.5.0.dist-info/top_level.txt
+1038  : dadi       8            /home/dadi/Desktop/Query_Processor_Optimizer/a/lib64/python3.12/site-packages/certifi-2025.1.31.dist-info/top_level.txt
+1039  : dadi       57           /home/dadi/Desktop/Query_Processor_Optimizer/a/lib64/python3.12/site-packages/typer-0.15.2.dist-info/entry_points.txt
+1040  : dadi       967          /home/dadi/Desktop/Query_Processor_Optimizer/a/lib64/python3.12/site-packages/numpy/_core/tests/data/umath-validation-set-README.txt
+1041  : dadi       1018         /home/dadi/Desktop/Query_Processor_Optimizer/a/lib64/python3.12/site-packages/numpy/_core/include/numpy/random/LICENSE.txt
+1042  : dadi       3405         /home/dadi/Desktop/Query_Processor_Optimizer/a/lib64/python3.12/site-packages/numpy/ma/API_CHANGES.txt
+1043  : dadi       50           /home/dadi/Desktop/Query_Processor_Optimizer/a/lib64/python3.12/site-packages/together-1.5.4.dist-info/entry_points.txt
+1044  : dadi       1093         /home/dadi/Desktop/Query_Processor_Optimizer/a/lib64/python3.12/site-packages/pip-24.0.dist-info/LICENSE.txt
+1045  : dadi       10388        /home/dadi/Desktop/Query_Processor_Optimizer/a/lib64/python3.12/site-packages/pip-24.0.dist-info/AUTHORS.txt
+1046  : dadi       4            /home/dadi/Desktop/Query_Processor_Optimizer/a/lib64/python3.12/site-packages/pip-24.0.dist-info/top_level.txt
+1047  : dadi       125          /home/dadi/Desktop/Query_Processor_Optimizer/a/lib64/python3.12/site-packages/pip-24.0.dist-info/entry_points.txt
+1048  : dadi       12           /home/dadi/Desktop/Query_Processor_Optimizer/a/lib64/python3.12/site-packages/shellingham-1.5.4.dist-info/top_level.txt
+1049  : dadi       110423       /home/dadi/Desktop/Query_Processor_Optimizer/a/lib64/python3.12/site-packages/pyarrow-19.0.1.dist-info/LICENSE.txt
+1050  : dadi       3032         /home/dadi/Desktop/Query_Processor_Optimizer/a/lib64/python3.12/site-packages/pyarrow-19.0.1.dist-info/NOTICE.txt
+1051  : dadi       18           /home/dadi/Desktop/Query_Processor_Optimizer/a/lib64/python3.12/site-packages/pyarrow-19.0.1.dist-info/top_level.txt
+1052  : dadi       10           /home/dadi/Desktop/Query_Processor_Optimizer/a/lib64/python3.12/site-packages/propcache-0.3.1.dist-info/top_level.txt
+1053  : dadi       855          /home/dadi/Desktop/Query_Processor_Optimizer/a/lib64/python3.12/site-packages/pyarrow/src/arrow/python/CMakeLists.txt
+1054  : dadi       837          /home/dadi/Desktop/Query_Processor_Optimizer/a/lib64/python3.12/site-packages/pyarrow/src/arrow/python/vendored/CMakeLists.txt
+1055  : dadi       493          /home/dadi/Desktop/Query_Processor_Optimizer/a/lib64/python3.12/site-packages/pip/_vendor/vendor.txt
+1056  : dadi       5            /home/dadi/Desktop/Query_Processor_Optimizer/a/lib64/python3.12/site-packages/tqdm-4.67.1.dist-info/top_level.txt
+1057  : dadi       39           /home/dadi/Desktop/Query_Processor_Optimizer/a/lib64/python3.12/site-packages/tqdm-4.67.1.dist-info/entry_points.txt
+1058  : dadi       2744         /home/dadi/Desktop/Query_Processor_Optimizer/text.txt
+1059  : dadi       0            /home/dadi/Desktop/Query_Processor_Optimizer/code1/temp/input.txt
+1060  : dadi       0            /home/dadi/Desktop/Query_Processor_Optimizer/code1/temp/output.txt
+1061  : dadi       904          /home/dadi/Desktop/Autocomplete-API-Explorer/explore_1.txt
+1062  : dadi       47931        /home/dadi/Desktop/Autocomplete-API-Explorer/names_v1.txt
+1063  : dadi       28311        /home/dadi/Desktop/Autocomplete-API-Explorer/names_v2.txt
+1064  : dadi       1093         /home/dadi/Desktop/Autocomplete-API-Explorer/venv/lib/python3.12/site-packages/urllib3-2.3.0.dist-info/licenses/LICENSE.txt
+1065  : dadi       19           /home/dadi/Desktop/Autocomplete-API-Explorer/venv/lib/python3.12/site-packages/charset_normalizer-3.4.1.dist-info/top_level.txt
+1066  : dadi       65           /home/dadi/Desktop/Autocomplete-API-Explorer/venv/lib/python3.12/site-packages/charset_normalizer-3.4.1.dist-info/entry_points.txt
+1067  : dadi       9            /home/dadi/Desktop/Autocomplete-API-Explorer/venv/lib/python3.12/site-packages/requests-2.32.3.dist-info/top_level.txt
+1068  : dadi       8            /home/dadi/Desktop/Autocomplete-API-Explorer/venv/lib/python3.12/site-packages/certifi-2025.1.31.dist-info/top_level.txt
+1069  : dadi       1093         /home/dadi/Desktop/Autocomplete-API-Explorer/venv/lib/python3.12/site-packages/pip-24.0.dist-info/LICENSE.txt
+1070  : dadi       10388        /home/dadi/Desktop/Autocomplete-API-Explorer/venv/lib/python3.12/site-packages/pip-24.0.dist-info/AUTHORS.txt
+1071  : dadi       4            /home/dadi/Desktop/Autocomplete-API-Explorer/venv/lib/python3.12/site-packages/pip-24.0.dist-info/top_level.txt
+1072  : dadi       125          /home/dadi/Desktop/Autocomplete-API-Explorer/venv/lib/python3.12/site-packages/pip-24.0.dist-info/entry_points.txt
+1073  : dadi       493          /home/dadi/Desktop/Autocomplete-API-Explorer/venv/lib/python3.12/site-packages/pip/_vendor/vendor.txt
+1074  : dadi       1093         /home/dadi/Desktop/Autocomplete-API-Explorer/venv/lib64/python3.12/site-packages/urllib3-2.3.0.dist-info/licenses/LICENSE.txt
+1075  : dadi       19           /home/dadi/Desktop/Autocomplete-API-Explorer/venv/lib64/python3.12/site-packages/charset_normalizer-3.4.1.dist-info/top_level.txt
+1076  : dadi       65           /home/dadi/Desktop/Autocomplete-API-Explorer/venv/lib64/python3.12/site-packages/charset_normalizer-3.4.1.dist-info/entry_points.txt
+1077  : dadi       9            /home/dadi/Desktop/Autocomplete-API-Explorer/venv/lib64/python3.12/site-packages/requests-2.32.3.dist-info/top_level.txt
+1078  : dadi       8            /home/dadi/Desktop/Autocomplete-API-Explorer/venv/lib64/python3.12/site-packages/certifi-2025.1.31.dist-info/top_level.txt
+1079  : dadi       1093         /home/dadi/Desktop/Autocomplete-API-Explorer/venv/lib64/python3.12/site-packages/pip-24.0.dist-info/LICENSE.txt
+1080  : dadi       10388        /home/dadi/Desktop/Autocomplete-API-Explorer/venv/lib64/python3.12/site-packages/pip-24.0.dist-info/AUTHORS.txt
+1081  : dadi       4            /home/dadi/Desktop/Autocomplete-API-Explorer/venv/lib64/python3.12/site-packages/pip-24.0.dist-info/top_level.txt
+1082  : dadi       125          /home/dadi/Desktop/Autocomplete-API-Explorer/venv/lib64/python3.12/site-packages/pip-24.0.dist-info/entry_points.txt
+1083  : dadi       493          /home/dadi/Desktop/Autocomplete-API-Explorer/venv/lib64/python3.12/site-packages/pip/_vendor/vendor.txt
+1084  : dadi       1104         /home/dadi/Desktop/Autocomplete-API-Explorer/explore_2.txt
+1085  : dadi       467          /home/dadi/Desktop/Autocomplete-API-Explorer/extract_names_1.txt
+1086  : dadi       26444        /home/dadi/Desktop/Autocomplete-API-Explorer/names_v3.txt
+1087  : dadi       168          /home/dadi/Desktop/empty.txt
+1088  : dadi       1696         /home/dadi/Desktop/KASYAP/kasyap.txt
+1089  : dadi       1978         /home/dadi/Desktop/empty 2.txt
+1090  : dadi       16           /home/dadi/Desktop/ElectricityForecasting_Japan/venv/lib/python3.12/site-packages/git_filter_repo-2.47.0.dist-info/top_level.txt
+1091  : dadi       57           /home/dadi/Desktop/ElectricityForecasting_Japan/venv/lib/python3.12/site-packages/git_filter_repo-2.47.0.dist-info/entry_points.txt
+1092  : dadi       1093         /home/dadi/Desktop/ElectricityForecasting_Japan/venv/lib/python3.12/site-packages/pip-24.0.dist-info/LICENSE.txt
+1093  : dadi       10388        /home/dadi/Desktop/ElectricityForecasting_Japan/venv/lib/python3.12/site-packages/pip-24.0.dist-info/AUTHORS.txt
+1094  : dadi       4            /home/dadi/Desktop/ElectricityForecasting_Japan/venv/lib/python3.12/site-packages/pip-24.0.dist-info/top_level.txt
+1095  : dadi       125          /home/dadi/Desktop/ElectricityForecasting_Japan/venv/lib/python3.12/site-packages/pip-24.0.dist-info/entry_points.txt
+1096  : dadi       493          /home/dadi/Desktop/ElectricityForecasting_Japan/venv/lib/python3.12/site-packages/pip/_vendor/vendor.txt
+1097  : dadi       16           /home/dadi/Desktop/ElectricityForecasting_Japan/venv/lib64/python3.12/site-packages/git_filter_repo-2.47.0.dist-info/top_level.txt
+1098  : dadi       57           /home/dadi/Desktop/ElectricityForecasting_Japan/venv/lib64/python3.12/site-packages/git_filter_repo-2.47.0.dist-info/entry_points.txt
+1099  : dadi       1093         /home/dadi/Desktop/ElectricityForecasting_Japan/venv/lib64/python3.12/site-packages/pip-24.0.dist-info/LICENSE.txt
+1100  : dadi       10388        /home/dadi/Desktop/ElectricityForecasting_Japan/venv/lib64/python3.12/site-packages/pip-24.0.dist-info/AUTHORS.txt
+1101  : dadi       4            /home/dadi/Desktop/ElectricityForecasting_Japan/venv/lib64/python3.12/site-packages/pip-24.0.dist-info/top_level.txt
+1102  : dadi       125          /home/dadi/Desktop/ElectricityForecasting_Japan/venv/lib64/python3.12/site-packages/pip-24.0.dist-info/entry_points.txt
+1103  : dadi       493          /home/dadi/Desktop/ElectricityForecasting_Japan/venv/lib64/python3.12/site-packages/pip/_vendor/vendor.txt
+1104  : dadi       171225       /home/dadi/Desktop/ElectricityForecasting_Japan/output.txt
+1105  : dadi       384          /home/dadi/Desktop/ElectricityForecasting_Japan/introduction.txt
+1106  : dadi       7            /home/dadi/Desktop/laptop_monitor/env/lib/python3.12/site-packages/pynput-1.8.1.dist-info/top_level.txt
+1107  : dadi       4            /home/dadi/Desktop/laptop_monitor/env/lib/python3.12/site-packages/six-1.17.0.dist-info/top_level.txt
+1108  : dadi       12           /home/dadi/Desktop/laptop_monitor/env/lib/python3.12/site-packages/pygetwindow-0.0.9.dist-info/top_level.txt
+1109  : dadi       7            /home/dadi/Desktop/laptop_monitor/env/lib/python3.12/site-packages/pyrect-0.2.0.dist-info/top_level.txt
+1110  : dadi       1511         /home/dadi/Desktop/laptop_monitor/env/lib/python3.12/site-packages/pyrect-0.2.0.dist-info/licenses/LICENSE.txt
+1111  : dadi       268          /home/dadi/Desktop/laptop_monitor/env/lib/python3.12/site-packages/pyrect-0.2.0.dist-info/licenses/AUTHORS.txt
+1112  : dadi       7            /home/dadi/Desktop/laptop_monitor/env/lib/python3.12/site-packages/psutil-7.0.0.dist-info/top_level.txt
+1113  : dadi       9            /home/dadi/Desktop/laptop_monitor/env/lib/python3.12/site-packages/watchdog-6.0.0.dist-info/top_level.txt
+1114  : dadi       66           /home/dadi/Desktop/laptop_monitor/env/lib/python3.12/site-packages/watchdog-6.0.0.dist-info/entry_points.txt
+1115  : dadi       1093         /home/dadi/Desktop/laptop_monitor/env/lib/python3.12/site-packages/pip-24.0.dist-info/LICENSE.txt
+1116  : dadi       10388        /home/dadi/Desktop/laptop_monitor/env/lib/python3.12/site-packages/pip-24.0.dist-info/AUTHORS.txt
+1117  : dadi       4            /home/dadi/Desktop/laptop_monitor/env/lib/python3.12/site-packages/pip-24.0.dist-info/top_level.txt
+1118  : dadi       125          /home/dadi/Desktop/laptop_monitor/env/lib/python3.12/site-packages/pip-24.0.dist-info/entry_points.txt
+1119  : dadi       1099         /home/dadi/Desktop/laptop_monitor/env/lib/python3.12/site-packages/schedule-1.2.2.dist-info/LICENSE.txt
+1120  : dadi       9            /home/dadi/Desktop/laptop_monitor/env/lib/python3.12/site-packages/schedule-1.2.2.dist-info/top_level.txt
+1121  : dadi       202296       /home/dadi/Desktop/laptop_monitor/env/lib/python3.12/site-packages/mysql_connector_python-9.2.0.dist-info/LICENSE.txt
+1122  : dadi       23           /home/dadi/Desktop/laptop_monitor/env/lib/python3.12/site-packages/mysql_connector_python-9.2.0.dist-info/top_level.txt
+1123  : dadi       493          /home/dadi/Desktop/laptop_monitor/env/lib/python3.12/site-packages/pip/_vendor/vendor.txt
+1124  : dadi       5            /home/dadi/Desktop/laptop_monitor/env/lib/python3.12/site-packages/python_xlib-0.33.dist-info/top_level.txt
+1125  : dadi       6            /home/dadi/Desktop/laptop_monitor/env/lib/python3.12/site-packages/evdev-1.9.1.dist-info/top_level.txt
+1126  : dadi       7            /home/dadi/Desktop/laptop_monitor/env/lib64/python3.12/site-packages/pynput-1.8.1.dist-info/top_level.txt
+1127  : dadi       4            /home/dadi/Desktop/laptop_monitor/env/lib64/python3.12/site-packages/six-1.17.0.dist-info/top_level.txt
+1128  : dadi       12           /home/dadi/Desktop/laptop_monitor/env/lib64/python3.12/site-packages/pygetwindow-0.0.9.dist-info/top_level.txt
+1129  : dadi       7            /home/dadi/Desktop/laptop_monitor/env/lib64/python3.12/site-packages/pyrect-0.2.0.dist-info/top_level.txt
+1130  : dadi       1511         /home/dadi/Desktop/laptop_monitor/env/lib64/python3.12/site-packages/pyrect-0.2.0.dist-info/licenses/LICENSE.txt
+1131  : dadi       268          /home/dadi/Desktop/laptop_monitor/env/lib64/python3.12/site-packages/pyrect-0.2.0.dist-info/licenses/AUTHORS.txt
+1132  : dadi       7            /home/dadi/Desktop/laptop_monitor/env/lib64/python3.12/site-packages/psutil-7.0.0.dist-info/top_level.txt
+1133  : dadi       9            /home/dadi/Desktop/laptop_monitor/env/lib64/python3.12/site-packages/watchdog-6.0.0.dist-info/top_level.txt
+1134  : dadi       66           /home/dadi/Desktop/laptop_monitor/env/lib64/python3.12/site-packages/watchdog-6.0.0.dist-info/entry_points.txt
+1135  : dadi       1093         /home/dadi/Desktop/laptop_monitor/env/lib64/python3.12/site-packages/pip-24.0.dist-info/LICENSE.txt
+1136  : dadi       10388        /home/dadi/Desktop/laptop_monitor/env/lib64/python3.12/site-packages/pip-24.0.dist-info/AUTHORS.txt
+1137  : dadi       4            /home/dadi/Desktop/laptop_monitor/env/lib64/python3.12/site-packages/pip-24.0.dist-info/top_level.txt
+1138  : dadi       125          /home/dadi/Desktop/laptop_monitor/env/lib64/python3.12/site-packages/pip-24.0.dist-info/entry_points.txt
+1139  : dadi       1099         /home/dadi/Desktop/laptop_monitor/env/lib64/python3.12/site-packages/schedule-1.2.2.dist-info/LICENSE.txt
+1140  : dadi       9            /home/dadi/Desktop/laptop_monitor/env/lib64/python3.12/site-packages/schedule-1.2.2.dist-info/top_level.txt
+1141  : dadi       202296       /home/dadi/Desktop/laptop_monitor/env/lib64/python3.12/site-packages/mysql_connector_python-9.2.0.dist-info/LICENSE.txt
+1142  : dadi       23           /home/dadi/Desktop/laptop_monitor/env/lib64/python3.12/site-packages/mysql_connector_python-9.2.0.dist-info/top_level.txt
+1143  : dadi       493          /home/dadi/Desktop/laptop_monitor/env/lib64/python3.12/site-packages/pip/_vendor/vendor.txt
+1144  : dadi       5            /home/dadi/Desktop/laptop_monitor/env/lib64/python3.12/site-packages/python_xlib-0.33.dist-info/top_level.txt
+1145  : dadi       6            /home/dadi/Desktop/laptop_monitor/env/lib64/python3.12/site-packages/evdev-1.9.1.dist-info/top_level.txt
++++1145 files match the extension
