@@ -1,0 +1,9 @@
+{
+    "files.associations": {
+        "random": "c",
+        "bitset": "c",
+        "chrono": "c",
+        "algorithm": "c",
+        "format": "c"
+    }
+}
